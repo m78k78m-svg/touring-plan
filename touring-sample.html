@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 検索エンジンに載せない設定（URLを知っている人のみ閲覧） -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>箱根・芦ノ湖絶景ツーリング計画書 | MotoPlanner</title>
+
+  <!-- Tailwind CSS (デザイン用) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Leaflet (地図表示用ライブラリ) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Leaflet-GPX (GPX走行ログ可視化プラグイン) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js"></script>
+
+  <!-- アイコン (FontAwesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 地図のスタイル */
+    #map {
+      height: 420px;
+      width: 100%;
+      border-radius: 0.75rem;
+      z-index: 10;
+    }
+    @media (min-width: 768px) {
+      #map {
+        height: 520px;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen font-sans antialiased pb-16">
+
+  <!-- ヘッダーナビゲーション -->
+  <header class="bg-slate-800/80 backdrop-blur sticky top-0 z-50 border-b border-slate-700">
+    <div class="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-amber-400 hover:text-amber-300 transition font-bold text-sm sm:text-base">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>ツーリング一覧へ戻る</span>
+      </a>
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        計画中（開催予定）
+      </span>
+    </div>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main class="max-w-4xl mx-auto px-4 py-6 space-y-6">
+
+    <!-- タイトル＆概要カード -->
+    <section class="bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-xl">
+      <div class="flex flex-wrap items-center gap-2 text-xs text-amber-400 font-medium mb-2">
+        <span><i class="fa-regular fa-calendar mr-1"></i>2026年11月3日 (文化の日)</span>
+        <span>•</span>
+        <span><i class="fa-solid fa-location-dot mr-1"></i>神奈川・箱根エリア</span>
+      </div>
+
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3">
+        箱根・芦ノ湖絶景ワインディング ツーリング
+      </h1>
+      <p class="text-slate-300 text-sm leading-relaxed mb-4">
+        西湘バイパスからアネスト岩田ターンパイクを一気に駆け上がり、大観山展望台から富士山と芦ノ湖のパノラマを望む王道ツーリング！午後は芦ノ湖スカイラインの爽快なコーナーを満喫します。
+      </p>
+
+      <!-- スペックサマリーバッジ -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-700/60">
+        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-700/40">
+          <div class="text-xs text-slate-400 mb-1"><i class="fa-solid fa-route text-amber-400 mr-1"></i>総走行距離</div>
+          <div class="text-lg font-bold text-white"><span id="stat-distance">約 45</span> km</div>
+        </div>
+        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-700/40">
+          <div class="text-xs text-slate-400 mb-1"><i class="fa-solid fa-mountain text-sky-400 mr-1"></i>最高標高</div>
+          <div class="text-lg font-bold text-white"><span id="stat-elevation">1,020</span> m</div>
+        </div>
+        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-700/40">
+          <div class="text-xs text-slate-400 mb-1"><i class="fa-regular fa-clock text-emerald-400 mr-1"></i>所要時間</div>
+          <div class="text-lg font-bold text-white">約 7.5 時間</div>
+        </div>
+        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-700/40">
+          <div class="text-xs text-slate-400 mb-1"><i class="fa-solid fa-gas-pump text-rose-400 mr-1"></i>集合時給油</div>
+          <div class="text-lg font-bold text-white">満タン推奨</div>
+        </div>
+      </div>
+
+      <!-- アクションボタン（GPXダウンロード＆天候確認） -->
+      <div class="flex flex-wrap gap-3 mt-5">
+        <button id="btn-download-gpx" class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl transition shadow-lg shadow-amber-500/20 text-sm">
+          <i class="fa-solid fa-file-arrow-down text-base"></i>
+          <span>GPXルートをダウンロード</span>
+        </button>
+        <a href="https://weather.yahoo.co.jp/weather/jp/14/4620/14382.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-slate-700 hover:bg-slate-600 text-slate-200 font-semibold px-4 py-2.5 rounded-xl transition text-sm">
+          <i class="fa-solid fa-cloud-sun text-sky-400"></i>
+          <span>箱根町の天気をチェック <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- GPXルート地図セクション -->
+    <section class="bg-slate-800 rounded-2xl p-4 sm:p-6 border border-slate-700 shadow-xl space-y-3">
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-map-location-dot text-amber-400"></i>
+          <span>ルートマップ（GPX可視化）</span>
+        </h2>
+        <span class="text-xs text-slate-400 hidden sm:inline">指やマウスで拡大・移動できます</span>
+      </div>
+
+      <!-- 地図描画エリア -->
+      <div id="map" class="shadow-inner border border-slate-700"></div>
+
+      <div class="text-xs text-slate-400 flex flex-wrap items-center justify-between gap-2 pt-1">
+        <div class="flex items-center gap-4">
+          <span class="flex items-center gap-1.5"><span class="w-3 h-1 bg-blue-500 rounded-full inline-block"></span> 走行予定ルート</span>
+          <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-pin text-rose-500"></i> 立ち寄りスポット</span>
+        </div>
+        <span class="text-slate-500">© OpenStreetMap contributors</span>
+      </div>
+    </section>
+
+    <!-- タイムテーブル（時間割）セクション -->
+    <section class="bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-xl space-y-4">
+      <h2 class="text-lg font-bold text-white flex items-center gap-2">
+        <i class="fa-regular fa-clock text-amber-400"></i>
+        <span>タイムスケジュール</span>
+      </h2>
+
+      <!-- タイムライン -->
+      <div class="relative border-l-2 border-slate-700 ml-3 sm:ml-4 space-y-6 py-2">
+
+        <!-- 1: 集合 -->
+        <div class="relative pl-6 sm:pl-8 group">
+          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-amber-400 border-4 border-slate-800"></div>
+          <div class="flex flex-wrap items-baseline gap-2 mb-1">
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-400/20 text-amber-300 border border-amber-400/30">07:30</span>
+            <h3 class="text-base font-bold text-white">① 集合：西湘バイパス 西湘PA（下り）</h3>
+          </div>
+          <p class="text-sm text-slate-300">
+            朝礼ミーティング、点呼、本日のルートと合図の確認。給油は事前に済ませて集合してください。
+          </p>
+          <div class="mt-2 flex gap-2">
+            <span class="text-xs text-slate-400 bg-slate-900/60 px-2.5 py-1 rounded-md border border-slate-700/50">出発 08:00</span>
+          </div>
+        </div>
+
+        <!-- 2: 大観山 -->
+        <div class="relative pl-6 sm:pl-8 group">
+          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sky-400 border-4 border-slate-800"></div>
+          <div class="flex flex-wrap items-baseline gap-2 mb-1">
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-400/20 text-sky-300 border border-sky-400/30">09:00</span>
+            <h3 class="text-base font-bold text-white">② 休憩：アネスト岩田スカイラウンジ（大観山）</h3>
+          </div>
+          <p class="text-sm text-slate-300">
+            ターンパイクを登り切った絶景ポイント。富士山と芦ノ湖をバックに集合写真撮影＆カフェ休憩（約60分）。標高1000mのため防寒対策を。
+          </p>
+        </div>
+
+        <!-- 3: 昼食 -->
+        <div class="relative pl-6 sm:pl-8 group">
+          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-emerald-400 border-4 border-slate-800"></div>
+          <div class="flex flex-wrap items-baseline gap-2 mb-1">
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-400/20 text-emerald-300 border border-emerald-400/30">11:30</span>
+            <h3 class="text-base font-bold text-white">③ 昼食：芦ノ湖畔・御番所茶屋</h3>
+          </div>
+          <p class="text-sm text-slate-300">
+            芦ノ湖の景色を眺めながら名物の手打ち蕎麦や甘味を堪能します。バイク専用駐輪スペースあり。
+          </p>
+        </div>
+
+        <!-- 4: スカイライン休憩 -->
+        <div class="relative pl-6 sm:pl-8 group">
+          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sky-400 border-4 border-slate-800"></div>
+          <div class="flex flex-wrap items-baseline gap-2 mb-1">
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-400/20 text-sky-300 border border-sky-400/30">13:30</span>
+            <h3 class="text-base font-bold text-white">④ 休憩：芦ノ湖スカイライン レストハウス</h3>
+          </div>
+          <p class="text-sm text-slate-300">
+            ワインディング走行後の小休憩。ソフトクリームを食べてリフレッシュ。
+          </p>
+        </div>
+
+        <!-- 5: 解散 -->
+        <div class="relative pl-6 sm:pl-8 group">
+          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-rose-400 border-4 border-slate-800"></div>
+          <div class="flex flex-wrap items-baseline gap-2 mb-1">
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-400/20 text-rose-300 border border-rose-400/30">15:00</span>
+            <h3 class="text-base font-bold text-white">⑤ 解散：乙女峠 富士見茶屋</h3>
+          </div>
+          <p class="text-sm text-slate-300">
+            終礼・解散。東名高速（御殿場IC）方面または箱根裏街道方面へスムーズに帰路につけます。気をつけてご帰宅を！
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 持ち物チェックリスト（タップでチェック保存可能） -->
+    <section class="bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-xl space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-list-check text-amber-400"></i>
+          <span>持ち物・事前準備チェックリスト</span>
+        </h2>
+        <span class="text-xs text-slate-400">タップしてチェック</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-sm" id="checklist">
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700/50 cursor-pointer hover:bg-slate-900 transition">
+          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-800 border-slate-600">
+          <span class="text-slate-200">運転免許証・自賠責・任意保険証</span>
+        </label>
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700/50 cursor-pointer hover:bg-slate-900 transition">
+          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-800 border-slate-600">
+          <span class="text-slate-200">ETCカード挿入確認</span>
+        </label>
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700/50 cursor-pointer hover:bg-slate-900 transition">
+          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-800 border-slate-600">
+          <span class="text-slate-200">雨具・カッパ（山の天候急変用）</span>
+        </label>
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700/50 cursor-pointer hover:bg-slate-900 transition">
+          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-800 border-slate-600">
+          <span class="text-slate-200">防寒インナー（標高1,000m用）</span>
+        </label>
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700/50 cursor-pointer hover:bg-slate-900 transition">
+          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-800 border-slate-600">
+          <span class="text-slate-200">小銭・現金（有料道路料金所用）</span>
+        </label>
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700/50 cursor-pointer hover:bg-slate-900 transition">
+          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-800 border-slate-600">
+          <span class="text-slate-200">モバイルバッテリー＆スマホ充電ケーブル</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- 注意事項・特記事項 -->
+    <section class="bg-amber-500/10 rounded-2xl p-6 border border-amber-500/30 space-y-2">
+      <h3 class="text-sm font-bold text-amber-300 flex items-center gap-2">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span>注意事項・マナー</span>
+      </h3>
+      <ul class="text-xs sm:text-sm text-slate-300 list-disc list-inside space-y-1 leading-relaxed">
+        <li>アネスト岩田ターンパイクおよび芦ノ湖スカイラインは有料道路です。ETCまたは小銭のご用意をお願いします。</li>
+        <li>ワインディングは無理な追い越しをせず、マイペースかつ安全第一の千鳥走行で走行します。</li>
+        <li>前日の18時時点の天気予報で降水確率40%以上の場合は中止または延期連絡をLINEグループで行います。</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="max-w-4xl mx-auto px-4 mt-8 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
+    <p>ツーリング計画＆ログ共有ポータル • MotoPlanner</p>
+  </footer>
+
+  <!-- スクリプト：Leaflet地図の初期化＆GPX描画 -->
+  <script>
+    // サンプルのGPXデータ（ファイル直接読み込みがCORS等で失敗した際の安心フォールバック）
+    const EMBEDDED_GPX = `<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="MotoPlanner" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata><name>箱根・芦ノ湖絶景ツーリング</name></metadata>
+  <wpt lat="35.2891" lon="139.2235"><name>① 集合：西湘PA（下り）</name><desc>07:30集合。朝のミーティング</desc></wpt>
+  <wpt lat="35.2173" lon="139.0526"><name>② 休憩：大観山スカイラウンジ</name><desc>09:00到着。富士山と芦ノ湖の絶景</desc></wpt>
+  <wpt lat="35.2045" lon="138.9958"><name>③ 昼食：芦ノ湖畔・御番所茶屋</name><desc>11:30到着。名物そば</desc></wpt>
+  <wpt lat="35.2634" lon="138.9882"><name>④ 休憩：芦ノ湖スカイライン</name><desc>13:30到着。ワインディング休憩</desc></wpt>
+  <wpt lat="35.3188" lon="139.0125"><name>⑤ 解散：乙女峠 富士見茶屋</name><desc>15:00解散。御殿場IC方面</desc></wpt>
+  <trk><name>走行ルート</name><trkseg>
+    <trkpt lat="35.2891" lon="139.2235"><ele>8</ele></trkpt>
+    <trkpt lat="35.2750" lon="139.1980"><ele>12</ele></trkpt>
+    <trkpt lat="35.2530" lon="139.1620"><ele>15</ele></trkpt>
+    <trkpt lat="35.2420" lon="139.1450"><ele>28</ele></trkpt>
+    <trkpt lat="35.2340" lon="139.1280"><ele>110</ele></trkpt>
+    <trkpt lat="35.2280" lon="139.1050"><ele>320</ele></trkpt>
+    <trkpt lat="35.2220" lon="139.0820"><ele>580</ele></trkpt>
+    <trkpt lat="35.2185" lon="139.0630"><ele>820</ele></trkpt>
+    <trkpt lat="35.2173" lon="139.0526"><ele>1011</ele></trkpt>
+    <trkpt lat="35.2140" lon="139.0430"><ele>980</ele></trkpt>
+    <trkpt lat="35.2010" lon="139.0280"><ele>850</ele></trkpt>
+    <trkpt lat="35.1950" lon="139.0150"><ele>740</ele></trkpt>
+    <trkpt lat="35.2045" lon="138.9958"><ele>725</ele></trkpt>
+    <trkpt lat="35.2150" lon="138.9880"><ele>820</ele></trkpt>
+    <trkpt lat="35.2320" lon="138.9820"><ele>940</ele></trkpt>
+    <trkpt lat="35.2500" lon="138.9850"><ele>990</ele></trkpt>
+    <trkpt lat="35.2634" lon="138.9882"><ele>1020</ele></trkpt>
+    <trkpt lat="35.2810" lon="138.9940"><ele>960</ele></trkpt>
+    <trkpt lat="35.3020" lon="139.0050"><ele>910</ele></trkpt>
+    <trkpt lat="35.3188" lon="139.0125"><ele>840</ele></trkpt>
+  </trkseg></trk>
+</gpx>`;
+
+    // 1. 地図の初期化（箱根周辺）
+    const map = L.map('map').setView([35.23, 139.06], 11);
+
+    // OpenStreetMapタイルの追加
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    // 2. GPX描画処理
+    function renderGpx(gpxSource) {
+      new L.GPX(gpxSource, {
+        async: true,
+        marker_options: {
+          startIconUrl: null,
+          endIconUrl: null,
+          shadowUrl: null,
+          wptIconUrls: {
+            '': 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png'
+          }
+        },
+        polyline_options: {
+          color: '#3b82f6', // 鮮やかなブルー
+          opacity: 0.85,
+          weight: 5,
+          lineCap: 'round'
+        }
+      }).on('loaded', function(e) {
+        map.fitBounds(e.target.getBounds(), { padding: [30, 30] });
+
+        // 距離・標高の統計表示更新
+        const distKm = (e.target.get_distance() / 1000).toFixed(1);
+        const eleMax = Math.round(e.target.get_elevation_max());
+        if (distKm && distKm > 0) document.getElementById('stat-distance').textContent = distKm;
+        if (eleMax && eleMax > 0) document.getElementById('stat-elevation').textContent = eleMax.toLocaleString();
+      }).addTo(map);
+    }
+
+    // sample.gpxの読み込み（ローカルダブルクリックでも安全に動くようフォールバック付き）
+    fetch('sample.gpx')
+      .then(res => {
+        if (!res.ok) throw new Error('Network error');
+        return res.text();
+      })
+      .then(gpxData => renderGpx(gpxData))
+      .catch(() => {
+        // file:// プロトコル等でfetchがブロックされた場合はインラインデータで即座に描画
+        renderGpx(EMBEDDED_GPX);
+      });
+
+    // 3. GPXダウンロードボタンの動作
+    document.getElementById('btn-download-gpx').addEventListener('click', () => {
+      const blob = new Blob([EMBEDDED_GPX], { type: 'application/gpx+xml' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'hakone-touring-route.gpx';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+
+    // 4. チェックリストの保存（ブラウザのLocalStorageに保存）
+    const checkboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
+    checkboxes.forEach((cb, idx) => {
+      const key = `moto_checklist_sample_${idx}`;
+      if (localStorage.getItem(key) === 'true') {
+        cb.checked = true;
+      }
+      cb.addEventListener('change', () => {
+        localStorage.setItem(key, cb.checked);
+      });
+    });
+  </script>
+</body>
+</html>
