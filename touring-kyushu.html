@@ -313,6 +313,45 @@
       </div>
     </section>
 
+    <!-- 写真ギャラリーセクション（最大5枚） -->
+    <section class="bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-xl space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-camera-retro text-amber-400"></i>
+            <span>思い出・見どころギャラリー</span>
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">旅のハイライト写真を最大5枚まで保存・閲覧できます</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span id="photo-count-badge" class="text-xs px-2.5 py-1 rounded-full bg-slate-700 text-slate-300 font-bold border border-slate-600">
+            0 / 5枚
+          </span>
+          <label id="btn-add-photo-label" class="cursor-pointer inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-3.5 py-1.5 rounded-xl transition text-xs shadow-md shadow-amber-500/20">
+            <i class="fa-solid fa-plus"></i>
+            <span>写真を追加</span>
+            <input type="file" id="photo-input" accept="image/*" class="hidden">
+          </label>
+        </div>
+      </div>
+
+      <!-- 写真一覧グリッド -->
+      <div id="photo-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 min-h-[110px] items-center">
+        <!-- JSで写真カードが挿入されます -->
+      </div>
+    </section>
+
+    <!-- 写真拡大表示モーダル（ライトボックス） -->
+    <div id="photo-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm hidden flex items-center justify-center p-4">
+      <button onclick="closePhotoModal()" class="absolute top-4 right-4 text-white text-3xl hover:text-amber-400 transition w-10 h-10 flex items-center justify-center rounded-full bg-slate-800/60">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="max-w-4xl max-h-[85vh] flex flex-col items-center">
+        <img id="modal-img" src="" alt="拡大写真" class="max-w-full max-h-[80vh] object-contain rounded-xl shadow-2xl">
+        <p id="modal-caption" class="text-xs text-slate-400 mt-2"></p>
+      </div>
+    </div>
+
     <!-- 持ち物チェックリスト（レンタルバイク対応） -->
     <section class="bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-xl space-y-4">
       <div class="flex items-center justify-between">
@@ -473,6 +512,141 @@
         localStorage.setItem(key, cb.checked);
       });
     });
+
+    // 5. 写真ギャラリー管理（最大5枚・自動圧縮保存）
+    const PHOTO_STORAGE_KEY = 'kyushu_touring_photos';
+    const MAX_PHOTOS = 5;
+
+    function getStoredPhotos() {
+      try {
+        return JSON.parse(localStorage.getItem(PHOTO_STORAGE_KEY) || '[]');
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function savePhotos(photos) {
+      localStorage.setItem(PHOTO_STORAGE_KEY, JSON.stringify(photos));
+      renderPhotoGallery();
+    }
+
+    function renderPhotoGallery() {
+      const photos = getStoredPhotos();
+      const grid = document.getElementById('photo-grid');
+      const countBadge = document.getElementById('photo-count-badge');
+      const addBtn = document.getElementById('btn-add-photo-label');
+
+      countBadge.textContent = `${photos.length} / ${MAX_PHOTOS}枚`;
+
+      if (photos.length >= MAX_PHOTOS) {
+        addBtn.classList.add('opacity-50', 'pointer-events-none');
+      } else {
+        addBtn.classList.remove('opacity-50', 'pointer-events-none');
+      }
+
+      grid.innerHTML = '';
+      if (photos.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-8 text-center border-2 border-dashed border-slate-700/80 rounded-xl bg-slate-900/40">
+            <i class="fa-regular fa-images text-2xl text-slate-500 mb-2"></i>
+            <p class="text-xs text-slate-400">まだ写真がありません。「写真を追加」ボタンから最大5枚まで登録できます</p>
+          </div>
+        `;
+        return;
+      }
+
+      photos.forEach((photo, index) => {
+        const card = document.createElement('div');
+        card.className = 'group relative aspect-video sm:aspect-square rounded-xl overflow-hidden border border-slate-700 bg-slate-900 shadow-md cursor-pointer';
+        card.innerHTML = `
+          <img src="${photo.data}" alt="${photo.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 opacity-0 group-hover:opacity-100 transition p-2 flex flex-col justify-between">
+            <div class="flex justify-end">
+              <button onclick="event.stopPropagation(); deletePhoto(${index})" class="w-6 h-6 rounded-full bg-rose-600/90 text-white flex items-center justify-center hover:bg-rose-500 transition shadow">
+                <i class="fa-solid fa-xmark text-xs"></i>
+              </button>
+            </div>
+            <span class="text-[10px] text-white truncate drop-shadow">${photo.name}</span>
+          </div>
+        `;
+        card.addEventListener('click', () => openPhotoModal(photo.data, photo.name));
+        grid.appendChild(card);
+      });
+    }
+
+    // 写真の圧縮（最大1200px・WebP形式またはJPEGで軽量化）
+    function compressImage(file, callback) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          const maxDim = 1200;
+          let width = img.width;
+          let height = img.height;
+
+          if (width > height && width > maxDim) {
+            height = Math.round((height * maxDim) / width);
+            width = maxDim;
+          } else if (height > maxDim) {
+            width = Math.round((width * maxDim) / height);
+            height = maxDim;
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+          const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.82);
+          callback(compressedDataUrl);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    document.getElementById('photo-input').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const photos = getStoredPhotos();
+      if (photos.length >= MAX_PHOTOS) {
+        alert('写真の登録は1つの計画につき最大5枚までです。不要な写真を削除してから追加してください。');
+        return;
+      }
+
+      compressImage(file, function(compressedData) {
+        photos.push({
+          name: file.name,
+          data: compressedData,
+          createdAt: new Date().toISOString()
+        });
+        savePhotos(photos);
+      });
+      e.target.value = '';
+    });
+
+    function deletePhoto(index) {
+      if (confirm('この写真をギャラリーから削除しますか？')) {
+        const photos = getStoredPhotos();
+        photos.splice(index, 1);
+        savePhotos(photos);
+      }
+    }
+
+    function openPhotoModal(imgSrc, caption) {
+      const modal = document.getElementById('photo-modal');
+      document.getElementById('modal-img').src = imgSrc;
+      document.getElementById('modal-caption').textContent = caption || '';
+      modal.classList.remove('hidden');
+    }
+
+    function closePhotoModal() {
+      document.getElementById('photo-modal').classList.add('hidden');
+    }
+
+    // 初期描画
+    renderPhotoGallery();
   </script>
 </body>
 </html>
