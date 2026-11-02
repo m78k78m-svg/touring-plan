@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="MotoPlanner" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <name>箱根・芦ノ湖絶景ツーリング</name>
+    <desc>西湘バイパスからアネスト岩田ターンパイクを駆け上がり、大観山からの富士山と芦ノ湖スカイラインを満喫する王道ルート</desc>
+    <time>2026-11-03T07:30:00Z</time>
+  </metadata>
+
+  <!-- 立ち寄りスポット・集合場所のウェイポイント -->
+  <wpt lat="35.2891" lon="139.2235">
+    <name>① 集合：西湘PA（下り）</name>
+    <desc>7:30集合。朝の海風を感じながらミーティング＆給油確認</desc>
+  </wpt>
+  <wpt lat="35.2173" lon="139.0526">
+    <name>② 休憩：アネスト岩田スカイラウンジ（大観山）</name>
+    <desc>9:00到着。富士山と芦ノ湖の絶景ビューポイント。温かいコーヒー休憩</desc>
+  </wpt>
+  <wpt lat="35.2045" lon="138.9958">
+    <name>③ 昼食：芦ノ湖畔・御番所茶屋</name>
+    <desc>11:30到着。名物そばと芦ノ湖の景色を満喫</desc>
+  </wpt>
+  <wpt lat="35.2634" lon="138.9882">
+    <name>④ 休憩：芦ノ湖スカイライン レストハウス</name>
+    <desc>13:30到着。ワインディングを爽快に流した後のスイーツ休憩</desc>
+  </wpt>
+  <wpt lat="35.3188" lon="139.0125">
+    <name>⑤ 解散：乙女峠 富士見茶屋</name>
+    <desc>15:00解散。東名御殿場IC方面へスムーズに合流可能</desc>
+  </wpt>
+
+  <!-- 走行トラックログ（主要ポイントの座標列） -->
+  <trk>
+    <name>箱根ワインディング・ルート</name>
+    <trkseg>
+      <!-- 西湘PA〜小田原 -->
+      <trkpt lat="35.2891" lon="139.2235"><ele>8</ele><time>2026-11-03T08:00:00Z</time></trkpt>
+      <trkpt lat="35.2750" lon="139.1980"><ele>12</ele><time>2026-11-03T08:08:00Z</time></trkpt>
+      <trkpt lat="35.2530" lon="139.1620"><ele>15</ele><time>2026-11-03T08:15:00Z</time></trkpt>
+      <trkpt lat="35.2420" lon="139.1450"><ele>28</ele><time>2026-11-03T08:22:00Z</time></trkpt>
+      <!-- ターンパイク入口（小田原本線料金所） -->
+      <trkpt lat="35.2340" lon="139.1280"><ele>110</ele><time>2026-11-03T08:30:00Z</time></trkpt>
+      <trkpt lat="35.2280" lon="139.1050"><ele>320</ele><time>2026-11-03T08:38:00Z</time></trkpt>
+      <trkpt lat="35.2220" lon="139.0820"><ele>580</ele><time>2026-11-03T08:46:00Z</time></trkpt>
+      <trkpt lat="35.2185" lon="139.0630"><ele>820</ele><time>2026-11-03T08:53:00Z</time></trkpt>
+      <!-- 大観山展望台 -->
+      <trkpt lat="35.2173" lon="139.0526"><ele>1011</ele><time>2026-11-03T09:00:00Z</time></trkpt>
+      <trkpt lat="35.2140" lon="139.0430"><ele>980</ele><time>2026-11-03T10:00:00Z</time></trkpt>
+      <!-- 元箱根・芦ノ湖湖畔へ下る -->
+      <trkpt lat="35.2010" lon="139.0280"><ele>850</ele><time>2026-11-03T10:15:00Z</time></trkpt>
+      <trkpt lat="35.1950" lon="139.0150"><ele>740</ele><time>2026-11-03T10:30:00Z</time></trkpt>
+      <trkpt lat="35.2045" lon="138.9958"><ele>725</ele><time>2026-11-03T11:00:00Z</time></trkpt>
+      <!-- 芦ノ湖スカイラインへ登る -->
+      <trkpt lat="35.2150" lon="138.9880"><ele>820</ele><time>2026-11-03T12:45:00Z</time></trkpt>
+      <trkpt lat="35.2320" lon="138.9820"><ele>940</ele><time>2026-11-03T13:05:00Z</time></trkpt>
+      <trkpt lat="35.2500" lon="138.9850"><ele>990</ele><time>2026-11-03T13:20:00Z</time></trkpt>
+      <!-- スカイライン レストハウス -->
+      <trkpt lat="35.2634" lon="138.9882"><ele>1020</ele><time>2026-11-03T13:30:00Z</time></trkpt>
+      <trkpt lat="35.2810" lon="138.9940"><ele>960</ele><time>2026-11-03T14:15:00Z</time></trkpt>
+      <trkpt lat="35.3020" lon="139.0050"><ele>910</ele><time>2026-11-03T14:40:00Z</time></trkpt>
+      <!-- 乙女峠 -->
+      <trkpt lat="35.3188" lon="139.0125"><ele>840</ele><time>2026-11-03T15:00:00Z</time></trkpt>
+    </trkseg>
+  </trk>
+</gpx>
