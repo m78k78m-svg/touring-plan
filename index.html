@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 検索エンジンに載せない設定（URLを知っている人のみ閲覧） -->
   <meta name="robots" content="noindex, nofollow">
   <title>ツーリング計画＆ログ共有ポータル | MotoPlanner</title>
 
@@ -27,10 +26,10 @@
           <p class="text-xs text-slate-400">ツーリング計画＆ログ共有ポータル</p>
         </div>
       </div>
-      <div class="text-xs text-slate-400 bg-slate-900/80 px-3 py-1.5 rounded-full border border-slate-700 hidden sm:flex items-center gap-1.5">
-        <i class="fa-solid fa-lock text-amber-400"></i>
-        <span>限定公開メンバー用</span>
-      </div>
+      <button onclick="openNewPlanModal()" class="inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-3.5 py-2 rounded-xl transition text-xs sm:text-sm shadow-md shadow-amber-500/20">
+        <i class="fa-solid fa-plus"></i>
+        <span>計画を追加</span>
+      </button>
     </div>
   </header>
 
@@ -48,182 +47,308 @@
           次の目的地はどこ？<br class="hidden sm:inline">ルートとタイムスケジュールを共有しよう
         </h2>
         <p class="text-sm text-slate-300 leading-relaxed">
-          集合場所、タイムテーブル、GPX走行ログルートをいつでもスマホから確認できます。GPXデータをバイクナビやスマホアプリにダウンロードして快適ツーリングへ！
+          集合場所、タイムテーブル、GPX走行ログルートをいつでもスマホから確認できます。写真の追加や不要になった計画の削除もワンタップで行えます！
         </p>
       </div>
     </section>
 
     <!-- タブ切り替えボタン -->
-    <div class="flex items-center gap-2 border-b border-slate-700 pb-2">
-      <button id="tab-upcoming" onclick="switchTab('upcoming')" class="flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm transition bg-amber-500 text-slate-950 shadow-md">
-        <i class="fa-solid fa-calendar-check"></i>
-        <span>計画中ツーリング (2)</span>
-      </button>
-      <button id="tab-past" onclick="switchTab('past')" class="flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition text-slate-400 hover:text-slate-200 hover:bg-slate-800">
-        <i class="fa-solid fa-flag-checkered"></i>
-        <span>過去のレポート (1)</span>
-      </button>
+    <div class="flex items-center justify-between border-b border-slate-700 pb-2">
+      <div class="flex items-center gap-2">
+        <button id="tab-upcoming" onclick="switchTab('upcoming')" class="flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm transition bg-amber-500 text-slate-950 shadow-md">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span id="tab-upcoming-label">計画中ツーリング</span>
+        </button>
+        <button id="tab-past" onclick="switchTab('past')" class="flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition text-slate-400 hover:text-slate-200 hover:bg-slate-800">
+          <i class="fa-solid fa-flag-checkered"></i>
+          <span id="tab-past-label">過去のレポート</span>
+        </button>
+      </div>
     </div>
 
     <!-- 1. 計画中ツーリング一覧セクション -->
     <section id="section-upcoming" class="space-y-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-
-        <!-- ツーリングカード 1（今回の本番：佐賀・呼子 1泊2日） -->
-        <a href="touring-kyushu.html" class="group bg-slate-800 rounded-2xl border-2 border-amber-500/60 hover:border-amber-400 transition-all duration-300 overflow-hidden shadow-2xl hover:-translate-y-1 block relative">
-          <!-- 上部ヘッダーバナー -->
-          <div class="h-32 bg-gradient-to-tr from-amber-600/50 via-slate-800 to-rose-700/40 p-4 flex flex-col justify-between border-b border-slate-700/60 relative">
-            <div class="flex items-center justify-between">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-500/30 text-amber-300 border border-amber-400/50 backdrop-blur">
-                <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                1泊2日・開催予定
-              </span>
-              <span class="text-xs font-semibold text-rose-300 bg-rose-950/80 px-2.5 py-1 rounded-lg backdrop-blur border border-rose-500/40">
-                <i class="fa-solid fa-clock mr-1"></i>18時返却厳守
-              </span>
-            </div>
-            <div class="text-xs text-amber-300 font-bold flex items-center gap-1">
-              <i class="fa-solid fa-location-dot"></i>
-              <span>福岡・佐賀（三瀬峠・嬉野温泉・呼子）</span>
-            </div>
-          </div>
-
-          <!-- カード本文 -->
-          <div class="p-5 space-y-3">
-            <div class="text-xs text-slate-400 font-medium">
-              <i class="fa-regular fa-calendar mr-1 text-amber-400"></i>2026.11.13(金) 12:00 〜 11.14(土) 18:00
-            </div>
-            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition">
-              【1泊2日】佐賀・呼子 温泉＆イカ活き造りツーリング
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 line-clamp-2 leading-relaxed">
-              三瀬峠ワインディングと嬉野温泉「大正屋」、2日目は呼子のイカ活き造り！夕方渋滞を高速ワープで回避し18時返却を目指す3名ツーリング。
-            </p>
-
-            <div class="grid grid-cols-3 gap-2 pt-3 border-t border-slate-700/60 text-center text-xs">
-              <div class="bg-slate-900/50 p-2 rounded-lg">
-                <span class="text-slate-400 block text-[10px]">総距離</span>
-                <span class="font-bold text-white">約281 km</span>
-              </div>
-              <div class="bg-slate-900/50 p-2 rounded-lg">
-                <span class="text-slate-400 block text-[10px]">発着地</span>
-                <span class="font-bold text-white">福岡空港周辺</span>
-              </div>
-              <div class="bg-slate-900/50 p-2 rounded-lg">
-                <span class="text-slate-400 block text-[10px]">宿泊先</span>
-                <span class="font-bold text-amber-400">大正屋</span>
-              </div>
-            </div>
-
-            <div class="pt-2 flex items-center justify-end text-xs font-bold text-amber-400 group-hover:translate-x-1 transition gap-1">
-              <span>旅程・地図・タイムテーブルを見る</span>
-              <i class="fa-solid fa-chevron-right text-[10px]"></i>
-            </div>
-          </div>
-        </a>
-
-        <!-- ツーリングカード 1（箱根サンプル） -->
-        <a href="touring-sample.html" class="group bg-slate-800 rounded-2xl border border-slate-700 hover:border-amber-500/50 transition-all duration-300 overflow-hidden shadow-xl hover:-translate-y-1 block">
-          <!-- 上部ヘッダーバナー風 -->
-          <div class="h-32 bg-gradient-to-tr from-amber-600/40 via-slate-800 to-sky-700/40 p-4 flex flex-col justify-between border-b border-slate-700/60 relative">
-            <div class="flex items-center justify-between">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 backdrop-blur">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                計画中
-              </span>
-              <span class="text-xs font-semibold text-slate-300 bg-slate-900/60 px-2.5 py-1 rounded-lg backdrop-blur">
-                <i class="fa-regular fa-calendar mr-1 text-amber-400"></i>2026.11.03 (祝)
-              </span>
-            </div>
-            <div class="text-xs text-amber-300 font-semibold flex items-center gap-1">
-              <i class="fa-solid fa-location-dot"></i>
-              <span>神奈川 • 箱根・芦ノ湖エリア</span>
-            </div>
-          </div>
-
-          <!-- カード本文 -->
-          <div class="p-5 space-y-3">
-            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition">
-              箱根・芦ノ湖絶景ワインディング ツーリング
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 line-clamp-2 leading-relaxed">
-              西湘バイパスからアネスト岩田ターンパイクを一気に駆け上がり、大観山展望台から富士山と芦ノ湖のパノラマを望む王道ツーリング！
-            </p>
-
-            <div class="grid grid-cols-3 gap-2 pt-3 border-t border-slate-700/60 text-center text-xs">
-              <div class="bg-slate-900/50 p-2 rounded-lg">
-                <span class="text-slate-400 block text-[10px]">走行距離</span>
-                <span class="font-bold text-white">約45 km</span>
-              </div>
-              <div class="bg-slate-900/50 p-2 rounded-lg">
-                <span class="text-slate-400 block text-[10px]">集合場所</span>
-                <span class="font-bold text-white">西湘PA (07:30)</span>
-              </div>
-              <div class="bg-slate-900/50 p-2 rounded-lg">
-                <span class="text-slate-400 block text-[10px]">GPX地図</span>
-                <span class="font-bold text-amber-400">あり</span>
-              </div>
-            </div>
-
-            <div class="pt-2 flex items-center justify-end text-xs font-bold text-amber-400 group-hover:translate-x-1 transition gap-1">
-              <span>詳細・タイムテーブルを見る</span>
-              <i class="fa-solid fa-chevron-right text-[10px]"></i>
-            </div>
-          </div>
-        </a>
-
+      <div id="upcoming-container" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- JSでカードを描画 -->
       </div>
     </section>
 
     <!-- 2. 過去のレポート一覧セクション（初期非表示） -->
     <section id="section-past" class="space-y-4 hidden">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-
-        <!-- 過去レポートカードのサンプル -->
-        <div class="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-xl">
-          <div class="h-28 bg-gradient-to-tr from-slate-700 via-slate-800 to-emerald-900/40 p-4 flex flex-col justify-between border-b border-slate-700/60">
-            <div class="flex items-center justify-between">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-700 text-slate-300">
-                <i class="fa-solid fa-check"></i> 走行完了
-              </span>
-              <span class="text-xs text-slate-300 bg-slate-900/60 px-2 py-1 rounded-lg">
-                2026.10.12 開催
-              </span>
-            </div>
-            <div class="text-xs text-emerald-300 font-semibold flex items-center gap-1">
-              <i class="fa-solid fa-location-dot"></i>
-              <span>静岡 • 伊豆半島一周</span>
-            </div>
-          </div>
-          <div class="p-5 space-y-2">
-            <h3 class="text-base font-bold text-white">
-              伊豆西海岸 サンセット快走ツーリング
-            </h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              天候に恵まれ、西伊豆スカイラインからの富士山と夕日が最高でした！無事故・無違反で完走。
-            </p>
-            <div class="pt-2 text-xs text-slate-400">総走行距離：約240 km • 参加台数：4台</div>
-          </div>
-        </div>
-
+      <div id="past-container" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- JSでカードを描画 -->
       </div>
-    </section>
-
-    <!-- 新しい計画の追加方法のご案内カード -->
-    <section class="bg-slate-800/60 rounded-2xl p-6 border border-slate-700/60 space-y-3">
-      <h3 class="text-sm font-bold text-white flex items-center gap-2">
-        <i class="fa-solid fa-circle-question text-amber-400"></i>
-        <span>新しいツーリング計画を追加するには？</span>
-      </h3>
-      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-        新しいツーリングを計画する際は、<code class="text-amber-300 bg-slate-900 px-1.5 py-0.5 rounded">touring-sample.html</code> をコピーしてファイル名を変更し（例：<code class="text-amber-300 bg-slate-900 px-1.5 py-0.5 rounded">touring-izu.html</code>）、日時やタイムスケジュールを書き換えるだけで簡単に新しいしおりが完成します！
-      </p>
     </section>
 
   </main>
 
-  <!-- スクリプト：タブ切り替え -->
+  <!-- 新規ツーリング計画作成モーダル -->
+  <div id="new-plan-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-slate-800 border border-slate-700 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-slate-700 pb-3">
+        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-route text-amber-400"></i>
+          <span>新しいツーリング計画を追加</span>
+        </h3>
+        <button onclick="closeNewPlanModal()" class="text-slate-400 hover:text-white text-xl">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="new-plan-form" onsubmit="handleCreatePlan(event)" class="space-y-3.5 text-xs sm:text-sm">
+        <div>
+          <label class="block text-slate-300 font-bold mb-1">ツーリング名・タイトル *</label>
+          <input type="text" id="form-title" required placeholder="例: ビーナスライン絶景高原ツーリング" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white focus:outline-none focus:border-amber-400">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-bold mb-1">開催日程 *</label>
+            <input type="text" id="form-date" required placeholder="例: 2026.11.20 (日)" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white focus:outline-none focus:border-amber-400">
+          </div>
+          <div>
+            <label class="block text-slate-300 font-bold mb-1">エリア・目的地 *</label>
+            <input type="text" id="form-area" required placeholder="例: 長野・霧ヶ峰エリア" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white focus:outline-none focus:border-amber-400">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-bold mb-1">集合場所・時間</label>
+            <input type="text" id="form-meeting" placeholder="例: 談合坂SA (07:00)" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white focus:outline-none focus:border-amber-400">
+          </div>
+          <div>
+            <label class="block text-slate-300 font-bold mb-1">走行予定距離</label>
+            <input type="text" id="form-distance" placeholder="例: 約260 km" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white focus:outline-none focus:border-amber-400">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-bold mb-1">概要・見どころ</label>
+          <textarea id="form-desc" rows="3" placeholder="例: 初冬前のビーナスラインを駆け抜け、名物の信州そばと温泉を堪能します！" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white focus:outline-none focus:border-amber-400"></textarea>
+        </div>
+
+        <div class="pt-3 flex justify-end gap-2 border-t border-slate-700">
+          <button type="button" onclick="closeNewPlanModal()" class="px-4 py-2 rounded-xl bg-slate-700 hover:bg-slate-600 text-slate-300 font-bold transition text-xs">
+            キャンセル
+          </button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition text-xs shadow-md shadow-amber-500/20">
+            作成して保存
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- フッター -->
+  <footer class="max-w-5xl mx-auto px-4 mt-8 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
+    <p>ツーリング計画＆ログ共有ポータル • MotoPlanner</p>
+  </footer>
+
+  <!-- スクリプト：計画の追加・削除・永続化 -->
   <script>
+    const STORAGE_KEY = 'motoplanner_tourings_v1';
+
+    // デフォルトの初期ツーリングデータ
+    const DEFAULT_TOURING_LIST = [
+      {
+        id: 'plan_kyushu_2026',
+        isUpcoming: true,
+        title: '【1泊2日】佐賀・呼子 温泉＆イカ活き造りツーリング',
+        date: '2026.11.13(金) 12:00 〜 11.14(土) 18:00',
+        area: '福岡・佐賀（三瀬峠・嬉野温泉・呼子）',
+        badge: '1泊2日・開催予定',
+        alert: '18時返却厳守',
+        desc: '三瀬峠ワインディングと嬉野温泉「大正屋」、2日目は呼子のイカ活き造り！夕方渋滞を高速ワープで回避し18時返却を目指す3名ツーリング。',
+        distance: '約281 km',
+        meeting: '福岡空港周辺',
+        spot: '大正屋',
+        link: 'touring-kyushu.html'
+      },
+      {
+        id: 'plan_hakone_2026',
+        isUpcoming: true,
+        title: '箱根・芦ノ湖絶景ワインディング ツーリング',
+        date: '2026.11.03 (祝)',
+        area: '神奈川 • 箱根・芦ノ湖エリア',
+        badge: '計画中',
+        alert: '',
+        desc: '西湘バイパスからアネスト岩田ターンパイクを一気に駆け上がり、大観山展望台から富士山と芦ノ湖のパノラマを望む王道ツーリング！',
+        distance: '約45 km',
+        meeting: '西湘PA (07:30)',
+        spot: '大観山',
+        link: 'touring-sample.html'
+      },
+      {
+        id: 'plan_izu_past',
+        isUpcoming: false,
+        title: '伊豆西海岸 サンセット快走ツーリング',
+        date: '2026.10.12 開催',
+        area: '静岡 • 伊豆半島一周',
+        badge: '走行完了',
+        alert: '',
+        desc: '天候に恵まれ、西伊豆スカイラインからの富士山と夕日が最高でした！無事故・無違反で完走。',
+        distance: '約240 km',
+        meeting: 'ターンパイク',
+        spot: '西伊豆',
+        link: '#'
+      }
+    ];
+
+    function getTourings() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) return JSON.parse(stored);
+      } catch (e) {}
+      return DEFAULT_TOURING_LIST;
+    }
+
+    function saveTourings(list) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      renderCards();
+    }
+
+    function renderCards() {
+      const list = getTourings();
+      const upContainer = document.getElementById('upcoming-container');
+      const pastContainer = document.getElementById('past-container');
+
+      const upList = list.filter(item => item.isUpcoming);
+      const pastList = list.filter(item => !item.isUpcoming);
+
+      document.getElementById('tab-upcoming-label').textContent = `計画中ツーリング (${upList.length})`;
+      document.getElementById('tab-past-label').textContent = `過去のレポート (${pastList.length})`;
+
+      // 計画中レンダリング
+      upContainer.innerHTML = '';
+      if (upList.length === 0) {
+        upContainer.innerHTML = '<div class="col-span-full py-12 text-center text-slate-400 bg-slate-800/40 rounded-2xl border border-slate-700/60">現在計画中のツーリングはありません。「計画を追加」ボタンから作成できます。</div>';
+      } else {
+        upList.forEach(item => {
+          upContainer.appendChild(createCardElement(item));
+        });
+      }
+
+      // 過去レポレンダリング
+      pastContainer.innerHTML = '';
+      if (pastList.length === 0) {
+        pastContainer.innerHTML = '<div class="col-span-full py-12 text-center text-slate-400 bg-slate-800/40 rounded-2xl border border-slate-700/60">過去のツーリングレポートはありません。</div>';
+      } else {
+        pastList.forEach(item => {
+          pastContainer.appendChild(createCardElement(item));
+        });
+      }
+    }
+
+    function createCardElement(item) {
+      const card = document.createElement('div');
+      card.className = 'group bg-slate-800 rounded-2xl border border-slate-700 hover:border-amber-500/50 transition-all duration-300 overflow-hidden shadow-xl hover:-translate-y-1 block relative flex flex-col justify-between';
+
+      const alertBadge = item.alert ? `
+        <span class="text-xs font-semibold text-rose-300 bg-rose-950/80 px-2 py-0.5 rounded-lg backdrop-blur border border-rose-500/40">
+          <i class="fa-solid fa-clock mr-1"></i>${item.alert}
+        </span>
+      ` : '';
+
+      card.innerHTML = `
+        <div class="h-28 bg-gradient-to-tr from-amber-600/40 via-slate-800 to-sky-700/40 p-4 flex flex-col justify-between border-b border-slate-700/60 relative">
+          <div class="flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 backdrop-blur">
+              <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+              ${item.badge || '計画中'}
+            </span>
+            ${alertBadge}
+          </div>
+          <div class="text-xs text-amber-300 font-semibold flex items-center gap-1">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>${item.area}</span>
+          </div>
+        </div>
+
+        <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="text-xs text-slate-400 font-medium">
+              <i class="fa-regular fa-calendar mr-1 text-amber-400"></i>${item.date}
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition leading-snug">
+              ${item.title}
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 line-clamp-2 leading-relaxed">
+              ${item.desc || '見どころ満載のツーリング計画です！'}
+            </p>
+          </div>
+
+          <div class="space-y-3 pt-3">
+            <div class="grid grid-cols-3 gap-2 border-t border-slate-700/60 pt-3 text-center text-xs">
+              <div class="bg-slate-900/50 p-2 rounded-lg">
+                <span class="text-slate-400 block text-[10px]">距離</span>
+                <span class="font-bold text-white">${item.distance || '未定'}</span>
+              </div>
+              <div class="bg-slate-900/50 p-2 rounded-lg">
+                <span class="text-slate-400 block text-[10px]">集合</span>
+                <span class="font-bold text-white truncate block">${item.meeting || '未定'}</span>
+              </div>
+              <div class="bg-slate-900/50 p-2 rounded-lg">
+                <span class="text-slate-400 block text-[10px]">目的地</span>
+                <span class="font-bold text-amber-400 truncate block">${item.spot || '未定'}</span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-1">
+              <button onclick="deletePlan('${item.id}', '${item.title}')" class="text-xs text-rose-400 hover:text-rose-300 p-1.5 rounded-lg hover:bg-rose-500/10 transition flex items-center gap-1">
+                <i class="fa-regular fa-trash-can"></i>
+                <span>削除</span>
+              </button>
+              <a href="${item.link || '#'}" class="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+                <span>詳細・しおりを見る</span>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+      return card;
+    }
+
+    function deletePlan(id, title) {
+      if (confirm(`ツーリング計画「${title}」を削除してもよろしいですか？`)) {
+        const list = getTourings().filter(item => item.id !== id);
+        saveTourings(list);
+      }
+    }
+
+    function openNewPlanModal() {
+      document.getElementById('new-plan-modal').classList.remove('hidden');
+    }
+
+    function closeNewPlanModal() {
+      document.getElementById('new-plan-modal').classList.add('hidden');
+    }
+
+    function handleCreatePlan(e) {
+      e.preventDefault();
+      const newPlan = {
+        id: 'plan_' + Date.now(),
+        isUpcoming: true,
+        title: document.getElementById('form-title').value.trim(),
+        date: document.getElementById('form-date').value.trim(),
+        area: document.getElementById('form-area').value.trim(),
+        meeting: document.getElementById('form-meeting').value.trim() || '未定',
+        distance: document.getElementById('form-distance').value.trim() || '未定',
+        desc: document.getElementById('form-desc').value.trim() || '',
+        badge: '計画中',
+        spot: document.getElementById('form-area').value.trim().split('・')[0] || '目的地',
+        link: 'touring-sample.html' // 新規作成時の基本しおりテンプレートへリンク
+      };
+
+      const list = getTourings();
+      list.unshift(newPlan);
+      saveTourings(list);
+
+      document.getElementById('new-plan-form').reset();
+      closeNewPlanModal();
+    }
+
     function switchTab(tab) {
       const btnUpcoming = document.getElementById('tab-upcoming');
       const btnPast = document.getElementById('tab-past');
@@ -242,6 +367,9 @@
         secUpcoming.classList.add('hidden');
       }
     }
+
+    // 初回レンダリング
+    renderCards();
   </script>
 </body>
 </html>
