@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="MotoPlanner" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <name>佐賀・呼子 温泉＆イカ活き造り満喫ツーリング（1泊2日）</name>
+    <desc>福岡空港発着。三瀬峠のワインディングと嬉野温泉・大正屋での宿泊、2日目は呼子のイカ活き造りと海沿い絶景を楽しむ1泊2日ツーリング</desc>
+    <time>2026-11-13T12:00:00Z</time>
+  </metadata>
+
+  <!-- 主要ウェイポイント（立ち寄り・経由地） -->
+  <wpt lat="33.5859" lon="130.4509">
+    <name>① 発着地：福岡空港周辺（レンタルバイク店）</name>
+    <desc>11/13 12:00出発 / 11/14 18:00返却リミット厳守</desc>
+  </wpt>
+  <wpt lat="33.4475" lon="130.2797">
+    <name>② 休憩・昼食：三瀬峠・三瀬そば周辺</name>
+    <desc>11/13 13:00到着。適度なワインディングと三瀬そば・小休止</desc>
+  </wpt>
+  <wpt lat="33.0970" lon="129.9880">
+    <name>③ 宿泊先：嬉野観光ホテル大正屋</name>
+    <desc>11/13 16:30到着。日本三大美肌の湯と宿の極上夕食を満喫</desc>
+  </wpt>
+  <wpt lat="33.5398" lon="129.8967">
+    <name>④ 昼食：呼子港（イカ活き造り）</name>
+    <desc>11/14 12:00到着。名物の透明なイカ活き造りを堪能</desc>
+  </wpt>
+  <wpt lat="33.3444" lon="130.0827">
+    <name>⑤ 休憩：道の駅 厳木（きゅうらぎ）</name>
+    <desc>11/14 14:30到着。夕方渋滞回避のため内陸ルートへ舵を切るポイント</desc>
+  </wpt>
+  <wpt lat="33.2840" lon="130.1260">
+    <name>⑥ 高速ワープ：厳木多久道路・多久IC</name>
+    <desc>11/14 15:30。夕方ラッシュを高速でパスして安全帰着</desc>
+  </wpt>
+
+  <!-- 走行トラック（1日目＆2日目の主要ルート） -->
+  <trk>
+    <name>佐賀・呼子周遊ルート</name>
+    <trkseg>
+      <!-- 【1日目】福岡空港周辺〜都市高速〜三瀬峠〜嬉野温泉 -->
+      <trkpt lat="33.5859" lon="130.4509"><ele>10</ele><time>2026-11-13T12:00:00Z</time></trkpt>
+      <trkpt lat="33.5700" lon="130.4350"><ele>15</ele><time>2026-11-13T12:10:00Z</time></trkpt>
+      <trkpt lat="33.5480" lon="130.3420"><ele>25</ele><time>2026-11-13T12:25:00Z</time></trkpt>
+      <trkpt lat="33.5150" lon="130.3150"><ele>80</ele><time>2026-11-13T12:40:00Z</time></trkpt>
+      <!-- 三瀬峠（ワインディング区間・標高アップ） -->
+      <trkpt lat="33.4650" lon="130.2920"><ele>380</ele><time>2026-11-13T12:50:00Z</time></trkpt>
+      <trkpt lat="33.4475" lon="130.2797"><ele>410</ele><time>2026-11-13T13:00:00Z</time></trkpt>
+      <trkpt lat="33.3850" lon="130.2580"><ele>190</ele><time>2026-11-13T14:30:00Z</time></trkpt>
+      <trkpt lat="33.3300" lon="130.2650"><ele>40</ele><time>2026-11-13T15:00:00Z</time></trkpt>
+      <!-- 佐賀大和IC〜長崎道〜武雄北方IC -->
+      <trkpt lat="33.3150" lon="130.2200"><ele>30</ele><time>2026-11-13T15:20:00Z</time></trkpt>
+      <trkpt lat="33.2200" lon="130.0800"><ele>35</ele><time>2026-11-13T15:50:00Z</time></trkpt>
+      <trkpt lat="33.1500" lon="130.0200"><ele>45</ele><time>2026-11-13T16:10:00Z</time></trkpt>
+      <!-- 嬉野温泉 大正屋 -->
+      <trkpt lat="33.0970" lon="129.9880"><ele>50</ele><time>2026-11-13T16:30:00Z</time></trkpt>
+
+      <!-- 【2日目】嬉野温泉〜伊万里〜呼子〜厳木〜多久〜福岡空港 -->
+      <trkpt lat="33.0970" lon="129.9880"><ele>50</ele><time>2026-11-14T10:00:00Z</time></trkpt>
+      <trkpt lat="33.1950" lon="129.9300"><ele>40</ele><time>2026-11-14T10:30:00Z</time></trkpt>
+      <trkpt lat="33.2720" lon="129.8780"><ele>20</ele><time>2026-11-14T11:00:00Z</time></trkpt>
+      <trkpt lat="33.4200" lon="129.8650"><ele>30</ele><time>2026-11-14T11:35:00Z</time></trkpt>
+      <!-- 呼子港（昼食） -->
+      <trkpt lat="33.5398" lon="129.8967"><ele>5</ele><time>2026-11-14T12:00:00Z</time></trkpt>
+      <!-- 唐津〜厳木（内陸へ進路変更） -->
+      <trkpt lat="33.4600" lon="129.9700"><ele>10</ele><time>2026-11-14T13:50:00Z</time></trkpt>
+      <trkpt lat="33.3900" lon="130.0300"><ele>65</ele><time>2026-11-14T14:15:00Z</time></trkpt>
+      <!-- 道の駅 厳木 -->
+      <trkpt lat="33.3444" lon="130.0827"><ele>85</ele><time>2026-11-14T14:30:00Z</time></trkpt>
+      <!-- 厳木多久道路〜多久IC〜長崎道 -->
+      <trkpt lat="33.2840" lon="130.1260"><ele>70</ele><time>2026-11-14T15:30:00Z</time></trkpt>
+      <trkpt lat="33.3200" lon="130.2900"><ele>25</ele><time>2026-11-14T16:00:00Z</time></trkpt>
+      <!-- 鳥栖JCT〜九州道〜福岡都市高速 -->
+      <trkpt lat="33.3750" lon="130.5050"><ele>30</ele><time>2026-11-14T16:30:00Z</time></trkpt>
+      <trkpt lat="33.5200" lon="130.4700"><ele>20</ele><time>2026-11-14T17:00:00Z</time></trkpt>
+      <!-- 福岡空港周辺（GS給油・返却） -->
+      <trkpt lat="33.5859" lon="130.4509"><ele>10</ele><time>2026-11-14T17:15:00Z</time></trkpt>
+    </trkseg>
+  </trk>
+</gpx>
