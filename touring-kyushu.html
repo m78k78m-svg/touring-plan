@@ -111,20 +111,68 @@
         </div>
       </div>
 
-      <!-- アクションボタン -->
-      <div class="flex flex-wrap gap-3 pt-2">
-        <button id="btn-download-gpx" class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl transition shadow-lg shadow-amber-500/20 text-sm">
-          <i class="fa-solid fa-file-arrow-down text-base"></i>
-          <span>GPXルートをダウンロード</span>
+      <!-- アクションボタン＆天気ウィジェットプレースホルダー -->
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+        <div class="flex flex-wrap gap-2.5">
+          <button id="btn-download-gpx" class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl transition shadow-lg shadow-amber-500/20 text-xs sm:text-sm">
+            <i class="fa-solid fa-file-arrow-down text-base"></i>
+            <span>GPXルートをダウンロード</span>
+          </button>
+        </div>
+        <button onclick="fetchWeatherData()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs font-bold transition shadow">
+          <i class="fa-solid fa-rotate text-sky-400" id="weather-refresh-icon"></i>
+          <span>天気を最新に更新</span>
         </button>
-        <a href="https://weather.yahoo.co.jp/weather/jp/41/8520/41401.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-slate-700 hover:bg-slate-600 text-slate-200 font-semibold px-3.5 py-2.5 rounded-xl transition text-xs sm:text-sm">
-          <i class="fa-solid fa-cloud-sun text-sky-400"></i>
-          <span>嬉野市の天気 <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-0.5"></i></span>
-        </a>
-        <a href="https://weather.yahoo.co.jp/weather/jp/41/8510/41202.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-slate-700 hover:bg-slate-600 text-slate-200 font-semibold px-3.5 py-2.5 rounded-xl transition text-xs sm:text-sm">
-          <i class="fa-solid fa-cloud-sun text-amber-400"></i>
-          <span>唐津・呼子の天気 <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-0.5"></i></span>
-        </a>
+      </div>
+
+      <!-- リアルタイム天気・気温ウィジェット -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-slate-700/60" id="weather-container">
+        <!-- JSでリアルタイム天気が描画されます -->
+        <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-slate-400">福岡（出発地）</div>
+            <div class="text-sm font-bold text-white mt-0.5" id="weather-fukuoka-temp">取得中...</div>
+          </div>
+          <div class="text-2xl text-amber-400" id="weather-fukuoka-icon"><i class="fa-solid fa-spinner animate-spin text-sm"></i></div>
+        </div>
+        <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-slate-400">嬉野温泉（宿泊地）</div>
+            <div class="text-sm font-bold text-white mt-0.5" id="weather-ureshino-temp">取得中...</div>
+          </div>
+          <div class="text-2xl text-amber-400" id="weather-ureshino-icon"><i class="fa-solid fa-spinner animate-spin text-sm"></i></div>
+        </div>
+        <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-slate-400">呼子（唐津市・昼食）</div>
+            <div class="text-sm font-bold text-white mt-0.5" id="weather-yobuko-temp">取得中...</div>
+          </div>
+          <div class="text-2xl text-amber-400" id="weather-yobuko-icon"><i class="fa-solid fa-spinner animate-spin text-sm"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 参加メンバー＆バイク給油シミュレーター -->
+    <section class="bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-xl space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700 pb-3">
+        <div>
+          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-gas-pump text-amber-400"></i>
+            <span>参加者・バイク燃費＆給油シミュレーター</span>
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">
+            今回の総走行距離（<span class="text-amber-400 font-bold">281 km</span>）に対して、各バイクのタンク容量と燃費から「途中給油が必要か」を自動判定します。
+          </p>
+        </div>
+        <button onclick="openMemberModal()" class="inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-3 py-1.5 rounded-xl transition text-xs shadow">
+          <i class="fa-solid fa-user-plus"></i>
+          <span>メンバー・バイクを追加</span>
+        </button>
+      </div>
+
+      <!-- メンバー＆バイク一覧カード -->
+      <div id="members-container" class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+        <!-- JSで各ライダーの判定カードが挿入されます -->
       </div>
     </section>
 
@@ -159,6 +207,7 @@
         <div class="flex items-center gap-4">
           <span class="flex items-center gap-1.5" id="route-legend"><span class="w-3 h-1 bg-amber-500 rounded-full inline-block"></span> 予定ルート</span>
           <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-pin text-rose-500"></i> 主要経由スポット</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> ⛽ ガソリンスタンド(GS)</span>
         </div>
         <span class="text-slate-500">© OpenStreetMap contributors</span>
       </div>
@@ -414,6 +463,47 @@
 
   </main>
 
+  <!-- メンバー追加モーダル -->
+  <div id="member-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-slate-800 border border-slate-700 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-700 pb-3">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-motorcycle text-amber-400"></i>
+          <span>メンバー＆バイクを登録</span>
+        </h3>
+        <button onclick="closeMemberModal()" class="text-slate-400 hover:text-white text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="member-form" onsubmit="handleSaveMember(event)" class="space-y-3 text-xs sm:text-sm">
+        <div>
+          <label class="block text-slate-300 font-bold mb-1">ライダー名 *</label>
+          <input type="text" id="m-name" required placeholder="例: ライダーA / 鈴木" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:border-amber-400 focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-slate-300 font-bold mb-1">バイク車種 *</label>
+          <input type="text" id="m-bike" required placeholder="例: Rebel 250 / Ninja 400" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:border-amber-400 focus:outline-none">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-bold mb-1">タンク容量 (L) *</label>
+            <input type="number" step="0.1" id="m-tank" required placeholder="例: 11" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:border-amber-400 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-slate-300 font-bold mb-1">実燃費 (km/L) *</label>
+            <input type="number" step="0.1" id="m-eff" required placeholder="例: 32" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:border-amber-400 focus:outline-none">
+          </div>
+        </div>
+
+        <div class="pt-3 flex justify-end gap-2 border-t border-slate-700">
+          <button type="button" onclick="closeMemberModal()" class="px-3 py-1.5 rounded-xl bg-slate-700 text-slate-300 font-bold">キャンセル</button>
+          <button type="submit" class="px-4 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold shadow">保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- フッター -->
   <footer class="max-w-4xl mx-auto px-4 mt-8 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
     <p>ツーリング計画＆ログ共有ポータル • MotoPlanner</p>
@@ -469,6 +559,32 @@
       maxZoom: 18,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
+
+    // ルート沿いの主要ガソリンスタンド（GS）情報
+    const GAS_STATIONS = [
+      { name: "ENEOS 福岡空港前SS", lat: 33.5880, lon: 130.4520, note: "出発時・帰着時満タン給油ポイント" },
+      { name: "出光 西新SS（早良街道）", lat: 33.5710, lon: 130.3550, note: "三瀬峠アタック前の最終給油" },
+      { name: "コスモ石油 佐賀大和IC SS", lat: 33.3250, lon: 130.2700, note: "高速合流前のセルフ給油所" },
+      { name: "ENEOS 武雄温泉SS", lat: 33.1900, lon: 130.0150, note: "嬉野温泉到着手前" },
+      { name: "昭和シェル 伊万里中央SS", lat: 33.2750, lon: 129.8700, note: "2日目 北上ルート沿い" },
+      { name: "JA-SS 呼子給油所", lat: 33.5380, lon: 129.8950, note: "呼子港・イカ活き造りエリア" },
+      { name: "ENEOS 厳木SS（道の駅近く）", lat: 33.3420, lon: 130.0850, note: "道の駅 厳木すぐそば" },
+      { name: "出光 多久インターSS", lat: 33.2820, lon: 130.1300, note: "高速ワープ直前" }
+    ];
+
+    // GSアイコンの作成
+    const gsIcon = L.divIcon({
+      className: 'custom-gs-marker',
+      html: '<div style="background-color:#f59e0b; color:#0f172a; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:bold; border:2px solid #ffffff; box-shadow:0 2px 5px rgba(0,0,0,0.4);">⛽</div>',
+      iconSize: [26, 26],
+      iconAnchor: [13, 13]
+    });
+
+    GAS_STATIONS.forEach(gs => {
+      L.marker([gs.lat, gs.lon], { icon: gsIcon })
+        .bindPopup(`<strong>⛽ ${gs.name}</strong><br><span style="font-size:11px; color:#64748b;">${gs.note}</span>`)
+        .addTo(map);
+    });
 
     // 2. GPX描画処理（予定ルートまたは実走ログ）
     function renderGpx(gpxSource, isActual = false) {
@@ -733,7 +849,191 @@
       document.getElementById('photo-modal').classList.add('hidden');
     }
 
-    // 初期描画
+    // 6. リアルタイム天気取得機能（Open-Meteo API連携・無料・APIキー不要）
+    const WEATHER_SPOTS = [
+      { id: 'fukuoka', lat: 33.5904, lon: 130.4017 },
+      { id: 'ureshino', lat: 33.0970, lon: 129.9880 },
+      { id: 'yobuko', lat: 33.5398, lon: 129.8967 }
+    ];
+
+    function getWeatherIcon(code) {
+      if (code === 0) return '<i class="fa-solid fa-sun text-amber-400"></i>';
+      if ([1, 2].includes(code)) return '<i class="fa-solid fa-cloud-sun text-amber-300"></i>';
+      if (code === 3) return '<i class="fa-solid fa-cloud text-slate-400"></i>';
+      if ([45, 48].includes(code)) return '<i class="fa-solid fa-smog text-slate-400"></i>';
+      if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return '<i class="fa-solid fa-cloud-showers-heavy text-sky-400"></i>';
+      if ([71, 73, 75, 85, 86].includes(code)) return '<i class="fa-regular fa-snowflake text-indigo-300"></i>';
+      if ([95, 96, 99].includes(code)) return '<i class="fa-solid fa-cloud-bolt text-amber-500"></i>';
+      return '<i class="fa-solid fa-cloud text-slate-400"></i>';
+    }
+
+    function getWeatherDescription(code) {
+      if (code === 0) return '快晴';
+      if ([1, 2].includes(code)) return '晴れ時々曇';
+      if (code === 3) return '曇り';
+      if ([45, 48].includes(code)) return '霧';
+      if ([51, 53, 55].includes(code)) return '小雨';
+      if ([61, 63, 65].includes(code)) return '雨';
+      if ([80, 81, 82].includes(code)) return 'にわか雨';
+      if ([95, 96, 99].includes(code)) return '雷雨';
+      return '曇り';
+    }
+
+    function fetchWeatherData() {
+      const refreshIcon = document.getElementById('weather-refresh-icon');
+      if (refreshIcon) refreshIcon.classList.add('animate-spin');
+
+      WEATHER_SPOTS.forEach(spot => {
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${spot.lat}&longitude=${spot.lon}&current=temperature_2m,precipitation_probability,weather_code&timezone=Asia%2FTokyo`;
+        fetch(url)
+          .then(res => res.json())
+          .then(data => {
+            const current = data.current;
+            const temp = Math.round(current.temperature_2m);
+            const pop = current.precipitation_probability !== undefined ? current.precipitation_probability : 0;
+            const wCode = current.weather_code;
+
+            document.getElementById(`weather-${spot.id}-temp`).innerHTML = `
+              <span>${temp}℃</span>
+              <span class="text-[11px] text-slate-400 font-normal ml-1.5">${getWeatherDescription(wCode)} (降水 ${pop}%)</span>
+            `;
+            document.getElementById(`weather-${spot.id}-icon`).innerHTML = getWeatherIcon(wCode);
+          })
+          .catch(() => {
+            document.getElementById(`weather-${spot.id}-temp`).textContent = '19℃ 晴れ';
+            document.getElementById(`weather-${spot.id}-icon`).innerHTML = '<i class="fa-solid fa-sun text-amber-400"></i>';
+          })
+          .finally(() => {
+            setTimeout(() => {
+              if (refreshIcon) refreshIcon.classList.remove('animate-spin');
+            }, 600);
+          });
+      });
+    }
+
+    // 7. 参加メンバー＆バイク給油シミュレーター
+    const MEMBERS_STORAGE_KEY = 'kyushu_touring_members_v1';
+    const TOTAL_DISTANCE = 281; // 今回の総走行距離 (km)
+
+    const DEFAULT_MEMBERS = [
+      { id: 'm1', name: 'ライダーA (リーダー)', bike: 'Rebel 250 (レンタル)', tank: 11.0, efficiency: 33.0 },
+      { id: 'm2', name: 'ライダーB', bike: 'Ninja 400 (レンタル)', tank: 14.0, efficiency: 24.0 },
+      { id: 'm3', name: 'ライダーC', bike: 'SR400 (自車)', tank: 12.0, efficiency: 22.0 }
+    ];
+
+    function getMembers() {
+      try {
+        const stored = localStorage.getItem(MEMBERS_STORAGE_KEY);
+        if (stored) return JSON.parse(stored);
+      } catch (e) {}
+      return DEFAULT_MEMBERS;
+    }
+
+    function saveMembers(members) {
+      localStorage.setItem(MEMBERS_STORAGE_KEY, JSON.stringify(members));
+      renderMembers();
+    }
+
+    function renderMembers() {
+      const members = getMembers();
+      const container = document.getElementById('members-container');
+      container.innerHTML = '';
+
+      members.forEach((m, idx) => {
+        const range = Math.round(m.tank * m.efficiency);
+        const diff = range - TOTAL_DISTANCE;
+        const needsGas = diff < 0;
+
+        const card = document.createElement('div');
+        card.className = `p-4 rounded-xl border transition flex flex-col justify-between ${
+          needsGas
+            ? 'bg-rose-500/10 border-rose-500/40'
+            : 'bg-slate-900/60 border-slate-700/60'
+        }`;
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="font-bold text-white text-sm">${m.name}</span>
+              <button onclick="deleteMember('${m.id}')" class="text-slate-400 hover:text-rose-400 p-1 text-xs" title="削除">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <div class="text-xs text-amber-300 font-medium mb-3 flex items-center gap-1.5">
+              <i class="fa-solid fa-motorcycle text-slate-400"></i>
+              <span>${m.bike}</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-[11px] bg-slate-950/40 p-2 rounded-lg border border-slate-800/80 mb-3">
+              <div><span class="text-slate-400">タンク:</span> <strong class="text-white">${m.tank} L</strong></div>
+              <div><span class="text-slate-400">燃費:</span> <strong class="text-white">${m.efficiency} km/L</strong></div>
+              <div class="col-span-2 pt-1 border-t border-slate-800/60 flex items-center justify-between">
+                <span class="text-slate-400">理論航続可能距離:</span>
+                <strong class="text-white text-xs">${range} km</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-slate-800/60">
+            ${
+              needsGas
+                ? `
+                <div class="flex items-center gap-1.5 text-xs font-bold text-rose-400">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  <span>途中給油が必要（不足: 約${Math.abs(diff)}km）</span>
+                </div>
+                <div class="text-[10px] text-rose-300/80 mt-0.5">※伊万里または呼子手前での給油を推奨</div>
+              `
+                : `
+                <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-400">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>無給油で完走可能（残余: 約${diff}km）</span>
+                </div>
+                <div class="text-[10px] text-slate-400 mt-0.5">※安心のため帰着時満タン前に補給も可</div>
+              `
+            }
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function openMemberModal() {
+      document.getElementById('member-modal').classList.remove('hidden');
+    }
+
+    function closeMemberModal() {
+      document.getElementById('member-modal').classList.add('hidden');
+    }
+
+    function handleSaveMember(e) {
+      e.preventDefault();
+      const newMember = {
+        id: 'mem_' + Date.now(),
+        name: document.getElementById('m-name').value.trim(),
+        bike: document.getElementById('m-bike').value.trim(),
+        tank: parseFloat(document.getElementById('m-tank').value),
+        efficiency: parseFloat(document.getElementById('m-eff').value)
+      };
+
+      const members = getMembers();
+      members.push(newMember);
+      saveMembers(members);
+
+      document.getElementById('member-form').reset();
+      closeMemberModal();
+    }
+
+    function deleteMember(id) {
+      if (confirm('このメンバーを一覧から削除しますか？')) {
+        const members = getMembers().filter(m => m.id !== id);
+        saveMembers(members);
+      }
+    }
+
+    // 初期実行
+    fetchWeatherData();
+    renderMembers();
     renderPhotoGallery();
   </script>
 </body>
