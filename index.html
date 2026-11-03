@@ -124,6 +124,20 @@
         </div>
 
         <div>
+          <label class="block text-slate-300 font-bold mb-1">状態の選択 *</label>
+          <div class="flex gap-4 p-2 bg-slate-900 border border-slate-700 rounded-xl">
+            <label class="flex items-center gap-2 cursor-pointer text-slate-200">
+              <input type="radio" name="form-status" value="upcoming" checked class="text-amber-500 focus:ring-amber-400">
+              <span>計画中（開催予定）</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-slate-200">
+              <input type="radio" name="form-status" value="past" class="text-amber-500 focus:ring-amber-400">
+              <span>過去のレポート（走行完了）</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
           <label class="block text-slate-300 font-bold mb-1">概要・見どころ</label>
           <textarea id="form-desc" rows="3" placeholder="例: 初冬前のビーナスラインを駆け抜け、名物の信州そばと温泉を堪能します！" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white focus:outline-none focus:border-amber-400"></textarea>
         </div>
@@ -295,10 +309,15 @@
             </div>
 
             <div class="flex items-center justify-between pt-1">
-              <button onclick="deletePlan('${item.id}', '${item.title}')" class="text-xs text-rose-400 hover:text-rose-300 p-1.5 rounded-lg hover:bg-rose-500/10 transition flex items-center gap-1">
-                <i class="fa-regular fa-trash-can"></i>
-                <span>削除</span>
-              </button>
+              <div class="flex items-center gap-1.5">
+                <button onclick="togglePlanStatus('${item.id}')" class="text-xs font-semibold px-2.5 py-1 rounded-lg transition flex items-center gap-1 ${item.isUpcoming ? 'bg-emerald-500/15 text-emerald-300 hover:bg-emerald-500/25 border border-emerald-500/30' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}">
+                  <i class="fa-solid ${item.isUpcoming ? 'fa-flag-checkered text-emerald-400' : 'fa-rotate-left'}"></i>
+                  <span>${item.isUpcoming ? '完走（レポートへ）' : '計画中に戻す'}</span>
+                </button>
+                <button onclick="deletePlan('${item.id}', '${item.title}')" class="text-xs text-rose-400 hover:text-rose-300 p-1 rounded-lg hover:bg-rose-500/10 transition" title="削除">
+                  <i class="fa-regular fa-trash-can"></i>
+                </button>
+              </div>
               <a href="${item.link || '#'}" class="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1">
                 <span>詳細・しおりを見る</span>
                 <i class="fa-solid fa-chevron-right text-[10px]"></i>
@@ -308,6 +327,28 @@
         </div>
       `;
       return card;
+    }
+
+    function togglePlanStatus(id) {
+      const list = getTourings();
+      const plan = list.find(item => item.id === id);
+      if (!plan) return;
+
+      if (plan.isUpcoming) {
+        if (confirm(`ツーリング「${plan.title}」を走行完了にし、過去のレポートへ移動しますか？`)) {
+          plan.isUpcoming = false;
+          plan.badge = '走行完了';
+          saveTourings(list);
+          switchTab('past');
+        }
+      } else {
+        if (confirm(`ツーリング「${plan.title}」を「計画中」に戻しますか？`)) {
+          plan.isUpcoming = true;
+          plan.badge = '計画中';
+          saveTourings(list);
+          switchTab('upcoming');
+        }
+      }
     }
 
     function deletePlan(id, title) {
@@ -327,16 +368,19 @@
 
     function handleCreatePlan(e) {
       e.preventDefault();
+      const statusValue = document.querySelector('input[name="form-status"]:checked').value;
+      const isUpcoming = (statusValue === 'upcoming');
+
       const newPlan = {
         id: 'plan_' + Date.now(),
-        isUpcoming: true,
+        isUpcoming: isUpcoming,
         title: document.getElementById('form-title').value.trim(),
         date: document.getElementById('form-date').value.trim(),
         area: document.getElementById('form-area').value.trim(),
         meeting: document.getElementById('form-meeting').value.trim() || '未定',
         distance: document.getElementById('form-distance').value.trim() || '未定',
         desc: document.getElementById('form-desc').value.trim() || '',
-        badge: '計画中',
+        badge: isUpcoming ? '計画中' : '走行完了',
         spot: document.getElementById('form-area').value.trim().split('・')[0] || '目的地',
         link: 'touring-sample.html' // 新規作成時の基本しおりテンプレートへリンク
       };
@@ -347,6 +391,7 @@
 
       document.getElementById('new-plan-form').reset();
       closeNewPlanModal();
+      switchTab(isUpcoming ? 'upcoming' : 'past');
     }
 
     function switchTab(tab) {
