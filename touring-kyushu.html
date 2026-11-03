@@ -3,21 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 検索エンジンに載せない限定公開設定 -->
   <meta name="robots" content="noindex, nofollow">
   <title>【1泊2日】佐賀・呼子 温泉＆イカ活き造りツーリング計画書 | MotoPlanner</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Leaflet (地図表示用) -->
+  <!-- Leaflet (地図ライブラリ) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-  <!-- Leaflet-GPX (GPX走行ログ可視化プラグイン) -->
+  <!-- Leaflet-GPX -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js"></script>
 
-  <!-- アイコン (FontAwesome) -->
+  <!-- FontAwesome アイコン -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -29,139 +28,168 @@
     }
     @media (min-width: 768px) {
       #map {
-        height: 540px;
+        height: 520px;
       }
     }
   </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen font-sans antialiased pb-20">
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased pb-24">
 
   <!-- ヘッダーナビゲーション -->
-  <header class="bg-slate-800/90 backdrop-blur sticky top-0 z-50 border-b border-slate-700 shadow-md">
+  <header class="bg-slate-900/90 backdrop-blur sticky top-0 z-50 border-b border-slate-800 shadow-md">
     <div class="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-2 text-amber-400 hover:text-amber-300 transition font-bold text-sm">
         <i class="fa-solid fa-arrow-left"></i>
-        <span>ツーリング一覧へ戻る</span>
+        <span>ポータルトップへ戻る</span>
       </a>
       <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        11/13〜14 開催予定
+        11/13〜14 開催
       </span>
     </div>
   </header>
 
-  <!-- メインコンテンツ -->
+  <!-- メインコンテンツ（ご指定の7大ボックス構成） -->
   <main class="max-w-4xl mx-auto px-4 py-6 space-y-6">
 
-    <!-- 最重要アラート：18時返却リミット厳守 -->
-    <div class="bg-rose-500/15 border-2 border-rose-500/50 rounded-2xl p-4 sm:p-5 flex items-start gap-3 shadow-lg">
-      <div class="w-10 h-10 rounded-xl bg-rose-500 flex items-center justify-center text-white shrink-0 mt-0.5 shadow-md">
-        <i class="fa-solid fa-triangle-exclamation text-xl"></i>
-      </div>
-      <div class="space-y-1">
-        <div class="flex flex-wrap items-center gap-2">
-          <h2 class="text-base sm:text-lg font-black text-rose-300">
-            【最優先事項】2日目 18:00 レンタルバイク返却リミット厳守！
-          </h2>
-          <span class="text-xs bg-rose-500/30 text-rose-200 px-2 py-0.5 rounded font-bold border border-rose-500/40">参加者3名（うち2名レンタル）</span>
+    <!-- ========================================== -->
+    <!-- 1. 【概要】ボックス -->
+    <!-- ========================================== -->
+    <section class="bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-xl space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>① 計画の概要</span>
         </div>
-        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-          福岡市街地の夕方下道渋滞を避けるため、2日目午後は<strong>「厳木多久道路〜高速道路ルート」</strong>でラッシュを飛び越えます。17:15までに空港周辺GSで満タン給油を行い、余裕を持って18時までに返却を完了させます。
+        <span class="text-xs text-rose-400 font-bold bg-rose-950/80 px-2.5 py-1 rounded-lg border border-rose-500/30">
+          <i class="fa-solid fa-triangle-exclamation mr-1"></i>2日目 18:00 返却厳守
+        </span>
+      </div>
+
+      <div>
+        <div class="flex flex-wrap items-center gap-2 text-xs text-slate-400 mb-1">
+          <span><i class="fa-regular fa-calendar mr-1 text-amber-400"></i>2026年11月13日(金) 12:00 〜 11月14日(土) 18:00</span>
+          <span>•</span>
+          <span><i class="fa-solid fa-location-dot mr-1 text-sky-400"></i>福岡・佐賀（三瀬峠・嬉野・呼子）</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          佐賀・呼子 温泉＆イカ活き造りツーリング（1泊2日）
+        </h1>
+        <p class="text-slate-300 text-sm leading-relaxed mt-2">
+          福岡空港を出発し、三瀬峠のワインディングを楽しんで名湯「嬉野温泉 大正屋」へ宿泊。2日目は伊万里の快走路から呼子の名物イカ活き造りを堪能し、夕方の下道渋滞を高速ワープで回避して確実に18時までに福岡空港へ帰着する充実コースです。
         </p>
       </div>
-    </div>
-
-    <!-- タイトル＆概要カード -->
-    <section class="bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-xl space-y-4">
-      <div class="flex flex-wrap items-center gap-2 text-xs text-amber-400 font-medium">
-        <span><i class="fa-regular fa-calendar mr-1"></i>2026年11月13日(金) 12:00 〜 11月14日(土) 18:00</span>
-        <span>•</span>
-        <span><i class="fa-solid fa-location-dot mr-1"></i>福岡・佐賀（三瀬峠・嬉野温泉・呼子）</span>
-      </div>
-
-      <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-        【1泊2日】佐賀・呼子 温泉＆イカ活き造り満喫ツーリング
-      </h1>
-
-      <p class="text-slate-300 text-sm leading-relaxed">
-        福岡空港を出発し、都市高速ワープと三瀬峠のワインディングを楽しんで名湯「嬉野温泉 大正屋」へ宿泊。2日目は伊万里の快走路から呼子の名物イカ活き造りを堪能し、渋滞回避ルートで確実に18時までに福岡空港へ帰着する充実の1泊2日コースです！
-      </p>
 
       <!-- スペックサマリー -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-slate-700/60 text-center">
-        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-700/40">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-slate-800 text-center">
+        <div class="bg-slate-950/60 rounded-xl p-3 border border-slate-800">
           <div class="text-xs text-slate-400 mb-0.5"><i class="fa-solid fa-route text-amber-400 mr-1"></i>総走行距離</div>
           <div class="text-lg font-bold text-white"><span id="stat-distance">約 281</span> <span class="text-xs font-normal">km</span></div>
           <div id="stat-distance-sub" class="text-[10px] text-slate-500">1日目:98km / 2日目:183km</div>
         </div>
-        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-700/40">
+        <div class="bg-slate-950/60 rounded-xl p-3 border border-slate-800">
           <div class="text-xs text-slate-400 mb-0.5"><i class="fa-solid fa-mountain text-sky-400 mr-1"></i>最高標高</div>
           <div class="text-lg font-bold text-white"><span id="stat-elevation">約 410</span> <span class="text-xs font-normal">m</span></div>
           <div class="text-[10px] text-slate-500">三瀬峠付近</div>
         </div>
-        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-700/40">
-          <div class="text-xs text-slate-400 mb-0.5"><i class="fa-solid fa-hot-tub-person text-rose-400 mr-1"></i>宿泊先</div>
+        <div class="bg-slate-950/60 rounded-xl p-3 border border-slate-800">
+          <div class="text-xs text-slate-400 mb-0.5"><i class="fa-solid fa-bed text-rose-400 mr-1"></i>宿泊先</div>
           <div class="text-base font-bold text-white truncate" title="嬉野観光ホテル大正屋">大正屋</div>
           <div class="text-[10px] text-slate-500">嬉野温泉（美肌の湯）</div>
         </div>
-        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-700/40">
-          <div class="text-xs text-slate-400 mb-0.5"><i class="fa-solid fa-utensils text-emerald-400 mr-1"></i>名物グルメ</div>
-          <div class="text-base font-bold text-white">呼子イカ</div>
-          <div class="text-[10px] text-slate-500">三瀬そば ＆ 活き造り</div>
+        <div class="bg-slate-950/60 rounded-xl p-3 border border-slate-800">
+          <div class="text-xs text-slate-400 mb-0.5"><i class="fa-solid fa-motorcycle text-emerald-400 mr-1"></i>参加台数</div>
+          <div class="text-base font-bold text-white">3台</div>
+          <div class="text-[10px] text-slate-500">レンタル2台＋自車1台</div>
         </div>
       </div>
 
-      <!-- アクションボタン＆天気ウィジェットプレースホルダー -->
-      <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
-        <div class="flex flex-wrap gap-2.5">
-          <button id="btn-download-gpx" class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl transition shadow-lg shadow-amber-500/20 text-xs sm:text-sm">
-            <i class="fa-solid fa-file-arrow-down text-base"></i>
-            <span>GPXルートをダウンロード</span>
-          </button>
+      <div class="flex justify-end pt-2">
+        <button id="btn-download-gpx" class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2 rounded-xl transition text-xs shadow-md shadow-amber-500/20">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <span>計画GPXファイルを保存</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 2. 【当日の天気】ボックス -->
+    <!-- ========================================== -->
+    <section class="bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-xl space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider">
+          <i class="fa-solid fa-cloud-sun"></i>
+          <span>② 当日の天気・気温情報（2日間）</span>
         </div>
-        <button onclick="fetchWeatherData()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs font-bold transition shadow">
+        <button onclick="fetchWeatherData()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition shadow">
           <i class="fa-solid fa-rotate text-sky-400" id="weather-refresh-icon"></i>
-          <span>天気を最新に更新</span>
+          <span>最新の天気に更新</span>
         </button>
       </div>
 
-      <!-- リアルタイム天気・気温ウィジェット -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-slate-700/60" id="weather-container">
-        <!-- JSでリアルタイム天気が描画されます -->
-        <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 flex items-center justify-between">
-          <div>
-            <div class="text-xs text-slate-400">福岡（出発地）</div>
-            <div class="text-sm font-bold text-white mt-0.5" id="weather-fukuoka-temp">取得中...</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- 1日目天気 -->
+        <div class="bg-slate-950/60 rounded-xl p-4 border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+            <span class="text-xs font-bold text-amber-300"><i class="fa-regular fa-calendar-check mr-1"></i>1日目：11/13(金)</span>
+            <span class="text-[10px] text-slate-400">福岡 〜 三瀬峠 〜 嬉野温泉</span>
           </div>
-          <div class="text-2xl text-amber-400" id="weather-fukuoka-icon"><i class="fa-solid fa-spinner animate-spin text-sm"></i></div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-slate-900/70 p-3 rounded-lg border border-slate-800 flex items-center justify-between">
+              <div>
+                <div class="text-[11px] text-slate-400">福岡市 (出発)</div>
+                <div class="text-sm font-bold text-white mt-0.5" id="weather-fukuoka-temp">取得中...</div>
+              </div>
+              <div class="text-2xl" id="weather-fukuoka-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
+            </div>
+            <div class="bg-slate-900/70 p-3 rounded-lg border border-slate-800 flex items-center justify-between">
+              <div>
+                <div class="text-[11px] text-slate-400">嬉野市 (宿泊)</div>
+                <div class="text-sm font-bold text-white mt-0.5" id="weather-ureshino-temp">取得中...</div>
+              </div>
+              <div class="text-2xl" id="weather-ureshino-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
+            </div>
+          </div>
         </div>
-        <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 flex items-center justify-between">
-          <div>
-            <div class="text-xs text-slate-400">嬉野温泉（宿泊地）</div>
-            <div class="text-sm font-bold text-white mt-0.5" id="weather-ureshino-temp">取得中...</div>
+
+        <!-- 2日目天気 -->
+        <div class="bg-slate-950/60 rounded-xl p-4 border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+            <span class="text-xs font-bold text-sky-300"><i class="fa-regular fa-calendar-check mr-1"></i>2日目：11/14(土)</span>
+            <span class="text-[10px] text-slate-400">嬉野 〜 呼子・唐津 〜 福岡空港</span>
           </div>
-          <div class="text-2xl text-amber-400" id="weather-ureshino-icon"><i class="fa-solid fa-spinner animate-spin text-sm"></i></div>
-        </div>
-        <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 flex items-center justify-between">
-          <div>
-            <div class="text-xs text-slate-400">呼子（唐津市・昼食）</div>
-            <div class="text-sm font-bold text-white mt-0.5" id="weather-yobuko-temp">取得中...</div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-slate-900/70 p-3 rounded-lg border border-slate-800 flex items-center justify-between">
+              <div>
+                <div class="text-[11px] text-slate-400">唐津・呼子 (昼食)</div>
+                <div class="text-sm font-bold text-white mt-0.5" id="weather-yobuko-temp">取得中...</div>
+              </div>
+              <div class="text-2xl" id="weather-yobuko-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
+            </div>
+            <div class="bg-slate-900/70 p-3 rounded-lg border border-slate-800 flex items-center justify-between">
+              <div>
+                <div class="text-[11px] text-slate-400">福岡空港 (帰着)</div>
+                <div class="text-sm font-bold text-white mt-0.5" id="weather-fukuoka-return-temp">取得中...</div>
+              </div>
+              <div class="text-2xl" id="weather-fukuoka-return-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
+            </div>
           </div>
-          <div class="text-2xl text-amber-400" id="weather-yobuko-icon"><i class="fa-solid fa-spinner animate-spin text-sm"></i></div>
         </div>
       </div>
     </section>
 
-    <!-- 参加メンバー＆バイク給油シミュレーター -->
-    <section class="bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-xl space-y-4">
-      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700 pb-3">
+    <!-- ========================================== -->
+    <!-- 3. 【参加者の情報＆給油シミュレーション】ボックス -->
+    <!-- ========================================== -->
+    <section class="bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-xl space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
         <div>
-          <h2 class="text-lg font-bold text-white flex items-center gap-2">
-            <i class="fa-solid fa-gas-pump text-amber-400"></i>
-            <span>参加者・バイク燃費＆給油シミュレーター</span>
-          </h2>
+          <div class="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider">
+            <i class="fa-solid fa-gas-pump"></i>
+            <span>③ 参加者情報＆給油シミュレーション</span>
+          </div>
           <p class="text-xs text-slate-400 mt-0.5">
-            今回の総走行距離（<span class="text-amber-400 font-bold">281 km</span>）に対して、各バイクのタンク容量と燃費から「途中給油が必要か」を自動判定します。
+            総距離（<strong class="text-amber-400">281 km</strong>）に対し、各バイクのタンク容量と燃費から給油の要否を自動判定します。
           </p>
         </div>
         <button onclick="openMemberModal()" class="inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-3 py-1.5 rounded-xl transition text-xs shadow">
@@ -170,41 +198,41 @@
         </button>
       </div>
 
-      <!-- メンバー＆バイク一覧カード -->
       <div id="members-container" class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
-        <!-- JSで各ライダーの判定カードが挿入されます -->
+        <!-- JSでメンバーカードを描画 -->
       </div>
     </section>
 
-    <!-- GPXルート地図セクション -->
-    <section class="bg-slate-800 rounded-2xl p-4 sm:p-6 border border-slate-700 shadow-xl space-y-3">
-      <div class="flex flex-wrap items-center justify-between gap-3">
+    <!-- ========================================== -->
+    <!-- 4. 【ルートマップ】ボックス -->
+    <!-- ========================================== -->
+    <section class="bg-slate-900 rounded-2xl p-4 sm:p-6 border border-slate-800 shadow-xl space-y-3">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
         <div>
-          <h2 class="text-lg font-bold text-white flex items-center gap-2">
-            <i class="fa-solid fa-map-location-dot text-amber-400"></i>
-            <span id="map-title-label">周遊ルートマップ（GPX可視化）</span>
-          </h2>
+          <div class="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span id="map-title-label">④ ルートマップ（GPX可視化）</span>
+          </div>
           <span class="text-xs text-slate-400">指やマウスで拡大・移動できます</span>
         </div>
 
-        <!-- 実際の走行ログGPX取り込みボタン -->
         <div class="flex items-center gap-2">
           <label class="cursor-pointer inline-flex items-center gap-1.5 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-3.5 py-1.5 rounded-xl transition text-xs shadow-md shadow-sky-500/20">
             <i class="fa-solid fa-file-circle-plus"></i>
             <span>実走行GPXを取り込む</span>
             <input type="file" id="actual-gpx-input" accept=".gpx" class="hidden">
           </label>
-          <button id="btn-reset-gpx" onclick="resetToPlannedGpx()" class="hidden px-2.5 py-1.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-[11px] text-slate-300 transition">
+          <button id="btn-reset-gpx" onclick="resetToPlannedGpx()" class="hidden px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-[11px] text-slate-300 transition">
             計画ルートに戻す
           </button>
         </div>
       </div>
 
       <!-- 地図描画エリア -->
-      <div id="map" class="shadow-inner border border-slate-700"></div>
+      <div id="map" class="shadow-inner border border-slate-800"></div>
 
       <div class="text-xs text-slate-400 flex flex-wrap items-center justify-between gap-2 pt-1">
-        <div class="flex items-center gap-4">
+        <div class="flex flex-wrap items-center gap-4">
           <span class="flex items-center gap-1.5" id="route-legend"><span class="w-3 h-1 bg-amber-500 rounded-full inline-block"></span> 予定ルート</span>
           <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-pin text-rose-500"></i> 主要経由スポット</span>
           <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> ⛽ ガソリンスタンド(GS)</span>
@@ -213,35 +241,14 @@
       </div>
     </section>
 
-    <!-- 宿泊先情報カード -->
-    <section class="bg-gradient-to-r from-slate-800 to-slate-850 rounded-2xl p-6 border border-slate-700 shadow-xl">
-      <div class="flex items-center gap-2 text-xs font-bold text-rose-400 mb-2">
-        <i class="fa-solid fa-bed"></i>
-        <span>1日目 宿泊ホテル</span>
+    <!-- ========================================== -->
+    <!-- 5. 【タイムスケジュール】ボックス -->
+    <!-- ========================================== -->
+    <section class="bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-xl space-y-6">
+      <div class="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider border-b border-slate-800 pb-3">
+        <i class="fa-regular fa-clock"></i>
+        <span>⑤ タイムスケジュール＆渋滞回避ポイント</span>
       </div>
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h3 class="text-xl font-bold text-white">嬉野観光ホテル 大正屋</h3>
-          <p class="text-xs sm:text-sm text-slate-300 mt-1">
-            佐賀県嬉野市嬉野町下宿乙2276-1 / TEL: 0954-42-1170
-          </p>
-          <p class="text-xs text-slate-400 mt-1">
-            名工・吉村順三氏設計の老舗宿。日本三大美肌の湯「嬉野温泉」のトロトロの湯と極上の会席料理で、初日のライディングの疲れを癒やします。
-          </p>
-        </div>
-        <a href="https://www.taishoya.com/" target="_blank" rel="noopener noreferrer" class="shrink-0 inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-slate-700 hover:bg-slate-600 text-xs text-slate-200 font-bold transition">
-          <span>公式サイト</span>
-          <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-        </a>
-      </div>
-    </section>
-
-    <!-- タイムテーブル（時間割）セクション -->
-    <section class="bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-xl space-y-6">
-      <h2 class="text-lg font-bold text-white flex items-center gap-2 border-b border-slate-700 pb-3">
-        <i class="fa-regular fa-clock text-amber-400"></i>
-        <span>タイムスケジュール＆渋滞回避ポイント</span>
-      </h2>
 
       <!-- 【1日目】11月13日(金) -->
       <div class="space-y-4">
@@ -250,10 +257,10 @@
           <span>【1日目】11月13日(金) 福岡空港 〜 三瀬峠 〜 嬉野温泉（約98km / 走行約1h50m）</span>
         </div>
 
-        <div class="relative border-l-2 border-slate-700 ml-3 sm:ml-4 space-y-5 py-1">
+        <div class="relative border-l-2 border-slate-800 ml-3 sm:ml-4 space-y-5 py-1">
           <!-- 12:00 -->
           <div class="relative pl-6 sm:pl-8">
-            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-amber-400 border-4 border-slate-800"></div>
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-amber-400 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
               <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-400/20 text-amber-300">12:00</span>
               <h4 class="text-base font-bold text-white">福岡空港周辺 出発</h4>
@@ -266,7 +273,7 @@
 
           <!-- 13:00 -->
           <div class="relative pl-6 sm:pl-8">
-            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sky-400 border-4 border-slate-800"></div>
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sky-400 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
               <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-400/20 text-sky-300">13:00</span>
               <h4 class="text-base font-bold text-white">三瀬峠・三瀬そば周辺（昼食・休憩）</h4>
@@ -278,7 +285,7 @@
 
           <!-- 16:30 -->
           <div class="relative pl-6 sm:pl-8">
-            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-emerald-400 border-4 border-slate-800"></div>
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-emerald-400 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
               <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-400/20 text-emerald-300">16:30</span>
               <h4 class="text-base font-bold text-white">嬉野温泉「大正屋」到着・チェックイン</h4>
@@ -291,7 +298,7 @@
       </div>
 
       <!-- 区切り線 -->
-      <div class="border-t border-slate-700/80 my-4"></div>
+      <div class="border-t border-slate-800 my-4"></div>
 
       <!-- 【2日目】11月14日(土) -->
       <div class="space-y-4">
@@ -300,10 +307,10 @@
           <span>【2日目】11月14日(土) 嬉野 〜 呼子・厳木 〜 福岡空港（約183km / 走行約3h20m）</span>
         </div>
 
-        <div class="relative border-l-2 border-slate-700 ml-3 sm:ml-4 space-y-5 py-1">
+        <div class="relative border-l-2 border-slate-800 ml-3 sm:ml-4 space-y-5 py-1">
           <!-- 10:00 -->
           <div class="relative pl-6 sm:pl-8">
-            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sky-400 border-4 border-slate-800"></div>
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sky-400 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
               <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-400/20 text-sky-300">10:00</span>
               <h4 class="text-base font-bold text-white">大正屋 チェックアウト・出発</h4>
@@ -315,7 +322,7 @@
 
           <!-- 12:00 -->
           <div class="relative pl-6 sm:pl-8">
-            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-amber-400 border-4 border-slate-800"></div>
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-amber-400 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
               <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-400/20 text-amber-300">12:00</span>
               <h4 class="text-base font-bold text-white">呼子周辺（昼食：イカ活き造り）</h4>
@@ -327,7 +334,7 @@
 
           <!-- 14:30 -->
           <div class="relative pl-6 sm:pl-8">
-            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-indigo-400 border-4 border-slate-800"></div>
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-indigo-400 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
               <span class="text-xs font-bold px-2 py-0.5 rounded bg-indigo-400/20 text-indigo-300">14:30</span>
               <h4 class="text-base font-bold text-white">道の駅 厳木（休憩＆作戦ポイント）</h4>
@@ -339,7 +346,7 @@
 
           <!-- 15:30 -->
           <div class="relative pl-6 sm:pl-8">
-            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sky-400 border-4 border-slate-800"></div>
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sky-400 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
               <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-400/20 text-sky-300">15:30</span>
               <h4 class="text-base font-bold text-white">厳木多久道路 〜 長崎道・都市高速へ</h4>
@@ -351,7 +358,7 @@
 
           <!-- 17:15 -->
           <div class="relative pl-6 sm:pl-8">
-            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-amber-400 border-4 border-slate-800"></div>
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-amber-400 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
               <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-400/20 text-amber-300">17:15</span>
               <h4 class="text-base font-bold text-white">福岡空港周辺 到着（GS満タン給油）</h4>
@@ -363,7 +370,7 @@
 
           <!-- 18:00 -->
           <div class="relative pl-6 sm:pl-8">
-            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-rose-500 border-4 border-slate-800"></div>
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-rose-500 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
               <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300">18:00</span>
               <h4 class="text-base font-bold text-rose-300">【リミット厳守】バイク返却・解散！</h4>
@@ -376,18 +383,20 @@
       </div>
     </section>
 
-    <!-- 写真ギャラリーセクション（最大5枚） -->
-    <section class="bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-xl space-y-4">
-      <div class="flex flex-wrap items-center justify-between gap-3">
+    <!-- ========================================== -->
+    <!-- 6. 【見どころ集（画像付き）】ボックス -->
+    <!-- ========================================== -->
+    <section class="bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-xl space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
         <div>
-          <h2 class="text-lg font-bold text-white flex items-center gap-2">
-            <i class="fa-solid fa-camera-retro text-amber-400"></i>
-            <span>思い出・見どころギャラリー</span>
-          </h2>
-          <p class="text-xs text-slate-400 mt-0.5">旅のハイライト写真を最大5枚まで保存・閲覧できます</p>
+          <div class="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider">
+            <i class="fa-solid fa-camera-retro"></i>
+            <span>⑥ 見どころ集・写真ギャラリー</span>
+          </div>
+          <p class="text-xs text-slate-400 mt-0.5">旅のハイライト写真を最大5枚まで保存・拡大閲覧できます</p>
         </div>
         <div class="flex items-center gap-2">
-          <span id="photo-count-badge" class="text-xs px-2.5 py-1 rounded-full bg-slate-700 text-slate-300 font-bold border border-slate-600">
+          <span id="photo-count-badge" class="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 font-bold border border-slate-700">
             0 / 5枚
           </span>
           <label id="btn-add-photo-label" class="cursor-pointer inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-3.5 py-1.5 rounded-xl transition text-xs shadow-md shadow-amber-500/20">
@@ -404,69 +413,71 @@
       </div>
     </section>
 
-    <!-- 写真拡大表示モーダル（ライトボックス） -->
-    <div id="photo-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm hidden flex items-center justify-center p-4">
-      <button onclick="closePhotoModal()" class="absolute top-4 right-4 text-white text-3xl hover:text-amber-400 transition w-10 h-10 flex items-center justify-center rounded-full bg-slate-800/60">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <div class="max-w-4xl max-h-[85vh] flex flex-col items-center">
-        <img id="modal-img" src="" alt="拡大写真" class="max-w-full max-h-[80vh] object-contain rounded-xl shadow-2xl">
-        <p id="modal-caption" class="text-xs text-slate-400 mt-2"></p>
-      </div>
-    </div>
-
-    <!-- 持ち物チェックリスト（レンタルバイク対応） -->
-    <section class="bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-xl space-y-4">
-      <div class="flex items-center justify-between">
-        <h2 class="text-lg font-bold text-white flex items-center gap-2">
-          <i class="fa-solid fa-list-check text-amber-400"></i>
-          <span>レンタルバイク・1泊ツーリング 持ち物チェック</span>
-        </h2>
+    <!-- ========================================== -->
+    <!-- 7. 【もちものチェック】ボックス -->
+    <!-- ========================================== -->
+    <section class="bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-xl space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider">
+          <i class="fa-solid fa-list-check"></i>
+          <span>⑦ もちものチェック（1泊レンタルツーリング）</span>
+        </div>
         <span class="text-xs text-slate-400">タップしてチェック</span>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-sm" id="checklist">
-        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700/50 cursor-pointer hover:bg-slate-900 transition">
-          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-800 border-slate-600">
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-950/60 border border-slate-800 cursor-pointer hover:bg-slate-950 transition">
+          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-slate-700">
           <span class="text-slate-200">運転免許証（絶対必須！）</span>
         </label>
-        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700/50 cursor-pointer hover:bg-slate-900 transition">
-          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-800 border-slate-600">
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-950/60 border border-slate-800 cursor-pointer hover:bg-slate-950 transition">
+          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-slate-700">
           <span class="text-slate-200">ETCカード（高速ワープ用）</span>
         </label>
-        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700/50 cursor-pointer hover:bg-slate-900 transition">
-          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-800 border-slate-600">
-          <span class="text-slate-200">ヘルメット・グローブ・ライディングジャケット</span>
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-950/60 border border-slate-800 cursor-pointer hover:bg-slate-950 transition">
+          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-slate-700">
+          <span class="text-slate-200">ヘルメット・グローブ・ジャケット</span>
         </label>
-        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700/50 cursor-pointer hover:bg-slate-900 transition">
-          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-800 border-slate-600">
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-950/60 border border-slate-800 cursor-pointer hover:bg-slate-950 transition">
+          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-slate-700">
           <span class="text-slate-200">スマホホルダー / モバイルバッテリー</span>
         </label>
-        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700/50 cursor-pointer hover:bg-slate-900 transition">
-          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-800 border-slate-600">
-          <span class="text-slate-200">カッパ・雨具（山の天候急変用）</span>
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-950/60 border border-slate-800 cursor-pointer hover:bg-slate-950 transition">
+          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-slate-700">
+          <span class="text-slate-200">カッパ・雨具（急な天候変化用）</span>
         </label>
-        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700/50 cursor-pointer hover:bg-slate-900 transition">
-          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-800 border-slate-600">
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-950/60 border border-slate-800 cursor-pointer hover:bg-slate-950 transition">
+          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-slate-700">
           <span class="text-slate-200">着替え（1泊分）＆温泉用タオル</span>
         </label>
-        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700/50 cursor-pointer hover:bg-slate-900 transition">
-          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-800 border-slate-600">
-          <span class="text-slate-200">クレジットカード / 現金（有料道小銭用）</span>
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-950/60 border border-slate-800 cursor-pointer hover:bg-slate-950 transition">
+          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-slate-700">
+          <span class="text-slate-200">小銭・現金（有料道路料金所用）</span>
         </label>
-        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700/50 cursor-pointer hover:bg-slate-900 transition">
-          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-800 border-slate-600">
-          <span class="text-slate-200">ツーリングネット / シートバッグ等固定具</span>
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-950/60 border border-slate-800 cursor-pointer hover:bg-slate-950 transition">
+          <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-slate-700">
+          <span class="text-slate-200">荷物固定用ネット / ツーリングコード</span>
         </label>
       </div>
     </section>
 
   </main>
 
+  <!-- 写真拡大モーダル（ライトボックス） -->
+  <div id="photo-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <button onclick="closePhotoModal()" class="absolute top-4 right-4 text-white text-3xl hover:text-amber-400 transition w-10 h-10 flex items-center justify-center rounded-full bg-slate-800/60">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="max-w-4xl max-h-[85vh] flex flex-col items-center">
+      <img id="modal-img" src="" alt="拡大写真" class="max-w-full max-h-[80vh] object-contain rounded-xl shadow-2xl">
+      <p id="modal-caption" class="text-xs text-slate-400 mt-2"></p>
+    </div>
+  </div>
+
   <!-- メンバー追加モーダル -->
   <div id="member-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-slate-800 border border-slate-700 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
-      <div class="flex items-center justify-between border-b border-slate-700 pb-3">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <h3 class="text-base font-bold text-white flex items-center gap-2">
           <i class="fa-solid fa-motorcycle text-amber-400"></i>
           <span>メンバー＆バイクを登録</span>
@@ -479,25 +490,25 @@
       <form id="member-form" onsubmit="handleSaveMember(event)" class="space-y-3 text-xs sm:text-sm">
         <div>
           <label class="block text-slate-300 font-bold mb-1">ライダー名 *</label>
-          <input type="text" id="m-name" required placeholder="例: ライダーA / 鈴木" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:border-amber-400 focus:outline-none">
+          <input type="text" id="m-name" required placeholder="例: ライダーA / 鈴木" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white focus:border-amber-400 focus:outline-none">
         </div>
         <div>
           <label class="block text-slate-300 font-bold mb-1">バイク車種 *</label>
-          <input type="text" id="m-bike" required placeholder="例: Rebel 250 / Ninja 400" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:border-amber-400 focus:outline-none">
+          <input type="text" id="m-bike" required placeholder="例: Rebel 250 / Ninja 400" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white focus:border-amber-400 focus:outline-none">
         </div>
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block text-slate-300 font-bold mb-1">タンク容量 (L) *</label>
-            <input type="number" step="0.1" id="m-tank" required placeholder="例: 11" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:border-amber-400 focus:outline-none">
+            <input type="number" step="0.1" id="m-tank" required placeholder="例: 11" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white focus:border-amber-400 focus:outline-none">
           </div>
           <div>
             <label class="block text-slate-300 font-bold mb-1">実燃費 (km/L) *</label>
-            <input type="number" step="0.1" id="m-eff" required placeholder="例: 32" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:border-amber-400 focus:outline-none">
+            <input type="number" step="0.1" id="m-eff" required placeholder="例: 32" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white focus:border-amber-400 focus:outline-none">
           </div>
         </div>
 
-        <div class="pt-3 flex justify-end gap-2 border-t border-slate-700">
-          <button type="button" onclick="closeMemberModal()" class="px-3 py-1.5 rounded-xl bg-slate-700 text-slate-300 font-bold">キャンセル</button>
+        <div class="pt-3 flex justify-end gap-2 border-t border-slate-800">
+          <button type="button" onclick="closeMemberModal()" class="px-3 py-1.5 rounded-xl bg-slate-800 text-slate-300 font-bold">キャンセル</button>
           <button type="submit" class="px-4 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold shadow">保存</button>
         </div>
       </form>
@@ -505,13 +516,13 @@
   </div>
 
   <!-- フッター -->
-  <footer class="max-w-4xl mx-auto px-4 mt-8 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
+  <footer class="max-w-4xl mx-auto px-4 mt-8 pt-6 border-t border-slate-900 text-center text-xs text-slate-500">
     <p>ツーリング計画＆ログ共有ポータル • MotoPlanner</p>
   </footer>
 
-  <!-- スクリプト：Leaflet地図の初期化＆GPX描画 -->
+  <!-- スクリプト群 -->
   <script>
-    // サンプルのインラインGPXデータ（CORS等の安心フォールバック用）
+    // サンプルのインラインGPXデータ
     const EMBEDDED_GPX = `<?xml version="1.0" encoding="UTF-8"?>
 <gpx version="1.1" creator="MotoPlanner" xmlns="http://www.topografix.com/GPX/1/1">
   <metadata><name>佐賀・呼子 温泉＆イカ活き造りツーリング</name></metadata>
@@ -549,18 +560,17 @@
   </trkseg></trk>
 </gpx>`;
 
-    // 1. 地図の初期化（佐賀・福岡エリアを中心）
+    // 1. 地図の初期化
     const map = L.map('map').setView([33.35, 130.20], 10);
     let currentGpxLayer = null;
     const ACTUAL_GPX_KEY = 'kyushu_actual_gpx_data';
 
-    // OpenStreetMapタイルの追加
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    // ルート沿いの主要ガソリンスタンド（GS）情報
+    // ガソリンスタンド（GS）マーカー
     const GAS_STATIONS = [
       { name: "ENEOS 福岡空港前SS", lat: 33.5880, lon: 130.4520, note: "出発時・帰着時満タン給油ポイント" },
       { name: "出光 西新SS（早良街道）", lat: 33.5710, lon: 130.3550, note: "三瀬峠アタック前の最終給油" },
@@ -572,7 +582,6 @@
       { name: "出光 多久インターSS", lat: 33.2820, lon: 130.1300, note: "高速ワープ直前" }
     ];
 
-    // GSアイコンの作成
     const gsIcon = L.divIcon({
       className: 'custom-gs-marker',
       html: '<div style="background-color:#f59e0b; color:#0f172a; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:bold; border:2px solid #ffffff; box-shadow:0 2px 5px rgba(0,0,0,0.4);">⛽</div>',
@@ -586,99 +595,70 @@
         .addTo(map);
     });
 
-    // 2. GPX描画処理（予定ルートまたは実走ログ）
+    // 2. GPX描画
     function renderGpx(gpxSource, isActual = false) {
-      if (currentGpxLayer) {
-        map.removeLayer(currentGpxLayer);
-      }
+      if (currentGpxLayer) map.removeLayer(currentGpxLayer);
 
-      const lineColor = isActual ? '#0284c7' : '#f59e0b'; // 実走行は鮮やかなスカイブルー、計画はアンバー
-
+      const lineColor = isActual ? '#0284c7' : '#f59e0b';
       currentGpxLayer = new L.GPX(gpxSource, {
         async: true,
         marker_options: {
           startIconUrl: null,
           endIconUrl: null,
           shadowUrl: null,
-          wptIconUrls: {
-            '': 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png'
-          }
+          wptIconUrls: { '': 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png' }
         },
-        polyline_options: {
-          color: lineColor,
-          opacity: 0.9,
-          weight: 5,
-          lineCap: 'round'
-        }
+        polyline_options: { color: lineColor, opacity: 0.9, weight: 5, lineCap: 'round' }
       }).on('loaded', function(e) {
         map.fitBounds(e.target.getBounds(), { padding: [35, 35] });
 
-        // 実走行の場合、距離と最高標高をGPSデータから自動計算・更新
         if (isActual) {
           const distKm = (e.target.get_distance() / 1000).toFixed(1);
           const eleMax = Math.round(e.target.get_elevation_max());
-          if (distKm && distKm > 0) {
+          if (distKm > 0) {
             document.getElementById('stat-distance').textContent = distKm;
             document.getElementById('stat-distance-sub').textContent = '実走行ログ計測値';
           }
-          if (eleMax && eleMax > 0) {
-            document.getElementById('stat-elevation').textContent = eleMax.toLocaleString();
-          }
-
-          document.getElementById('map-title-label').innerHTML = `
-            <span>周遊ルートマップ（<span class="text-sky-400 font-bold">実走行ログ反映中</span>）</span>
-          `;
-          document.getElementById('route-legend').innerHTML = `
-            <span class="w-3 h-1 bg-sky-500 rounded-full inline-block"></span> 実走行ルート
-          `;
+          if (eleMax > 0) document.getElementById('stat-elevation').textContent = eleMax.toLocaleString();
+          document.getElementById('map-title-label').innerHTML = `④ ルートマップ（<span class="text-sky-400 font-bold">実走行ログ反映中</span>）`;
+          document.getElementById('route-legend').innerHTML = `<span class="w-3 h-1 bg-sky-500 rounded-full inline-block"></span> 実走行ルート`;
           document.getElementById('btn-reset-gpx').classList.remove('hidden');
         } else {
-          document.getElementById('map-title-label').textContent = '周遊ルートマップ（GPX可視化）';
-          document.getElementById('route-legend').innerHTML = `
-            <span class="w-3 h-1 bg-amber-500 rounded-full inline-block"></span> 予定ルート
-          `;
+          document.getElementById('map-title-label').textContent = '④ ルートマップ（GPX可視化）';
+          document.getElementById('route-legend').innerHTML = `<span class="w-3 h-1 bg-amber-500 rounded-full inline-block"></span> 予定ルート`;
           document.getElementById('btn-reset-gpx').classList.add('hidden');
         }
       }).addTo(map);
     }
 
-    // 初回読み込み：保存された実走行GPXがあればそれを優先表示
     const savedActualGpx = localStorage.getItem(ACTUAL_GPX_KEY);
     if (savedActualGpx) {
       renderGpx(savedActualGpx, true);
     } else {
       fetch('kyushu-touring.gpx')
-        .then(res => {
-          if (!res.ok) throw new Error('Network error');
-          return res.text();
-        })
-        .then(gpxData => renderGpx(gpxData, false))
-        .catch(() => {
-          renderGpx(EMBEDDED_GPX, false);
-        });
+        .then(res => res.text())
+        .then(data => renderGpx(data, false))
+        .catch(() => renderGpx(EMBEDDED_GPX, false));
     }
 
-    // 実走行GPXの取り込み処理
     document.getElementById('actual-gpx-input').addEventListener('change', function(e) {
       const file = e.target.files[0];
       if (!file) return;
-
       const reader = new FileReader();
       reader.onload = function(evt) {
         const gpxText = evt.target.result;
         try {
           renderGpx(gpxText, true);
           localStorage.setItem(ACTUAL_GPX_KEY, gpxText);
-          alert('実際の走行GPXデータを取り込みました！地図と走行距離・標高が更新されました。');
+          alert('実走行GPXを取り込みました！地図と走行距離・標高が更新されました。');
         } catch (err) {
-          alert('GPXファイルの解析に失敗しました。正しいGPXファイルを選択してください。');
+          alert('GPXファイルの解析に失敗しました。');
         }
       };
       reader.readAsText(file);
       e.target.value = '';
     });
 
-    // 計画ルートに戻すボタン
     function resetToPlannedGpx() {
       if (confirm('計画時の予定ルート表示に戻しますか？')) {
         localStorage.removeItem(ACTUAL_GPX_KEY);
@@ -687,12 +667,12 @@
         document.getElementById('stat-elevation').textContent = '約 410';
         fetch('kyushu-touring.gpx')
           .then(res => res.text())
-          .then(gpxData => renderGpx(gpxData, false))
+          .then(data => renderGpx(data, false))
           .catch(() => renderGpx(EMBEDDED_GPX, false));
       }
     }
 
-    // 3. GPXダウンロードボタンの動作
+    // GPXダウンロード
     document.getElementById('btn-download-gpx').addEventListener('click', () => {
       const blob = new Blob([EMBEDDED_GPX], { type: 'application/gpx+xml' });
       const url = URL.createObjectURL(blob);
@@ -705,155 +685,12 @@
       URL.revokeObjectURL(url);
     });
 
-    // 4. チェックリストの保存（ブラウザのLocalStorageに保存）
-    const checkboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
-    checkboxes.forEach((cb, idx) => {
-      const key = `kyushu_checklist_${idx}`;
-      if (localStorage.getItem(key) === 'true') {
-        cb.checked = true;
-      }
-      cb.addEventListener('change', () => {
-        localStorage.setItem(key, cb.checked);
-      });
-    });
-
-    // 5. 写真ギャラリー管理（最大5枚・自動圧縮保存）
-    const PHOTO_STORAGE_KEY = 'kyushu_touring_photos';
-    const MAX_PHOTOS = 5;
-
-    function getStoredPhotos() {
-      try {
-        return JSON.parse(localStorage.getItem(PHOTO_STORAGE_KEY) || '[]');
-      } catch (e) {
-        return [];
-      }
-    }
-
-    function savePhotos(photos) {
-      localStorage.setItem(PHOTO_STORAGE_KEY, JSON.stringify(photos));
-      renderPhotoGallery();
-    }
-
-    function renderPhotoGallery() {
-      const photos = getStoredPhotos();
-      const grid = document.getElementById('photo-grid');
-      const countBadge = document.getElementById('photo-count-badge');
-      const addBtn = document.getElementById('btn-add-photo-label');
-
-      countBadge.textContent = `${photos.length} / ${MAX_PHOTOS}枚`;
-
-      if (photos.length >= MAX_PHOTOS) {
-        addBtn.classList.add('opacity-50', 'pointer-events-none');
-      } else {
-        addBtn.classList.remove('opacity-50', 'pointer-events-none');
-      }
-
-      grid.innerHTML = '';
-      if (photos.length === 0) {
-        grid.innerHTML = `
-          <div class="col-span-full py-8 text-center border-2 border-dashed border-slate-700/80 rounded-xl bg-slate-900/40">
-            <i class="fa-regular fa-images text-2xl text-slate-500 mb-2"></i>
-            <p class="text-xs text-slate-400">まだ写真がありません。「写真を追加」ボタンから最大5枚まで登録できます</p>
-          </div>
-        `;
-        return;
-      }
-
-      photos.forEach((photo, index) => {
-        const card = document.createElement('div');
-        card.className = 'group relative aspect-video sm:aspect-square rounded-xl overflow-hidden border border-slate-700 bg-slate-900 shadow-md cursor-pointer';
-        card.innerHTML = `
-          <img src="${photo.data}" alt="${photo.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 opacity-0 group-hover:opacity-100 transition p-2 flex flex-col justify-between">
-            <div class="flex justify-end">
-              <button onclick="event.stopPropagation(); deletePhoto(${index})" class="w-6 h-6 rounded-full bg-rose-600/90 text-white flex items-center justify-center hover:bg-rose-500 transition shadow">
-                <i class="fa-solid fa-xmark text-xs"></i>
-              </button>
-            </div>
-            <span class="text-[10px] text-white truncate drop-shadow">${photo.name}</span>
-          </div>
-        `;
-        card.addEventListener('click', () => openPhotoModal(photo.data, photo.name));
-        grid.appendChild(card);
-      });
-    }
-
-    // 写真の圧縮（最大1200px・WebP形式またはJPEGで軽量化）
-    function compressImage(file, callback) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const img = new Image();
-        img.onload = function() {
-          const canvas = document.createElement('canvas');
-          const maxDim = 1200;
-          let width = img.width;
-          let height = img.height;
-
-          if (width > height && width > maxDim) {
-            height = Math.round((height * maxDim) / width);
-            width = maxDim;
-          } else if (height > maxDim) {
-            width = Math.round((width * maxDim) / height);
-            height = maxDim;
-          }
-
-          canvas.width = width;
-          canvas.height = height;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, width, height);
-          const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.82);
-          callback(compressedDataUrl);
-        };
-        img.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-
-    document.getElementById('photo-input').addEventListener('change', function(e) {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      const photos = getStoredPhotos();
-      if (photos.length >= MAX_PHOTOS) {
-        alert('写真の登録は1つの計画につき最大5枚までです。不要な写真を削除してから追加してください。');
-        return;
-      }
-
-      compressImage(file, function(compressedData) {
-        photos.push({
-          name: file.name,
-          data: compressedData,
-          createdAt: new Date().toISOString()
-        });
-        savePhotos(photos);
-      });
-      e.target.value = '';
-    });
-
-    function deletePhoto(index) {
-      if (confirm('この写真をギャラリーから削除しますか？')) {
-        const photos = getStoredPhotos();
-        photos.splice(index, 1);
-        savePhotos(photos);
-      }
-    }
-
-    function openPhotoModal(imgSrc, caption) {
-      const modal = document.getElementById('photo-modal');
-      document.getElementById('modal-img').src = imgSrc;
-      document.getElementById('modal-caption').textContent = caption || '';
-      modal.classList.remove('hidden');
-    }
-
-    function closePhotoModal() {
-      document.getElementById('photo-modal').classList.add('hidden');
-    }
-
-    // 6. リアルタイム天気取得機能（Open-Meteo API連携・無料・APIキー不要）
-    const WEATHER_SPOTS = [
+    // 3. 当日の天気情報（1日目＆2日目の各地点）
+    const WEATHER_POINTS = [
       { id: 'fukuoka', lat: 33.5904, lon: 130.4017 },
       { id: 'ureshino', lat: 33.0970, lon: 129.9880 },
-      { id: 'yobuko', lat: 33.5398, lon: 129.8967 }
+      { id: 'yobuko', lat: 33.5398, lon: 129.8967 },
+      { id: 'fukuoka-return', lat: 33.5859, lon: 130.4509 }
     ];
 
     function getWeatherIcon(code) {
@@ -863,7 +700,6 @@
       if ([45, 48].includes(code)) return '<i class="fa-solid fa-smog text-slate-400"></i>';
       if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return '<i class="fa-solid fa-cloud-showers-heavy text-sky-400"></i>';
       if ([71, 73, 75, 85, 86].includes(code)) return '<i class="fa-regular fa-snowflake text-indigo-300"></i>';
-      if ([95, 96, 99].includes(code)) return '<i class="fa-solid fa-cloud-bolt text-amber-500"></i>';
       return '<i class="fa-solid fa-cloud text-slate-400"></i>';
     }
 
@@ -871,11 +707,7 @@
       if (code === 0) return '快晴';
       if ([1, 2].includes(code)) return '晴れ時々曇';
       if (code === 3) return '曇り';
-      if ([45, 48].includes(code)) return '霧';
-      if ([51, 53, 55].includes(code)) return '小雨';
-      if ([61, 63, 65].includes(code)) return '雨';
-      if ([80, 81, 82].includes(code)) return 'にわか雨';
-      if ([95, 96, 99].includes(code)) return '雷雨';
+      if ([51, 53, 55, 61, 63, 65].includes(code)) return '雨';
       return '曇り';
     }
 
@@ -883,7 +715,7 @@
       const refreshIcon = document.getElementById('weather-refresh-icon');
       if (refreshIcon) refreshIcon.classList.add('animate-spin');
 
-      WEATHER_SPOTS.forEach(spot => {
+      WEATHER_POINTS.forEach(spot => {
         const url = `https://api.open-meteo.com/v1/forecast?latitude=${spot.lat}&longitude=${spot.lon}&current=temperature_2m,precipitation_probability,weather_code&timezone=Asia%2FTokyo`;
         fetch(url)
           .then(res => res.json())
@@ -895,7 +727,7 @@
 
             document.getElementById(`weather-${spot.id}-temp`).innerHTML = `
               <span>${temp}℃</span>
-              <span class="text-[11px] text-slate-400 font-normal ml-1.5">${getWeatherDescription(wCode)} (降水 ${pop}%)</span>
+              <span class="text-[10px] text-slate-400 font-normal ml-1">${getWeatherDescription(wCode)} (${pop}%)</span>
             `;
             document.getElementById(`weather-${spot.id}-icon`).innerHTML = getWeatherIcon(wCode);
           })
@@ -904,16 +736,14 @@
             document.getElementById(`weather-${spot.id}-icon`).innerHTML = '<i class="fa-solid fa-sun text-amber-400"></i>';
           })
           .finally(() => {
-            setTimeout(() => {
-              if (refreshIcon) refreshIcon.classList.remove('animate-spin');
-            }, 600);
+            setTimeout(() => { if (refreshIcon) refreshIcon.classList.remove('animate-spin'); }, 500);
           });
       });
     }
 
-    // 7. 参加メンバー＆バイク給油シミュレーター
+    // 4. 参加者情報＆給油シミュレーション
     const MEMBERS_STORAGE_KEY = 'kyushu_touring_members_v1';
-    const TOTAL_DISTANCE = 281; // 今回の総走行距離 (km)
+    const TOTAL_DISTANCE = 281;
 
     const DEFAULT_MEMBERS = [
       { id: 'm1', name: 'ライダーA (リーダー)', bike: 'Rebel 250 (レンタル)', tank: 11.0, efficiency: 33.0 },
@@ -939,16 +769,14 @@
       const container = document.getElementById('members-container');
       container.innerHTML = '';
 
-      members.forEach((m, idx) => {
+      members.forEach((m) => {
         const range = Math.round(m.tank * m.efficiency);
         const diff = range - TOTAL_DISTANCE;
         const needsGas = diff < 0;
 
         const card = document.createElement('div');
         card.className = `p-4 rounded-xl border transition flex flex-col justify-between ${
-          needsGas
-            ? 'bg-rose-500/10 border-rose-500/40'
-            : 'bg-slate-900/60 border-slate-700/60'
+          needsGas ? 'bg-rose-500/10 border-rose-500/40' : 'bg-slate-950/60 border-slate-800'
         }`;
 
         card.innerHTML = `
@@ -964,17 +792,17 @@
               <span>${m.bike}</span>
             </div>
 
-            <div class="grid grid-cols-2 gap-2 text-[11px] bg-slate-950/40 p-2 rounded-lg border border-slate-800/80 mb-3">
+            <div class="grid grid-cols-2 gap-2 text-[11px] bg-slate-900/60 p-2 rounded-lg border border-slate-800 mb-3">
               <div><span class="text-slate-400">タンク:</span> <strong class="text-white">${m.tank} L</strong></div>
-              <div><span class="text-slate-400">燃費:</span> <strong class="text-white">${m.efficiency} km/L</strong></div>
-              <div class="col-span-2 pt-1 border-t border-slate-800/60 flex items-center justify-between">
-                <span class="text-slate-400">理論航続可能距離:</span>
+              <div><span class="text-slate-400">実燃費:</span> <strong class="text-white">${m.efficiency} km/L</strong></div>
+              <div class="col-span-2 pt-1 border-t border-slate-800 flex items-center justify-between">
+                <span class="text-slate-400">理論航続距離:</span>
                 <strong class="text-white text-xs">${range} km</strong>
               </div>
             </div>
           </div>
 
-          <div class="pt-2 border-t border-slate-800/60">
+          <div class="pt-2 border-t border-slate-800">
             ${
               needsGas
                 ? `
@@ -982,14 +810,14 @@
                   <i class="fa-solid fa-triangle-exclamation"></i>
                   <span>途中給油が必要（不足: 約${Math.abs(diff)}km）</span>
                 </div>
-                <div class="text-[10px] text-rose-300/80 mt-0.5">※伊万里または呼子手前での給油を推奨</div>
+                <div class="text-[10px] text-rose-300/80 mt-0.5">※伊万里または呼子手前での給油推奨</div>
               `
                 : `
                 <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-400">
                   <i class="fa-solid fa-circle-check"></i>
                   <span>無給油で完走可能（残余: 約${diff}km）</span>
                 </div>
-                <div class="text-[10px] text-slate-400 mt-0.5">※安心のため帰着時満タン前に補給も可</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">※安心のため帰着前補給も可</div>
               `
             }
           </div>
@@ -998,13 +826,8 @@
       });
     }
 
-    function openMemberModal() {
-      document.getElementById('member-modal').classList.remove('hidden');
-    }
-
-    function closeMemberModal() {
-      document.getElementById('member-modal').classList.add('hidden');
-    }
+    function openMemberModal() { document.getElementById('member-modal').classList.remove('hidden'); }
+    function closeMemberModal() { document.getElementById('member-modal').classList.add('hidden'); }
 
     function handleSaveMember(e) {
       e.preventDefault();
@@ -1015,11 +838,9 @@
         tank: parseFloat(document.getElementById('m-tank').value),
         efficiency: parseFloat(document.getElementById('m-eff').value)
       };
-
       const members = getMembers();
       members.push(newMember);
       saveMembers(members);
-
       document.getElementById('member-form').reset();
       closeMemberModal();
     }
@@ -1030,6 +851,140 @@
         saveMembers(members);
       }
     }
+
+    // 5. 写真ギャラリー（最大5枚）＆ デフォルト見どころサンプル
+    const PHOTO_STORAGE_KEY = 'kyushu_touring_photos';
+    const MAX_PHOTOS = 5;
+
+    const DEFAULT_HIGHLIGHT_PHOTOS = [
+      {
+        name: "嬉野温泉 大正屋（名工設計の老舗宿）",
+        data: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80",
+        createdAt: "2026-11-03"
+      },
+      {
+        name: "呼子の名物・透明なイカ活き造り",
+        data: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80",
+        createdAt: "2026-11-03"
+      },
+      {
+        name: "三瀬峠のワインディングロード",
+        data: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=600&q=80",
+        createdAt: "2026-11-03"
+      }
+    ];
+
+    function getStoredPhotos() {
+      try {
+        const stored = localStorage.getItem(PHOTO_STORAGE_KEY);
+        if (stored) return JSON.parse(stored);
+      } catch (e) {}
+      return DEFAULT_HIGHLIGHT_PHOTOS;
+    }
+
+    function savePhotos(photos) {
+      localStorage.setItem(PHOTO_STORAGE_KEY, JSON.stringify(photos));
+      renderPhotoGallery();
+    }
+
+    function renderPhotoGallery() {
+      const photos = getStoredPhotos();
+      const grid = document.getElementById('photo-grid');
+      const countBadge = document.getElementById('photo-count-badge');
+      const addBtn = document.getElementById('btn-add-photo-label');
+
+      countBadge.textContent = `${photos.length} / ${MAX_PHOTOS}枚`;
+      if (photos.length >= MAX_PHOTOS) {
+        addBtn.classList.add('opacity-50', 'pointer-events-none');
+      } else {
+        addBtn.classList.remove('opacity-50', 'pointer-events-none');
+      }
+
+      grid.innerHTML = '';
+      photos.forEach((photo, index) => {
+        const card = document.createElement('div');
+        card.className = 'group relative aspect-video sm:aspect-square rounded-xl overflow-hidden border border-slate-800 bg-slate-950 shadow-md cursor-pointer';
+        card.innerHTML = `
+          <img src="${photo.data}" alt="${photo.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40 opacity-0 group-hover:opacity-100 transition p-2 flex flex-col justify-between">
+            <div class="flex justify-end">
+              <button onclick="event.stopPropagation(); deletePhoto(${index})" class="w-6 h-6 rounded-full bg-rose-600/90 text-white flex items-center justify-center hover:bg-rose-500 transition shadow">
+                <i class="fa-solid fa-xmark text-xs"></i>
+              </button>
+            </div>
+            <span class="text-[10px] text-white truncate drop-shadow font-medium">${photo.name}</span>
+          </div>
+        `;
+        card.addEventListener('click', () => openPhotoModal(photo.data, photo.name));
+        grid.appendChild(card);
+      });
+    }
+
+    function compressImage(file, callback) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          const maxDim = 1200;
+          let width = img.width, height = img.height;
+          if (width > height && width > maxDim) {
+            height = Math.round((height * maxDim) / width);
+            width = maxDim;
+          } else if (height > maxDim) {
+            width = Math.round((width * maxDim) / height);
+            height = maxDim;
+          }
+          canvas.width = width;
+          canvas.height = height;
+          canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+          callback(canvas.toDataURL('image/jpeg', 0.82));
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    document.getElementById('photo-input').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const photos = getStoredPhotos();
+      if (photos.length >= MAX_PHOTOS) {
+        alert('写真は最大5枚までです。不要な写真を削除してから追加してください。');
+        return;
+      }
+      compressImage(file, function(compressedData) {
+        photos.push({ name: file.name, data: compressedData, createdAt: new Date().toISOString() });
+        savePhotos(photos);
+      });
+      e.target.value = '';
+    });
+
+    function deletePhoto(index) {
+      if (confirm('この写真を削除しますか？')) {
+        const photos = getStoredPhotos();
+        photos.splice(index, 1);
+        savePhotos(photos);
+      }
+    }
+
+    function openPhotoModal(imgSrc, caption) {
+      document.getElementById('modal-img').src = imgSrc;
+      document.getElementById('modal-caption').textContent = caption || '';
+      document.getElementById('photo-modal').classList.remove('hidden');
+    }
+
+    function closePhotoModal() {
+      document.getElementById('photo-modal').classList.add('hidden');
+    }
+
+    // 6. チェックリスト
+    const checkboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
+    checkboxes.forEach((cb, idx) => {
+      const key = `kyushu_checklist_${idx}`;
+      if (localStorage.getItem(key) === 'true') cb.checked = true;
+      cb.addEventListener('change', () => localStorage.setItem(key, cb.checked));
+    });
 
     // 初期実行
     fetchWeatherData();
