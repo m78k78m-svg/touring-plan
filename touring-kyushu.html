@@ -4,34 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>【1泊2日】佐賀・呼子 温泉＆イカ活き造りツーリング計画書 | MotoPlanner</title>
+  <title>【1泊2日】博多〜嬉野・波戸岬 絶景ツーリング計画書 | MotoPlanner</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Leaflet (地図ライブラリ) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
-  <!-- Leaflet-GPX -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js"></script>
-
   <!-- FontAwesome アイコン -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <style>
-    #map {
-      height: 440px;
-      width: 100%;
-      border-radius: 0.75rem;
-      z-index: 10;
-    }
-    @media (min-width: 768px) {
-      #map {
-        height: 520px;
-      }
-    }
-  </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased pb-24">
 
@@ -42,7 +21,7 @@
         <i class="fa-solid fa-arrow-left"></i>
         <span>ポータルトップへ戻る</span>
       </a>
-      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
         11/13〜14 開催予定
       </span>
@@ -61,23 +40,27 @@
           <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-black text-sm border border-amber-500/30">1</span>
           <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">計画の概要</h2>
         </div>
-        <span class="text-xs font-black text-rose-300 bg-rose-950/90 px-3 py-1.5 rounded-xl border border-rose-500/40 shadow-inner flex items-center gap-1.5">
-          <i class="fa-solid fa-triangle-exclamation text-rose-400"></i>
-          <span>2日目 18:00 レンタルバイク返却厳守</span>
-        </span>
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-bold text-emerald-400 bg-emerald-950/80 px-2.5 py-1 rounded-xl border border-emerald-500/40">
+            <i class="fa-solid fa-flag-checkered mr-1"></i>2日目 16:00 到着目標
+          </span>
+          <span class="text-xs font-black text-rose-300 bg-rose-950/90 px-3 py-1 rounded-xl border border-rose-500/40">
+            18:00 返却リミット
+          </span>
+        </div>
       </div>
 
       <div class="space-y-2">
         <div class="flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-400">
-          <span class="text-amber-400"><i class="fa-regular fa-calendar mr-1"></i>2026年11月13日(金) 12:00 〜 11月14日(土) 18:00</span>
+          <span class="text-amber-400"><i class="fa-regular fa-calendar mr-1"></i>2026年11月13日(金) 12:00 〜 11月14日(土) 16:00着</span>
           <span>•</span>
-          <span class="text-sky-400"><i class="fa-solid fa-location-dot mr-1"></i>福岡空港発着 • 佐賀・呼子周遊</span>
+          <span class="text-sky-400"><i class="fa-solid fa-location-dot mr-1"></i>博多区板付 発着 • 三瀬峠・嬉野温泉・波戸岬</span>
         </div>
         <h1 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
-          【1泊2日】佐賀・呼子 温泉＆イカ活き造りツーリング
+          【1泊2日】博多〜嬉野・波戸岬 絶景ワインディング＆シーサイドツーリング
         </h1>
         <p class="text-slate-300 text-sm leading-relaxed pt-1">
-          福岡空港を出発し、三瀬峠のワインディングを楽しんで名湯「嬉野温泉 大正屋」へ宿泊。2日目は伊万里の快走路から呼子の名物イカ活き造りを堪能し、夕方の下道渋滞を高速道路で飛び越えて確実に18時までに福岡空港へ帰着する充実コースです。
+          1日目は全線下道で三瀬峠〜嘉瀬川ダム（鷹の羽公園）〜厳木を快走し、嬉野温泉「大正屋」へ。2日目は伊万里から波戸岬の海岸線をキープしながら快走し、二丈PA休憩・西九州道と福岡都市高速を活用して16:00に板付へ無事帰着する余裕あるルートです。
         </p>
       </div>
 
@@ -85,31 +68,24 @@
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-center">
         <div class="bg-slate-950/70 rounded-2xl p-3.5 border border-slate-800">
           <div class="text-xs text-slate-400 mb-0.5"><i class="fa-solid fa-route text-amber-400 mr-1"></i>総走行距離</div>
-          <div class="text-lg font-black text-white"><span id="stat-distance">約 281</span> <span class="text-xs font-normal">km</span></div>
-          <div id="stat-distance-sub" class="text-[10px] text-slate-500">1日目:98km / 2日目:183km</div>
+          <div class="text-lg font-black text-white"><span id="stat-distance">約 258</span> <span class="text-xs font-normal">km</span></div>
+          <div id="stat-distance-sub" class="text-[10px] text-slate-500">1日目:102km / 2日目:156km</div>
         </div>
         <div class="bg-slate-950/70 rounded-2xl p-3.5 border border-slate-800">
-          <div class="text-xs text-slate-400 mb-0.5"><i class="fa-solid fa-mountain text-sky-400 mr-1"></i>最高標高</div>
-          <div class="text-lg font-black text-white"><span id="stat-elevation">約 410</span> <span class="text-xs font-normal">m</span></div>
-          <div class="text-[10px] text-slate-500">三瀬峠付近</div>
+          <div class="text-xs text-slate-400 mb-0.5"><i class="fa-solid fa-clock text-sky-400 mr-1"></i>純走行時間</div>
+          <div class="text-lg font-black text-white">約 6 時間 5 分</div>
+          <div class="text-[10px] text-slate-500">1日目:2h45m / 2日目:3h20m</div>
         </div>
         <div class="bg-slate-950/70 rounded-2xl p-3.5 border border-slate-800">
-          <div class="text-xs text-slate-400 mb-0.5"><i class="fa-solid fa-hot-tub-person text-rose-400 mr-1"></i>宿泊先</div>
+          <div class="text-xs text-slate-400 mb-0.5"><i class="fa-solid fa-bed text-rose-400 mr-1"></i>宿泊先</div>
           <div class="text-base font-black text-white truncate" title="嬉野観光ホテル大正屋">大正屋</div>
           <div class="text-[10px] text-slate-500">嬉野温泉（美肌の湯）</div>
         </div>
         <div class="bg-slate-950/70 rounded-2xl p-3.5 border border-slate-800">
-          <div class="text-xs text-slate-400 mb-0.5"><i class="fa-solid fa-motorcycle text-emerald-400 mr-1"></i>参加台数</div>
-          <div class="text-base font-black text-white">3台</div>
-          <div class="text-[10px] text-slate-500">レンタル2台＋自車1台</div>
+          <div class="text-xs text-slate-400 mb-0.5"><i class="fa-solid fa-road text-emerald-400 mr-1"></i>高速料金目安</div>
+          <div class="text-base font-black text-white">約 1,000 円</div>
+          <div class="text-[10px] text-slate-500">2日目:西九州道〜都市高</div>
         </div>
-      </div>
-
-      <div class="flex justify-end pt-2">
-        <button id="btn-download-gpx" class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl transition text-xs shadow-md shadow-amber-500/20">
-          <i class="fa-solid fa-file-arrow-down text-sm"></i>
-          <span>計画GPXファイルを保存（スマホナビ用）</span>
-        </button>
       </div>
     </section>
 
@@ -138,12 +114,12 @@
           <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
             <span class="text-xs font-bold text-amber-300 flex items-center gap-1.5">
               <i class="fa-regular fa-calendar-check"></i>
-              <span>1日目：11/13(金) 福岡 〜 三瀬峠 〜 嬉野</span>
+              <span>1日目：11/13(金) 博多 〜 三瀬峠 〜 嬉野温泉</span>
             </span>
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
-              <div class="text-[11px] text-slate-400 font-medium">福岡市 (出発地)</div>
+              <div class="text-[11px] text-slate-400 font-medium">福岡市 (博多・板付)</div>
               <div class="flex items-center justify-between mt-1">
                 <div class="text-lg font-black text-white" id="weather-fukuoka-temp">取得中...</div>
                 <div class="text-2xl" id="weather-fukuoka-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
@@ -151,7 +127,7 @@
               <div class="text-[10px] text-slate-400 mt-1" id="weather-fukuoka-sub">風速: - m/s | 降水: -%</div>
             </div>
             <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
-              <div class="text-[11px] text-slate-400 font-medium">嬉野市 (宿泊地)</div>
+              <div class="text-[11px] text-slate-400 font-medium">嬉野市 (大正屋)</div>
               <div class="flex items-center justify-between mt-1">
                 <div class="text-lg font-black text-white" id="weather-ureshino-temp">取得中...</div>
                 <div class="text-2xl" id="weather-ureshino-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
@@ -166,20 +142,20 @@
           <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
             <span class="text-xs font-bold text-sky-300 flex items-center gap-1.5">
               <i class="fa-regular fa-calendar-check"></i>
-              <span>2日目：11/14(土) 呼子・唐津 〜 福岡空港</span>
+              <span>2日目：11/14(土) 波戸岬 〜 糸島・二丈 〜 博多</span>
             </span>
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
-              <div class="text-[11px] text-slate-400 font-medium">唐津・呼子 (海沿い)</div>
+              <div class="text-[11px] text-slate-400 font-medium">波戸岬・唐津 (海沿い)</div>
               <div class="flex items-center justify-between mt-1">
-                <div class="text-lg font-black text-white" id="weather-yobuko-temp">取得中...</div>
-                <div class="text-2xl" id="weather-yobuko-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
+                <div class="text-lg font-black text-white" id="weather-hado-temp">取得中...</div>
+                <div class="text-2xl" id="weather-hado-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
               </div>
-              <div class="text-[10px] text-slate-400 mt-1" id="weather-yobuko-sub">風速: - m/s | 降水: -%</div>
+              <div class="text-[10px] text-slate-400 mt-1" id="weather-hado-sub">風速: - m/s | 降水: -%</div>
             </div>
             <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
-              <div class="text-[11px] text-slate-400 font-medium">福岡空港 (帰着地)</div>
+              <div class="text-[11px] text-slate-400 font-medium">博多区板付 (帰着地)</div>
               <div class="flex items-center justify-between mt-1">
                 <div class="text-lg font-black text-white" id="weather-fukuoka-return-temp">取得中...</div>
                 <div class="text-2xl" id="weather-fukuoka-return-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
@@ -199,11 +175,11 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-300">
           <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
             <span class="font-bold text-amber-400 block mb-1"><i class="fa-solid fa-temperature-arrow-down mr-1"></i>服装・防寒の目安</span>
-            日中は18℃前後で快適ですが、標高400mの<strong>三瀬峠</strong>や夕方の高速道路は走行風で<strong>体感12℃以下</strong>に冷え込みます。防風インナーや薄手ネックウォーマーの重ね着が安心です。
+            日中は18℃前後で走りやすい気候ですが、1日目の<strong>三瀬峠（標高400m）</strong>や嘉瀬川ダム周辺は走行風で<strong>体感12℃以下</strong>に冷え込みます。防風インナーやネックウォーマーの重ね着が安心です。
           </div>
           <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
             <span class="font-bold text-sky-400 block mb-1"><i class="fa-solid fa-wind mr-1"></i>風速・走行安全</span>
-            2日目の<strong>呼子港など海岸沿い</strong>および<strong>長崎道・都市高速</strong>では横風（風速4〜6m/s以上）を受けやすいため、ニーグリップを意識し車間距離を十分確保して走行しましょう。
+            2日目の<strong>波戸岬・湊町などの海岸線</strong>や<strong>西九州自動車道・都市高速</strong>では横風を受けやすいため、ニーグリップをしっかり意識し車間距離をとって安全巡航しましょう。
           </div>
         </div>
       </div>
@@ -218,7 +194,7 @@
           <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-black text-sm border border-amber-500/30">3</span>
           <div>
             <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">参加者の情報＆愛車給油シミュレーション</h2>
-            <p class="text-xs text-slate-400 mt-0.5">総距離（<strong class="text-amber-400">281 km</strong>）に対し、各バイクの航続可能距離から途中給油の要否を自動判定</p>
+            <p class="text-xs text-slate-400 mt-0.5">総走行距離（<strong class="text-amber-400">約 258 km</strong>）に対し、各バイクの航続可能距離から途中給油の要否を自動判定</p>
           </div>
         </div>
         <button onclick="openMemberModal()" class="inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-3.5 py-2 rounded-xl transition text-xs shadow">
@@ -233,182 +209,299 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 4. 【ルートマップ】ボックス -->
+    <!-- 4. 【ルートマップ（1日目／2日目 Googleマップ埋め込み）】ボックス -->
     <!-- ========================================== -->
-    <section class="bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-2xl space-y-4">
+    <section class="bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-2xl space-y-5">
       <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
         <div class="flex items-center gap-3">
           <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-black text-sm border border-amber-500/30">4</span>
           <div>
-            <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight" id="map-title-label">ルートマップ（GPX可視化）</h2>
-            <span class="text-xs text-slate-400">指やマウスで拡大・移動できます</span>
+            <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">ルートマップ（Google マップ）</h2>
+            <p class="text-xs text-slate-400 mt-0.5">タブを切り替えて1日目と2日目のルートを直接確認・ナビ起動できます</p>
           </div>
         </div>
 
-        <div class="flex items-center gap-2">
-          <label class="cursor-pointer inline-flex items-center gap-1.5 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-3.5 py-2 rounded-xl transition text-xs shadow-md shadow-sky-500/20">
-            <i class="fa-solid fa-file-circle-plus"></i>
-            <span>実走行GPXを取り込む</span>
-            <input type="file" id="actual-gpx-input" accept=".gpx" class="hidden">
-          </label>
-          <button id="btn-reset-gpx" onclick="resetToPlannedGpx()" class="hidden px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 transition">
-            計画ルートに戻す
+        <!-- 1日目／2日目 切替タブ -->
+        <div class="flex items-center bg-slate-950 p-1.5 rounded-2xl border border-slate-800">
+          <button id="map-tab-day1" onclick="switchMapDay(1)" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md">
+            1日目：博多〜嬉野（102km）
+          </button>
+          <button id="map-tab-day2" onclick="switchMapDay(2)" class="px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white">
+            2日目：嬉野〜波戸岬〜博多（156km）
           </button>
         </div>
       </div>
 
-      <!-- 地図描画エリア -->
-      <div id="map" class="shadow-inner border border-slate-800"></div>
-
-      <div class="text-xs text-slate-400 flex flex-wrap items-center justify-between gap-2 pt-1">
-        <div class="flex flex-wrap items-center gap-4">
-          <span class="flex items-center gap-1.5" id="route-legend"><span class="w-3 h-1 bg-amber-500 rounded-full inline-block"></span> 予定ルート</span>
-          <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-pin text-rose-500"></i> 主要経由スポット</span>
-          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> ⛽ ガソリンスタンド(GS)</span>
+      <!-- 1日目マップエリア -->
+      <div id="map-area-day1" class="space-y-3">
+        <div class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-inner">
+          <iframe 
+            src="https://maps.google.com/maps?q=33.5658849,130.4544166+to:33.426861,130.278717+to:33.406794,130.212069+to:33.311119,130.071878+to:33.096104,129.982936&hl=ja&z=10&output=embed"
+            width="100%" 
+            height="440" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            class="w-full">
+          </iframe>
         </div>
-        <span class="text-slate-500">© OpenStreetMap contributors</span>
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+          <div class="text-xs text-slate-400">
+            <span class="text-amber-400 font-bold">1日目ルート：</span> 博多区板付 ➔ 三瀬そば ➔ 鷹の羽公園 ➔ 道の駅 厳木 ➔ 嬉野温泉 大正屋（全線下道）
+          </div>
+          <a href="https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC,+%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E6%9D%BF%E4%BB%98%EF%BC%92%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%93%E2%88%92%EF%BC%91%EF%BC%90,+%E4%BD%90%E8%97%A4%E9%A3%9F%E8%82%89%E5%B7%A5%E5%A0%B4/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E4%BD%90%E8%B3%80%E5%B8%82%E4%B8%89%E7%80%AC%E6%9D%91%E4%B8%89%E7%80%AC%EF%BC%92%EF%BC%98%EF%BC%95%EF%BC%98%E2%88%92%EF%BC%92,+%E4%B8%89%E7%80%AC%E3%81%9D%E3%81%B0/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E4%BD%90%E8%B3%80%E5%B8%82%E5%AF%8C%E5%A3%AB%E7%94%BA%E5%A4%A7%E5%AD%97%E6%A0%97%E4%B8%A6,+%E3%81%BF%E3%81%AF%E3%82%89%E3%81%97%E3%81%AE%E4%B8%98%E9%B7%B9%E3%81%AE%E7%BE%BD%E5%85%AC%E5%9C%92/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E5%94%90%E6%B4%A5%E5%B8%82%E5%8E%B3%E6%9C%A8%E7%94%BA%E7%89%A7%E7%80%AC%EF%BC%96%EF%BC%99%EF%BC%92%E2%88%92%EF%BC%91,+%E9%81%93%E3%81%AE%E9%A7%85+%E5%8E%B3%E6%9C%A8/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E5%AC%89%E9%87%8E%E5%B8%82%E5%AC%89%E9%87%8E%E7%94%BA%E5%A4%A7%E5%AD%97%E4%B8%8B%E5%AE%BF%E4%B9%99%EF%BC%92%EF%BC%92%EF%BC%97%EF%BC%96%E2%88%92%EF%BC%91,+%E5%AC%89%E9%87%8E%E8%A6%B3%E5%85%89%E3%83%9B%E3%83%86%E3%83%AB%E5%A4%A7%E6%AD%A3%E5%B1%8B/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2 rounded-xl transition text-xs shadow-md shadow-amber-500/20">
+            <i class="fa-solid fa-diamond-turn-right"></i>
+            <span>1日目：嬉野行きルートをGoogle マップで開く</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2日目マップエリア（初期非表示） -->
+      <div id="map-area-day2" class="space-y-3 hidden">
+        <div class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-inner">
+          <iframe 
+            src="https://maps.google.com/maps?q=33.096104,129.982936+to:33.313665,129.928925+to:33.555505,129.846384+to:33.495464,130.053817+to:33.565885,130.454417&hl=ja&z=10&output=embed"
+            width="100%" 
+            height="440" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            class="w-full">
+          </iframe>
+        </div>
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+          <div class="text-xs text-slate-400">
+            <span class="text-sky-400 font-bold">2日目ルート：</span> 嬉野温泉 ➔ 道の駅 伊万里 ➔ 波戸岬 ➔ 二丈PA ➔ 西九州道〜福岡都市高速 ➔ 博多区板付
+          </div>
+          <a href="https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E5%AC%89%E9%87%8E%E5%B8%82%E5%AC%89%E9%87%8E%E7%94%BA%E5%A4%A7%E5%AD%97%E4%B8%8B%E5%AE%BF%E4%B9%99%EF%BC%92%EF%BC%92%EF%BC%97%EF%BC%96%E2%88%92%EF%BC%91,+%E5%AC%89%E9%87%8E%E8%A6%B3%E5%85%89%E3%83%9B%E3%83%86%E3%83%AB%E5%A4%A7%E6%AD%A3%E5%B1%8B/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E4%BC%8A%E4%B8%87%E9%87%8C%E5%B8%82%E5%8D%97%E6%B3%A2%E5%A4%9A%E7%94%BA%E4%BA%95%E6%89%8B%E9%87%8E%EF%BC%92%EF%BC%97%EF%BC%95%EF%BC%94%E2%88%92%EF%BC%99,+%E9%81%93%E3%81%AE%E9%A7%85+%E4%BC%8A%E4%B8%87%E9%87%8C%EF%BD%A2%E4%BC%8A%E4%B8%87%E9%87%8C%E3%81%B5%E3%82%8B%E3%81%95%E3%81%A8%E6%9D%91%EF%BD%A3/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C,+%E4%BD%90%E8%B3%80%E7%9C%8C%E9%81%93342%E5%8F%B7/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E5%94%90%E6%B4%A5%E5%B8%82%E9%8E%AE%E8%A5%BF%E7%94%BA%E6%B3%A2%E6%88%B8%EF%BC%99%EF%BC%94%EF%BC%97,+%E6%B3%A2%E6%88%B8%E5%B2%AC/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E5%94%90%E6%B4%A5%E5%B8%82%E6%B9%8A%E7%94%BA/%E6%97%A5%E6%9C%AC,+%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%B3%B8%E5%B3%B6%E5%B8%82%E4%BA%8C%E4%B8%88%E9%B9%BF%E5%AE%B6,+%E4%BA%8C%E4%B8%88%E3%83%91%E3%83%BC%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%A8%E3%83%AA%E3%82%A2/%E6%97%A5%E6%9C%AC,+%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E6%9D%BF%E4%BB%98%EF%BC%92%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%93%E2%88%92%EF%BC%91%EF%BC%90,+%E4%BD%90%E8%97%A4%E9%A3%9F%E8%82%89%E5%B7%A5%E5%A0%B4/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2 rounded-xl transition text-xs shadow-md shadow-sky-500/20">
+            <i class="fa-solid fa-diamond-turn-right"></i>
+            <span>2日目：波戸岬・海岸線ルートをGoogle マップで開く</span>
+          </a>
+        </div>
       </div>
     </section>
 
     <!-- ========================================== -->
-    <!-- 5. 【タイムスケジュール】ボックス -->
+    <!-- 5. 【タイムスケジュール】ボックス（1日目／2日目分割） -->
     <!-- ========================================== -->
     <section class="bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-2xl space-y-6">
-      <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4">
-        <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-black text-sm border border-amber-500/30">5</span>
-        <div>
-          <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">タイムスケジュール＆渋滞回避ポイント</h2>
-          <p class="text-xs text-slate-400 mt-0.5">時間割と都市部ラッシュをパスする迂回ルートの詳細</p>
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-black text-sm border border-amber-500/30">5</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">タイムスケジュール</h2>
+            <p class="text-xs text-slate-400 mt-0.5">区間ごとの運転時間・距離目安・アクション詳細</p>
+          </div>
+        </div>
+
+        <!-- スケジュール日別タブ -->
+        <div class="flex items-center bg-slate-950 p-1.5 rounded-2xl border border-slate-800">
+          <button id="sched-tab-day1" onclick="switchSchedDay(1)" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md">
+            1日目：博多〜嬉野
+          </button>
+          <button id="sched-tab-day2" onclick="switchSchedDay(2)" class="px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white">
+            2日目：嬉野〜波戸岬〜博多
+          </button>
         </div>
       </div>
 
-      <!-- 【1日目】11月13日(金) -->
-      <div class="space-y-4">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
-          <i class="fa-regular fa-calendar-check"></i>
-          <span>【1日目】11月13日(金) 福岡空港 〜 三瀬峠 〜 嬉野温泉（約98km / 走行約1h50m）</span>
+      <!-- 1日目スケジュール -->
+      <div id="sched-area-day1" class="space-y-4">
+        <div class="p-3 rounded-2xl bg-slate-950/60 border border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs">
+          <div class="font-bold text-amber-300">
+            <i class="fa-solid fa-mountain mr-1"></i>山あいのワインディングルート
+          </div>
+          <div class="text-slate-400 flex items-center gap-3">
+            <span>総距離: <strong>約102 km</strong></span>
+            <span>純走行時間: <strong>約2時間45分</strong></span>
+            <span class="text-emerald-400 font-bold">高速: なし（全線下道）</span>
+          </div>
         </div>
 
-        <div class="relative border-l-2 border-slate-800 ml-3 sm:ml-4 space-y-5 py-1">
+        <div class="relative border-l-2 border-slate-800 ml-3 sm:ml-4 space-y-6 py-2">
           <!-- 12:00 -->
           <div class="relative pl-6 sm:pl-8">
             <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-amber-400 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
-              <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-400/20 text-amber-300">12:00</span>
-              <h4 class="text-base font-bold text-white">福岡空港周辺 出発</h4>
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-400/20 text-amber-300">12:00 発</span>
+              <h4 class="text-base font-bold text-white">博多区板付 出発</h4>
             </div>
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              レンタルバイク受け取り＆車両チェック完了後に出発。<br>
-              <strong class="text-amber-300">★渋滞回避ワープ：</strong>都市高速（月隈〜野芥ランプ）を利用し、福岡市内の下道混雑を一気にパス！
+              集合・車両チェック完了後に出発。国道263号線へ入り、三瀬峠へ向けて標高を上げていきます。
             </p>
+            <div class="mt-1.5 text-xs text-slate-400 flex items-center gap-2">
+              <i class="fa-solid fa-arrow-down text-[10px] text-amber-400"></i>
+              <span>約1時間10分 / 約35km（国道263号・三瀬峠経由）</span>
+            </div>
           </div>
 
-          <!-- 13:00 -->
+          <!-- 13:10〜14:00 -->
           <div class="relative pl-6 sm:pl-8">
             <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sky-400 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
-              <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-400/20 text-sky-300">13:00</span>
-              <h4 class="text-base font-bold text-white">三瀬峠・三瀬そば周辺（昼食・休憩）</h4>
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-400/20 text-sky-300">13:10 着 〜 14:00 発</span>
+              <h4 class="text-base font-bold text-white">三瀬そば（昼食・1時間滞在）</h4>
             </div>
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              標高約400mの三瀬峠で適度なワインディングを満喫。街道沿いの名物「三瀬そば」で昼食または小休止。
+              三瀬峠を越えた先の有名店で名物「板そば」の昼食休憩。峠走行のクールダウン。
             </p>
+            <div class="mt-1.5 text-xs text-slate-400 flex items-center gap-2">
+              <i class="fa-solid fa-arrow-down text-[10px] text-amber-400"></i>
+              <span>約15分 / 約10km</span>
+            </div>
           </div>
 
-          <!-- 16:30 -->
+          <!-- 14:15〜14:30 -->
           <div class="relative pl-6 sm:pl-8">
             <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-emerald-400 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
-              <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-400/20 text-emerald-300">16:30</span>
-              <h4 class="text-base font-bold text-white">嬉野温泉「大正屋」到着・チェックイン</h4>
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-400/20 text-emerald-300">14:15 着 〜 14:30 発</span>
+              <h4 class="text-base font-bold text-white">みはらしの丘 鷹の羽公園（15分休憩）</h4>
             </div>
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              長崎道（佐賀大和〜武雄北方）経由でスムーズに到着。早めのチェックインで名湯と宿の豪華夕食をじっくり堪能！
+              嘉瀬川ダム湖畔の高台からパノラマ絶景を一望できる人気展望スポットで写真撮影＆休憩。
+            </p>
+            <div class="mt-1.5 text-xs text-slate-400 flex items-center gap-2">
+              <i class="fa-solid fa-arrow-down text-[10px] text-amber-400"></i>
+              <span>約30分 / 約20km（県道37号・厳木富士線を快走）</span>
+            </div>
+          </div>
+
+          <!-- 15:00〜15:30 -->
+          <div class="relative pl-6 sm:pl-8">
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-indigo-400 border-4 border-slate-900"></div>
+            <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-indigo-400/20 text-indigo-300">15:00 着 〜 15:30 発</span>
+              <h4 class="text-base font-bold text-white">道の駅 厳木（30分休憩）</h4>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              高さ12mの巨大佐用姫像が目印。名物佐用姫ソフトクリームや特産品をチェック。
+            </p>
+            <div class="mt-1.5 text-xs text-slate-400 flex items-center gap-2">
+              <i class="fa-solid fa-arrow-down text-[10px] text-amber-400"></i>
+              <span>約50分 / 約35km（武雄を抜けて嬉野へ）</span>
+            </div>
+          </div>
+
+          <!-- 16:20 -->
+          <div class="relative pl-6 sm:pl-8">
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-rose-500 border-4 border-slate-900"></div>
+            <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300">16:20 頃 着</span>
+              <h4 class="text-base font-bold text-white">嬉野観光ホテル 大正屋 到着・チェックイン</h4>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              16時台前半にゆったり到着！初日のライディングお疲れ様でした。名湯・美肌の湯と温泉街での夕食を堪能。
             </p>
           </div>
         </div>
       </div>
 
-      <!-- 区切り線 -->
-      <div class="border-t border-slate-800 my-4"></div>
-
-      <!-- 【2日目】11月14日(土) -->
-      <div class="space-y-4">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs font-bold bg-sky-500/20 text-sky-300 border border-sky-500/30">
-          <i class="fa-regular fa-calendar-check"></i>
-          <span>【2日目】11月14日(土) 嬉野 〜 呼子・厳木 〜 福岡空港（約183km / 走行約3h20m）</span>
+      <!-- 2日目スケジュール（初期非表示） -->
+      <div id="sched-area-day2" class="space-y-4 hidden">
+        <div class="p-3 rounded-2xl bg-slate-950/60 border border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs">
+          <div class="font-bold text-sky-300">
+            <i class="fa-solid fa-water mr-1"></i>海岸線キープ・シーサイドルート
+          </div>
+          <div class="text-slate-400 flex items-center gap-3">
+            <span>総距離: <strong>約156 km</strong></span>
+            <span>純走行時間: <strong>約3時間20分</strong></span>
+            <span class="text-amber-400 font-bold">高速: 西九州道〜都市高（約1,000円）</span>
+          </div>
         </div>
 
-        <div class="relative border-l-2 border-slate-800 ml-3 sm:ml-4 space-y-5 py-1">
+        <div class="relative border-l-2 border-slate-800 ml-3 sm:ml-4 space-y-6 py-2">
           <!-- 10:00 -->
           <div class="relative pl-6 sm:pl-8">
             <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sky-400 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
-              <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-400/20 text-sky-300">10:00</span>
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-400/20 text-sky-300">10:00 発</span>
               <h4 class="text-base font-bold text-white">大正屋 チェックアウト・出発</h4>
             </div>
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              朝風呂・朝食を満喫後に出発。伊万里方面の信号の少ない広域農道等を利用して北上し、呼子へ向かいます。
+              朝風呂・朝食を満喫後に出発。県道45号・38号等を経由して伊万里方面へ北上。
             </p>
+            <div class="mt-1.5 text-xs text-slate-400 flex items-center gap-2">
+              <i class="fa-solid fa-arrow-down text-[10px] text-sky-400"></i>
+              <span>約44分 / 約33km</span>
+            </div>
           </div>
 
-          <!-- 12:00 -->
+          <!-- 10:44〜11:00 -->
+          <div class="relative pl-6 sm:pl-8">
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-emerald-400 border-4 border-slate-900"></div>
+            <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-400/20 text-emerald-300">10:44 着 〜 11:00 発</span>
+              <h4 class="text-base font-bold text-white">道の駅 伊万里（15分休憩）</h4>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              「伊万里ふるさと村」で小休止。ここから県道342号の海沿いルートへ針路を取ります。
+            </p>
+            <div class="mt-1.5 text-xs text-slate-400 flex items-center gap-2">
+              <i class="fa-solid fa-arrow-down text-[10px] text-sky-400"></i>
+              <span>約1時間1分 / 約44km（県道342号 海沿い経由）</span>
+            </div>
+          </div>
+
+          <!-- 12:01〜13:30 -->
           <div class="relative pl-6 sm:pl-8">
             <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-amber-400 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
-              <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-400/20 text-amber-300">12:00</span>
-              <h4 class="text-base font-bold text-white">呼子周辺（昼食：イカ活き造り）</h4>
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-400/20 text-amber-300">12:01 着 〜 13:30 発</span>
+              <h4 class="text-base font-bold text-white">波戸岬（昼食・観光・1.5時間滞在）</h4>
             </div>
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              海沿いルートの絶景と、透明に透き通る名物「イカ活き造り」を堪能！（後のゲソ天ぷらも絶品）
+              玄界灘に突き出たハートの岬！名物サザエの壺焼き売店やイカ活き造りなど海鮮グルメを堪能。
             </p>
+            <div class="mt-1.5 text-xs text-slate-400 flex items-center gap-2">
+              <i class="fa-solid fa-arrow-down text-[10px] text-sky-400"></i>
+              <span>約56分 / 約34km（湊町から国道204号外回りを快走）</span>
+            </div>
           </div>
 
-          <!-- 14:30 -->
+          <!-- 14:26〜14:50 -->
           <div class="relative pl-6 sm:pl-8">
             <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-indigo-400 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
-              <span class="text-xs font-bold px-2 py-0.5 rounded bg-indigo-400/20 text-indigo-300">14:30</span>
-              <h4 class="text-base font-bold text-white">道の駅 厳木（休憩＆作戦ポイント）</h4>
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-indigo-400/20 text-indigo-300">14:26 着 〜 14:50 発</span>
+              <h4 class="text-base font-bold text-white">二丈パーキングエリア（20分休憩）</h4>
             </div>
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              <strong class="text-amber-300">★重要・進路変更：</strong>帰宅ラッシュで混雑する夕方の唐津〜糸島海岸ルートを避け、内陸（厳木方面）へ進路変更。名物の佐用姫像で小休止。
+              玄界灘・糸島の海を一望できるシーサイド絶景PAで最後の記念撮影＆一服。
             </p>
+            <div class="mt-1.5 text-xs text-slate-400 flex items-center gap-2">
+              <i class="fa-solid fa-arrow-down text-[10px] text-sky-400"></i>
+              <span>約52分 / 約45km（西九州自動車道 ➔ 福岡都市高速環状線）</span>
+            </div>
           </div>
 
-          <!-- 15:30 -->
+          <!-- 15:42 -->
           <div class="relative pl-6 sm:pl-8">
             <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sky-400 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
-              <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-400/20 text-sky-300">15:30</span>
-              <h4 class="text-base font-bold text-white">厳木多久道路 〜 長崎道・都市高速へ</h4>
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-400/20 text-sky-300">15:42</span>
+              <h4 class="text-base font-bold text-white">月隈JCT（高速出口）通過</h4>
             </div>
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              有料道路・高速道路（長崎道 多久IC ➔ 鳥栖JCT ➔ 九州道 ➔ 福岡都市高速）を活用し、夕方の下道渋滞を頭上から飛び越えます。
+              夕方の都市部渋滞を高速道路で上から飛び越え、国道3号線へスムーズに合流。
             </p>
+            <div class="mt-1.5 text-xs text-slate-400 flex items-center gap-2">
+              <i class="fa-solid fa-arrow-down text-[10px] text-sky-400"></i>
+              <span>約4分 / 約1km</span>
+            </div>
           </div>
 
-          <!-- 17:15 -->
+          <!-- 16:00 -->
           <div class="relative pl-6 sm:pl-8">
-            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-amber-400 border-4 border-slate-900"></div>
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-emerald-500 border-4 border-slate-900"></div>
             <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
-              <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-400/20 text-amber-300">17:15</span>
-              <h4 class="text-base font-bold text-white">福岡空港周辺 到着（GS満タン給油）</h4>
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">16:00 着！</span>
+              <h4 class="text-base font-bold text-emerald-300">博多区板付 到着（目標達成！）</h4>
             </div>
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              指定ガソリンスタンドで満タン給油（給油レシートを必ず保管）。レンタル返却手続きの準備を行います。
-            </p>
-          </div>
-
-          <!-- 18:00 -->
-          <div class="relative pl-6 sm:pl-8">
-            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-rose-500 border-4 border-slate-900"></div>
-            <div class="flex flex-wrap items-baseline gap-2 mb-0.5">
-              <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300">18:00</span>
-              <h4 class="text-base font-bold text-rose-300">【リミット厳守】バイク返却・解散！</h4>
-            </div>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              レンタルバイク2台を時間内に返却完了。お疲れ様でした！空港から地下鉄・飛行機へスムーズに移動。
+              16:00目標達成！返却リミット18:00まで2時間もの余裕があるため、GS満タン給油や返却手続きも焦らず完了できます。無事故・無違反で完走！
             </p>
           </div>
         </div>
@@ -416,33 +509,33 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 6. 【見どころ集（立ち寄りスポットガイド）】ボックス -->
+    <!-- 6. 【見どころ集（主要立ち寄りスポット）】ボックス -->
     <!-- ========================================== -->
     <section class="bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-2xl space-y-6">
       <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4">
         <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-black text-sm border border-amber-500/30">6</span>
         <div>
           <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">見どころ集（主要立ち寄りスポット）</h2>
-          <p class="text-xs text-slate-400 mt-0.5">今回のツーリングで立ち寄る絶景・名湯・ご当地グルメの公式情報ガイド</p>
+          <p class="text-xs text-slate-400 mt-0.5">今回の新ルートに合わせた絶景・名湯・ご当地グルメの公式情報ガイド</p>
         </div>
       </div>
 
       <!-- スポット一覧カード（実写真＋公式リンク） -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-        <!-- スポット 1：三瀬峠・三瀬そば -->
+        <!-- スポット 1：三瀬そば -->
         <div class="bg-slate-950/70 rounded-2xl overflow-hidden border border-slate-800 flex flex-col justify-between group hover:border-amber-500/40 transition">
           <div class="relative h-44 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=700&q=80" alt="三瀬峠ワインディング" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
             <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-slate-900/80 text-amber-300 text-xs font-bold backdrop-blur border border-slate-700">
-              ① 1日目 昼食・峠道
+              ① 1日目 昼食（三瀬峠）
             </div>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
-              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition">三瀬峠 ＆ 三瀬そば街道</h3>
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition">三瀬そば（三瀬そば街道）</h3>
               <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mt-1">
-                福岡と佐賀の県境、標高約400mの爽快ワインディング。街道沿いには手打ちの風味とボリューム満点の「板そば」が名物の元祖・三瀬そばが並びます。
+                三瀬峠越えのワインディング後のお楽しみ。風味豊かな手打ち蕎麦と、ボリューム満点の「板そば」がライダーに大人気の元祖・名店です。
               </p>
             </div>
             <div class="pt-2 border-t border-slate-800 flex items-center justify-between">
@@ -455,19 +548,44 @@
           </div>
         </div>
 
-        <!-- スポット 2：嬉野温泉 大正屋 -->
+        <!-- スポット 2：みはらしの丘 鷹の羽公園 -->
+        <div class="bg-slate-950/70 rounded-2xl overflow-hidden border border-slate-800 flex flex-col justify-between group hover:border-amber-500/40 transition">
+          <div class="relative h-44 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80" alt="鷹の羽公園 嘉瀬川ダム絶景" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-slate-900/80 text-emerald-300 text-xs font-bold backdrop-blur border border-slate-700">
+              ② 1日目 ダム湖畔絶景
+            </div>
+          </div>
+          <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition">みはらしの丘 鷹の羽公園</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mt-1">
+                嘉瀬川ダム湖（富士しゃくなげ湖）を見下ろす高台に位置する展望公園。広々とした駐車場と雄大な湖のパノラマはバイク写真の絶好スポット！
+              </p>
+            </div>
+            <div class="pt-2 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-400">佐賀市富士町</span>
+              <a href="https://www.asobo-saga.jp/spots/detail/ee4d12c8-6617-4560-8484-9d5f0e9f16d7" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 hover:text-emerald-300 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-700">
+                <span>あそぼーさが（観光情報）</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- スポット 3：嬉野温泉 大正屋 -->
         <div class="bg-slate-950/70 rounded-2xl overflow-hidden border border-slate-800 flex flex-col justify-between group hover:border-amber-500/40 transition">
           <div class="relative h-44 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=700&q=80" alt="嬉野温泉 大正屋" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
             <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-slate-900/80 text-rose-300 text-xs font-bold backdrop-blur border border-slate-700">
-              ② 1日目 宿泊ホテル
+              ③ 1日目 宿泊ホテル
             </div>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition">嬉野観光ホテル 大正屋</h3>
               <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mt-1">
-                皇居基本設計も手掛けた建築家・吉村順三氏設計の老舗旅館。日本三大美肌の湯と称されるトロトロの温泉と特選会席で初日の疲れを癒やします。
+                建築家・吉村順三氏設計の老舗宿。日本三大美肌の湯と称されるトロトロの嬉野温泉の大浴場「四季の湯」「滝の湯」で至福の癒やし時間を。
               </p>
             </div>
             <div class="pt-2 border-t border-slate-800 flex items-center justify-between">
@@ -480,50 +598,25 @@
           </div>
         </div>
 
-        <!-- スポット 3：呼子港 イカ活き造り -->
+        <!-- スポット 4：波戸岬 -->
         <div class="bg-slate-950/70 rounded-2xl overflow-hidden border border-slate-800 flex flex-col justify-between group hover:border-amber-500/40 transition">
           <div class="relative h-44 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=700&q=80" alt="呼子港 イカ活き造り" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80" alt="波戸岬 シーサイド" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
             <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-slate-900/80 text-sky-300 text-xs font-bold backdrop-blur border border-slate-700">
-              ③ 2日目 昼食グルメ
+              ④ 2日目 昼食・シーサイド
             </div>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
-              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition">呼子港・名物イカ活き造り（河太郎・萬坊）</h3>
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition">波戸岬（はどのめいさき）</h3>
               <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mt-1">
-                玄界灘の海水を引いた生簀から揚げたての、透明に透き通るコリコリのイカ活造り！後造りのサクサクなゲソ天ぷらも外せない絶品です。
+                東松浦半島の最北端。「ハートの岬」とも呼ばれる絶景岬で、名物のサザエの壺焼き屋台が並びます。海中展望塔や広大な草原など見どころ満載！
               </p>
             </div>
             <div class="pt-2 border-t border-slate-800 flex items-center justify-between">
-              <span class="text-xs text-slate-400">佐賀県唐津市呼子町</span>
-              <a href="https://www.kawataro.jp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-sky-400 hover:text-sky-300 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-700">
-                <span>元祖・河太郎 公式HP</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- スポット 4：道の駅 厳木 -->
-        <div class="bg-slate-950/70 rounded-2xl overflow-hidden border border-slate-800 flex flex-col justify-between group hover:border-amber-500/40 transition">
-          <div class="relative h-44 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=700&q=80" alt="道の駅 厳木" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-slate-900/80 text-emerald-300 text-xs font-bold backdrop-blur border border-slate-700">
-              ④ 2日目 休憩・渋滞回避
-            </div>
-          </div>
-          <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
-            <div>
-              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition">道の駅 厳木（風のふるさと館）</h3>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mt-1">
-                夕方の海岸混雑を避けて内陸へ入る作戦ポイント。約15分で一回転する高さ12mの巨大な「佐用姫像」がシンボルで、名物ソフトクリームも人気です。
-              </p>
-            </div>
-            <div class="pt-2 border-t border-slate-800 flex items-center justify-between">
-              <span class="text-xs text-slate-400">佐賀県唐津市厳木町</span>
-              <a href="https://www.karatsu-kankou.jp/spots/detail/145/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 hover:text-emerald-300 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-700">
-                <span>唐津観光協会・公式</span>
+              <span class="text-xs text-slate-400">佐賀県唐津市鎮西町</span>
+              <a href="https://www.karatsu-kankou.jp/spots/detail/30/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-sky-400 hover:text-sky-300 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-700">
+                <span>唐津観光協会（波戸岬）</span>
                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
               </a>
             </div>
@@ -554,11 +647,11 @@
         </label>
         <label class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 cursor-pointer hover:bg-slate-950 transition">
           <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-slate-700">
-          <span class="text-slate-200 font-medium">ETCカード（高速ワープ用）</span>
+          <span class="text-slate-200 font-medium">ETCカード（2日目 西九州道〜都市高用）</span>
         </label>
         <label class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 cursor-pointer hover:bg-slate-950 transition">
           <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-slate-700">
-          <span class="text-slate-200 font-medium">ヘルメット・グローブ・ジャケット</span>
+          <span class="text-slate-200 font-medium">ヘルメット・グローブ・ライディングジャケット</span>
         </label>
         <label class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 cursor-pointer hover:bg-slate-950 transition">
           <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-slate-700">
@@ -566,7 +659,7 @@
         </label>
         <label class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 cursor-pointer hover:bg-slate-950 transition">
           <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-slate-700">
-          <span class="text-slate-200 font-medium">カッパ・雨具（急な天候変化用）</span>
+          <span class="text-slate-200 font-medium">カッパ・雨具（急な山の天候変化用）</span>
         </label>
         <label class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 cursor-pointer hover:bg-slate-950 transition">
           <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-slate-700">
@@ -574,7 +667,7 @@
         </label>
         <label class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 cursor-pointer hover:bg-slate-950 transition">
           <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-slate-700">
-          <span class="text-slate-200 font-medium">小銭・現金（有料道路料金所用）</span>
+          <span class="text-slate-200 font-medium">小銭・現金（波戸岬サザエ売店・自販機用）</span>
         </label>
         <label class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 cursor-pointer hover:bg-slate-950 transition">
           <input type="checkbox" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-slate-700">
@@ -633,171 +726,52 @@
 
   <!-- スクリプト群 -->
   <script>
-    const EMBEDDED_GPX = `<?xml version="1.0" encoding="UTF-8"?>
-<gpx version="1.1" creator="MotoPlanner" xmlns="http://www.topografix.com/GPX/1/1">
-  <metadata><name>佐賀・呼子 温泉＆イカ活き造りツーリング</name></metadata>
-  <wpt lat="33.5859" lon="130.4509"><name>① 発着地：福岡空港周辺</name><desc>11/13 12:00出発 / 11/14 18:00返却</desc></wpt>
-  <wpt lat="33.4475" lon="130.2797"><name>② 休憩：三瀬峠・三瀬そば</name><desc>11/13 13:00</desc></wpt>
-  <wpt lat="33.0970" lon="129.9880"><name>③ 宿泊：嬉野観光ホテル大正屋</name><desc>11/13 16:30着</desc></wpt>
-  <wpt lat="33.5398" lon="129.8967"><name>④ 昼食：呼子港（イカ活き造り）</name><desc>11/14 12:00</desc></wpt>
-  <wpt lat="33.3444" lon="130.0827"><name>⑤ 休憩：道の駅 厳木</name><desc>11/14 14:30（渋滞回避）</desc></wpt>
-  <wpt lat="33.2840" lon="130.1260"><name>⑥ 厳木多久道路・多久IC</name><desc>11/14 15:30 高速ワープ</desc></wpt>
-  <trk><name>佐賀・呼子周遊ルート</name><trkseg>
-    <trkpt lat="33.5859" lon="130.4509"><ele>10</ele></trkpt>
-    <trkpt lat="33.5700" lon="130.4350"><ele>15</ele></trkpt>
-    <trkpt lat="33.5480" lon="130.3420"><ele>25</ele></trkpt>
-    <trkpt lat="33.5150" lon="130.3150"><ele>80</ele></trkpt>
-    <trkpt lat="33.4650" lon="130.2920"><ele>380</ele></trkpt>
-    <trkpt lat="33.4475" lon="130.2797"><ele>410</ele></trkpt>
-    <trkpt lat="33.3850" lon="130.2580"><ele>190</ele></trkpt>
-    <trkpt lat="33.3300" lon="130.2650"><ele>40</ele></trkpt>
-    <trkpt lat="33.3150" lon="130.2200"><ele>30</ele></trkpt>
-    <trkpt lat="33.2200" lon="130.0800"><ele>35</ele></trkpt>
-    <trkpt lat="33.1500" lon="130.0200"><ele>45</ele></trkpt>
-    <trkpt lat="33.0970" lon="129.9880"><ele>50</ele></trkpt>
-    <trkpt lat="33.1950" lon="129.9300"><ele>40</ele></trkpt>
-    <trkpt lat="33.2720" lon="129.8780"><ele>20</ele></trkpt>
-    <trkpt lat="33.4200" lon="129.8650"><ele>30</ele></trkpt>
-    <trkpt lat="33.5398" lon="129.8967"><ele>5</ele></trkpt>
-    <trkpt lat="33.4600" lon="129.9700"><ele>10</ele></trkpt>
-    <trkpt lat="33.3900" lon="130.0300"><ele>65</ele></trkpt>
-    <trkpt lat="33.3444" lon="130.0827"><ele>85</ele></trkpt>
-    <trkpt lat="33.2840" lon="130.1260"><ele>70</ele></trkpt>
-    <trkpt lat="33.3200" lon="130.2900"><ele>25</ele></trkpt>
-    <trkpt lat="33.3750" lon="130.5050"><ele>30</ele></trkpt>
-    <trkpt lat="33.5200" lon="130.4700"><ele>20</ele></trkpt>
-    <trkpt lat="33.5859" lon="130.4509"><ele>10</ele></trkpt>
-  </trkseg></trk>
-</gpx>`;
+    // 1. マップ切替タブ（1日目／2日目）
+    function switchMapDay(day) {
+      const tab1 = document.getElementById('map-tab-day1');
+      const tab2 = document.getElementById('map-tab-day2');
+      const area1 = document.getElementById('map-area-day1');
+      const area2 = document.getElementById('map-area-day2');
 
-    // 1. 地図初期化
-    const map = L.map('map').setView([33.35, 130.20], 10);
-    let currentGpxLayer = null;
-    const ACTUAL_GPX_KEY = 'kyushu_actual_gpx_data';
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-
-    const GAS_STATIONS = [
-      { name: "ENEOS 福岡空港前SS", lat: 33.5880, lon: 130.4520, note: "出発時・帰着時満タン給油ポイント" },
-      { name: "出光 西新SS（早良街道）", lat: 33.5710, lon: 130.3550, note: "三瀬峠アタック前の最終給油" },
-      { name: "コスモ石油 佐賀大和IC SS", lat: 33.3250, lon: 130.2700, note: "高速合流前のセルフ給油所" },
-      { name: "ENEOS 武雄温泉SS", lat: 33.1900, lon: 130.0150, note: "嬉野温泉到着手前" },
-      { name: "昭和シェル 伊万里中央SS", lat: 33.2750, lon: 129.8700, note: "2日目 北上ルート沿い" },
-      { name: "JA-SS 呼子給油所", lat: 33.5380, lon: 129.8950, note: "呼子港・イカ活き造りエリア" },
-      { name: "ENEOS 厳木SS（道の駅近く）", lat: 33.3420, lon: 130.0850, note: "道の駅 厳木すぐそば" },
-      { name: "出光 多久インターSS", lat: 33.2820, lon: 130.1300, note: "高速ワープ直前" }
-    ];
-
-    const gsIcon = L.divIcon({
-      className: 'custom-gs-marker',
-      html: '<div style="background-color:#f59e0b; color:#0f172a; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:bold; border:2px solid #ffffff; box-shadow:0 2px 5px rgba(0,0,0,0.4);">⛽</div>',
-      iconSize: [26, 26],
-      iconAnchor: [13, 13]
-    });
-
-    GAS_STATIONS.forEach(gs => {
-      L.marker([gs.lat, gs.lon], { icon: gsIcon })
-        .bindPopup(`<strong>⛽ ${gs.name}</strong><br><span style="font-size:11px; color:#64748b;">${gs.note}</span>`)
-        .addTo(map);
-    });
-
-    function renderGpx(gpxSource, isActual = false) {
-      if (currentGpxLayer) map.removeLayer(currentGpxLayer);
-
-      const lineColor = isActual ? '#0284c7' : '#f59e0b';
-      currentGpxLayer = new L.GPX(gpxSource, {
-        async: true,
-        marker_options: {
-          startIconUrl: null,
-          endIconUrl: null,
-          shadowUrl: null,
-          wptIconUrls: { '': 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png' }
-        },
-        polyline_options: { color: lineColor, opacity: 0.9, weight: 5, lineCap: 'round' }
-      }).on('loaded', function(e) {
-        map.fitBounds(e.target.getBounds(), { padding: [35, 35] });
-
-        if (isActual) {
-          const distKm = (e.target.get_distance() / 1000).toFixed(1);
-          const eleMax = Math.round(e.target.get_elevation_max());
-          if (distKm > 0) {
-            document.getElementById('stat-distance').textContent = distKm;
-            document.getElementById('stat-distance-sub').textContent = '実走行ログ計測値';
-          }
-          if (eleMax > 0) document.getElementById('stat-elevation').textContent = eleMax.toLocaleString();
-          document.getElementById('map-title-label').innerHTML = `ルートマップ（<span class="text-sky-400 font-bold">実走行ログ反映中</span>）`;
-          document.getElementById('route-legend').innerHTML = `<span class="w-3 h-1 bg-sky-500 rounded-full inline-block"></span> 実走行ルート`;
-          document.getElementById('btn-reset-gpx').classList.remove('hidden');
-        } else {
-          document.getElementById('map-title-label').textContent = 'ルートマップ（GPX可視化）';
-          document.getElementById('route-legend').innerHTML = `<span class="w-3 h-1 bg-amber-500 rounded-full inline-block"></span> 予定ルート`;
-          document.getElementById('btn-reset-gpx').classList.add('hidden');
-        }
-      }).addTo(map);
-    }
-
-    const savedActualGpx = localStorage.getItem(ACTUAL_GPX_KEY);
-    if (savedActualGpx) {
-      renderGpx(savedActualGpx, true);
-    } else {
-      fetch('kyushu-touring.gpx')
-        .then(res => res.text())
-        .then(data => renderGpx(data, false))
-        .catch(() => renderGpx(EMBEDDED_GPX, false));
-    }
-
-    document.getElementById('actual-gpx-input').addEventListener('change', function(e) {
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = function(evt) {
-        const gpxText = evt.target.result;
-        try {
-          renderGpx(gpxText, true);
-          localStorage.setItem(ACTUAL_GPX_KEY, gpxText);
-          alert('実走行GPXを取り込みました！地図と走行距離・標高が更新されました。');
-        } catch (err) {
-          alert('GPXファイルの解析に失敗しました。');
-        }
-      };
-      reader.readAsText(file);
-      e.target.value = '';
-    });
-
-    function resetToPlannedGpx() {
-      if (confirm('計画時の予定ルート表示に戻しますか？')) {
-        localStorage.removeItem(ACTUAL_GPX_KEY);
-        document.getElementById('stat-distance').textContent = '約 281';
-        document.getElementById('stat-distance-sub').textContent = '1日目:98km / 2日目:183km';
-        document.getElementById('stat-elevation').textContent = '約 410';
-        fetch('kyushu-touring.gpx')
-          .then(res => res.text())
-          .then(data => renderGpx(data, false))
-          .catch(() => renderGpx(EMBEDDED_GPX, false));
+      if (day === 1) {
+        tab1.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md";
+        tab2.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
+        area1.classList.remove('hidden');
+        area2.classList.add('hidden');
+      } else {
+        tab2.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-sky-500 text-slate-950 shadow-md";
+        tab1.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
+        area2.classList.remove('hidden');
+        area1.classList.add('hidden');
       }
     }
 
-    document.getElementById('btn-download-gpx').addEventListener('click', () => {
-      const blob = new Blob([EMBEDDED_GPX], { type: 'application/gpx+xml' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'saga-yobuko-touring-route.gpx';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    });
+    // 2. スケジュール切替タブ（1日目／2日目）
+    function switchSchedDay(day) {
+      const tab1 = document.getElementById('sched-tab-day1');
+      const tab2 = document.getElementById('sched-tab-day2');
+      const area1 = document.getElementById('sched-area-day1');
+      const area2 = document.getElementById('sched-area-day2');
 
-    // 2. 天気・気温・風速情報（Open-Meteo API）
+      if (day === 1) {
+        tab1.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md";
+        tab2.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
+        area1.classList.remove('hidden');
+        area2.classList.add('hidden');
+      } else {
+        tab2.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-sky-500 text-slate-950 shadow-md";
+        tab1.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
+        area2.classList.remove('hidden');
+        area1.classList.add('hidden');
+      }
+    }
+
+    // 3. 天気・気温・風速情報（Open-Meteo API）
     const WEATHER_POINTS = [
-      { id: 'fukuoka', lat: 33.5904, lon: 130.4017 },
-      { id: 'ureshino', lat: 33.0970, lon: 129.9880 },
-      { id: 'yobuko', lat: 33.5398, lon: 129.8967 },
-      { id: 'fukuoka-return', lat: 33.5859, lon: 130.4509 }
+      { id: 'fukuoka', lat: 33.5658, lon: 130.4544 },
+      { id: 'ureshino', lat: 33.0961, lon: 129.9829 },
+      { id: 'hado', lat: 33.5555, lon: 129.8463 },
+      { id: 'fukuoka-return', lat: 33.5658, lon: 130.4544 }
     ];
 
     function getWeatherIcon(code) {
@@ -840,9 +814,9 @@
       });
     }
 
-    // 3. 参加者情報＆給油シミュレーション
+    // 4. 参加者情報＆給油シミュレーション
     const MEMBERS_STORAGE_KEY = 'kyushu_touring_members_v1';
-    const TOTAL_DISTANCE = 281;
+    const TOTAL_DISTANCE = 258; // 新計画の合計距離 (102km + 156km)
 
     const DEFAULT_MEMBERS = [
       { id: 'm1', name: 'ライダーA (リーダー)', bike: 'Rebel 250 (レンタル)', tank: 11.0, efficiency: 33.0 },
@@ -909,14 +883,14 @@
                   <i class="fa-solid fa-triangle-exclamation"></i>
                   <span>途中給油が必要（不足: 約${Math.abs(diff)}km）</span>
                 </div>
-                <div class="text-[10px] text-rose-300/80 mt-0.5">※伊万里または呼子手前での給油推奨</div>
+                <div class="text-[10px] text-rose-300/80 mt-0.5">※道の駅伊万里または波戸岬周辺での給油推奨</div>
               `
                 : `
                 <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-400">
                   <i class="fa-solid fa-circle-check"></i>
                   <span>無給油で完走可能（残余: 約${diff}km）</span>
                 </div>
-                <div class="text-[10px] text-slate-400 mt-0.5">※安心のため帰着前補給も可</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">※安心のため帰着前満タン給油</div>
               `
             }
           </div>
@@ -951,7 +925,7 @@
       }
     }
 
-    // 4. チェックリスト
+    // 5. チェックリスト
     const checkboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
     checkboxes.forEach((cb, idx) => {
       const key = `kyushu_checklist_${idx}`;
