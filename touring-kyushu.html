@@ -138,23 +138,52 @@
               <span>1日目：11/13(金) 博多 〜 三瀬峠 〜 嬉野温泉</span>
             </span>
           </div>
+
           <div class="grid grid-cols-2 gap-3">
-            <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
-              <div class="text-[11px] text-slate-400 font-medium">福岡市 (博多・板付)</div>
-              <div class="flex items-center justify-between mt-1">
-                <div class="text-lg font-black text-white" id="weather-fukuoka-temp">取得中...</div>
-                <div class="text-2xl" id="weather-fukuoka-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
+            <!-- 福岡市（博多） -->
+            <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 flex flex-col justify-between">
+              <div>
+                <div class="text-[11px] text-slate-400 font-medium">福岡市 (博多・板付)</div>
+                <div class="flex items-center justify-between mt-1">
+                  <div class="text-lg font-black text-white" id="weather-fukuoka-temp">取得中...</div>
+                  <div class="text-2xl" id="weather-fukuoka-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
+                </div>
+                <div class="text-[10px] text-slate-400 mt-1" id="weather-fukuoka-sub">風速: - m/s | 降水: -%</div>
               </div>
-              <div class="text-[10px] text-slate-400 mt-1" id="weather-fukuoka-sub">風速: - m/s | 降水: -%</div>
+              <a href="https://tenki.jp/forecast/9/43/8210/40132/" target="_blank" rel="noopener noreferrer" class="mt-2.5 pt-2 border-t border-slate-800/80 text-[10px] text-amber-400 hover:text-amber-300 font-bold inline-flex items-center justify-between transition">
+                <span>tenki.jp 詳細予報</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+              </a>
             </div>
-            <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
-              <div class="text-[11px] text-slate-400 font-medium">嬉野市 (大正屋)</div>
-              <div class="flex items-center justify-between mt-1">
-                <div class="text-lg font-black text-white" id="weather-ureshino-temp">取得中...</div>
-                <div class="text-2xl" id="weather-ureshino-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
+
+            <!-- 嬉野市 -->
+            <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 flex flex-col justify-between">
+              <div>
+                <div class="text-[11px] text-slate-400 font-medium">嬉野市 (大正屋)</div>
+                <div class="flex items-center justify-between mt-1">
+                  <div class="text-lg font-black text-white" id="weather-ureshino-temp">取得中...</div>
+                  <div class="text-2xl" id="weather-ureshino-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
+                </div>
+                <div class="text-[10px] text-slate-400 mt-1" id="weather-ureshino-sub">風速: - m/s | 降水: -%</div>
               </div>
-              <div class="text-[10px] text-slate-400 mt-1" id="weather-ureshino-sub">風速: - m/s | 降水: -%</div>
+              <a href="https://tenki.jp/forecast/9/44/8510/41209/" target="_blank" rel="noopener noreferrer" class="mt-2.5 pt-2 border-t border-slate-800/80 text-[10px] text-amber-400 hover:text-amber-300 font-bold inline-flex items-center justify-between transition">
+                <span>tenki.jp 詳細予報</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+              </a>
             </div>
+          </div>
+
+          <!-- 1日目 経由地別 外部天気リンク -->
+          <div class="pt-2 border-t border-slate-800/60 flex flex-wrap items-center gap-1.5 text-[11px]">
+            <span class="text-slate-500 text-[10px]">経由地の天気:</span>
+            <a href="https://tenki.jp/forecast/9/44/8510/41201/" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-amber-300 border border-slate-800 transition inline-flex items-center gap-1">
+              <span>三瀬峠・佐賀市</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[8px] text-slate-500"></i>
+            </a>
+            <a href="https://weather.yahoo.co.jp/weather/jp/41/8510/41209.html" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-amber-300 border border-slate-800 transition inline-flex items-center gap-1">
+              <span>Yahoo!天気(嬉野)</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[8px] text-slate-500"></i>
+            </a>
           </div>
         </div>
 
@@ -166,23 +195,56 @@
               <span>2日目：11/14(土) 波戸岬 〜 糸島・二丈 〜 博多</span>
             </span>
           </div>
+
           <div class="grid grid-cols-2 gap-3">
-            <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
-              <div class="text-[11px] text-slate-400 font-medium">波戸岬・唐津 (海沿い)</div>
-              <div class="flex items-center justify-between mt-1">
-                <div class="text-lg font-black text-white" id="weather-hado-temp">取得中...</div>
-                <div class="text-2xl" id="weather-hado-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
+            <!-- 波戸岬・唐津 -->
+            <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 flex flex-col justify-between">
+              <div>
+                <div class="text-[11px] text-slate-400 font-medium">波戸岬・唐津 (海沿い)</div>
+                <div class="flex items-center justify-between mt-1">
+                  <div class="text-lg font-black text-white" id="weather-hado-temp">取得中...</div>
+                  <div class="text-2xl" id="weather-hado-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
+                </div>
+                <div class="text-[10px] text-slate-400 mt-1" id="weather-hado-sub">風速: - m/s | 降水: -%</div>
               </div>
-              <div class="text-[10px] text-slate-400 mt-1" id="weather-hado-sub">風速: - m/s | 降水: -%</div>
+              <a href="https://tenki.jp/forecast/9/44/8510/41202/" target="_blank" rel="noopener noreferrer" class="mt-2.5 pt-2 border-t border-slate-800/80 text-[10px] text-sky-400 hover:text-sky-300 font-bold inline-flex items-center justify-between transition">
+                <span>tenki.jp 詳細予報</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+              </a>
             </div>
-            <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
-              <div class="text-[11px] text-slate-400 font-medium">博多区板付 (帰着地)</div>
-              <div class="flex items-center justify-between mt-1">
-                <div class="text-lg font-black text-white" id="weather-fukuoka-return-temp">取得中...</div>
-                <div class="text-2xl" id="weather-fukuoka-return-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
+
+            <!-- 博多区板付 (帰着地) -->
+            <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 flex flex-col justify-between">
+              <div>
+                <div class="text-[11px] text-slate-400 font-medium">博多区板付 (帰着地)</div>
+                <div class="flex items-center justify-between mt-1">
+                  <div class="text-lg font-black text-white" id="weather-fukuoka-return-temp">取得中...</div>
+                  <div class="text-2xl" id="weather-fukuoka-return-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
+                </div>
+                <div class="text-[10px] text-slate-400 mt-1" id="weather-fukuoka-return-sub">風速: - m/s | 降水: -%</div>
               </div>
-              <div class="text-[10px] text-slate-400 mt-1" id="weather-fukuoka-return-sub">風速: - m/s | 降水: -%</div>
+              <a href="https://tenki.jp/forecast/9/43/8210/40132/" target="_blank" rel="noopener noreferrer" class="mt-2.5 pt-2 border-t border-slate-800/80 text-[10px] text-sky-400 hover:text-sky-300 font-bold inline-flex items-center justify-between transition">
+                <span>tenki.jp 詳細予報</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+              </a>
             </div>
+          </div>
+
+          <!-- 2日目 経由地別 外部天気リンク -->
+          <div class="pt-2 border-t border-slate-800/60 flex flex-wrap items-center gap-1.5 text-[11px]">
+            <span class="text-slate-500 text-[10px]">経由地の天気:</span>
+            <a href="https://tenki.jp/forecast/9/44/8510/41205/" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-sky-300 border border-slate-800 transition inline-flex items-center gap-1">
+              <span>伊万里市</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[8px] text-slate-500"></i>
+            </a>
+            <a href="https://tenki.jp/forecast/9/43/8210/40230/" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-sky-300 border border-slate-800 transition inline-flex items-center gap-1">
+              <span>糸島市(二丈)</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[8px] text-slate-500"></i>
+            </a>
+            <a href="https://weathernews.jp/onebox/tenki/saga/41202/" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-sky-300 border border-slate-800 transition inline-flex items-center gap-1">
+              <span>ウェザーニュース(波戸岬)</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[8px] text-slate-500"></i>
+            </a>
           </div>
         </div>
       </div>
