@@ -1228,33 +1228,6 @@
           });
       });
     }
-      if (refreshIcon) refreshIcon.classList.add('animate-spin');
-
-      WEATHER_POINTS.forEach(spot => {
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${spot.lat}&longitude=${spot.lon}&current=temperature_2m,wind_speed_10m,precipitation_probability,weather_code&timezone=Asia%2FTokyo`;
-        fetch(url)
-          .then(res => res.json())
-          .then(data => {
-            const current = data.current;
-            const temp = Math.round(current.temperature_2m);
-            const wind = current.wind_speed_10m ? current.wind_speed_10m.toFixed(1) : '2.5';
-            const pop = current.precipitation_probability !== undefined ? current.precipitation_probability : 0;
-            const wCode = current.weather_code;
-
-            document.getElementById(`weather-${spot.id}-temp`).textContent = `${temp}℃`;
-            document.getElementById(`weather-${spot.id}-icon`).innerHTML = getWeatherIcon(wCode);
-            document.getElementById(`weather-${spot.id}-sub`).textContent = `風速: ${wind}m/s | 降水: ${pop}%`;
-          })
-          .catch(() => {
-            document.getElementById(`weather-${spot.id}-temp`).textContent = '19℃';
-            document.getElementById(`weather-${spot.id}-icon`).innerHTML = '<i class="fa-solid fa-sun text-amber-400"></i>';
-            document.getElementById(`weather-${spot.id}-sub`).textContent = '風速: 3.2m/s | 降水: 10%';
-          })
-          .finally(() => {
-            setTimeout(() => { if (refreshIcon) refreshIcon.classList.remove('animate-spin'); }, 500);
-          });
-      });
-    }
 
     // 4. 参加者情報＆給油シミュレーション
     const MEMBERS_STORAGE_KEY = 'kyushu_touring_members_v3';
