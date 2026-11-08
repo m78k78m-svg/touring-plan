@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>【1泊2日】博多〜嬉野・波戸岬 絶景ツーリング計画書 | MotoPlanner</title>
 
   <!-- Tailwind CSS -->
@@ -816,41 +819,67 @@
 
     // 1. Googleマップ切替タブ（1日目／2日目）
     function switchGMap(day) {
+      console.log('switchGMap called with day:', day);
       const tab1 = document.getElementById('gmap-tab-day1');
       const tab2 = document.getElementById('gmap-tab-day2');
       const container1 = document.getElementById('gmap-container-day1');
       const container2 = document.getElementById('gmap-container-day2');
 
       if (day === 1) {
-        tab1.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md";
-        tab2.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
-        if (container1) container1.classList.remove('hidden');
-        if (container2) container2.classList.add('hidden');
+        if (tab1) tab1.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md";
+        if (tab2) tab2.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
+        if (container1) {
+          container1.classList.remove('hidden');
+          container1.style.display = 'block';
+        }
+        if (container2) {
+          container2.classList.add('hidden');
+          container2.style.display = 'none';
+        }
       } else {
-        tab2.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-sky-500 text-slate-950 shadow-md";
-        tab1.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
-        if (container2) container2.classList.remove('hidden');
-        if (container1) container1.classList.add('hidden');
+        if (tab2) tab2.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-sky-500 text-slate-950 shadow-md";
+        if (tab1) tab1.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
+        if (container2) {
+          container2.classList.remove('hidden');
+          container2.style.display = 'block';
+        }
+        if (container1) {
+          container1.classList.add('hidden');
+          container1.style.display = 'none';
+        }
       }
     }
 
     // 2. スケジュール切替タブ（1日目／2日目）
     function switchSchedDay(day) {
+      console.log('switchSchedDay called with day:', day);
       const tab1 = document.getElementById('sched-tab-day1');
       const tab2 = document.getElementById('sched-tab-day2');
       const area1 = document.getElementById('sched-area-day1');
       const area2 = document.getElementById('sched-area-day2');
 
       if (day === 1) {
-        tab1.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md";
-        tab2.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
-        area1.classList.remove('hidden');
-        area2.classList.add('hidden');
+        if (tab1) tab1.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md";
+        if (tab2) tab2.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
+        if (area1) {
+          area1.classList.remove('hidden');
+          area1.style.display = 'block';
+        }
+        if (area2) {
+          area2.classList.add('hidden');
+          area2.style.display = 'none';
+        }
       } else {
-        tab2.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-sky-500 text-slate-950 shadow-md";
-        tab1.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
-        area2.classList.remove('hidden');
-        area1.classList.add('hidden');
+        if (tab2) tab2.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-sky-500 text-slate-950 shadow-md";
+        if (tab1) tab1.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
+        if (area2) {
+          area2.classList.remove('hidden');
+          area2.style.display = 'block';
+        }
+        if (area1) {
+          area1.classList.add('hidden');
+          area1.style.display = 'none';
+        }
       }
     }
 
@@ -1021,8 +1050,21 @@
       cb.addEventListener('change', () => localStorage.setItem(key, cb.checked));
     });
 
-    // 初期実行
+    // 初期実行 & イベントリスナー設定
+    document.addEventListener('DOMContentLoaded', () => {
+      const gtab1 = document.getElementById('gmap-tab-day1');
+      const gtab2 = document.getElementById('gmap-tab-day2');
+      if (gtab1) gtab1.addEventListener('click', () => switchGMap(1));
+      if (gtab2) gtab2.addEventListener('click', () => switchGMap(2));
+
+      const stab1 = document.getElementById('sched-tab-day1');
+      const stab2 = document.getElementById('sched-tab-day2');
+      if (stab1) stab1.addEventListener('click', () => switchSchedDay(1));
+      if (stab2) stab2.addEventListener('click', () => switchSchedDay(2));
+    });
+
     switchGMap(1);
+    switchSchedDay(1);
     fetchWeatherData();
     renderMembers();
   </script>
