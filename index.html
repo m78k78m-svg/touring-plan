@@ -36,17 +36,13 @@
   <!-- メインコンテンツ -->
   <main class="max-w-5xl mx-auto px-4 py-8 space-y-8">
 
-    <!-- ウェルカムバナー -->
-    <section class="relative overflow-hidden bg-gradient-to-r from-slate-800 via-slate-850 to-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-700 shadow-2xl">
+    <!-- ウェルカムバナー（目立つ高級感あるアンバー＆スレートグラデーション） -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-amber-950/70 via-slate-900 to-slate-950 rounded-3xl p-7 sm:p-10 border border-amber-500/30 shadow-2xl shadow-amber-950/30">
       <div class="relative z-10 max-w-2xl space-y-3">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-400/10 text-amber-300 border border-amber-400/20">
-          <i class="fa-solid fa-compass"></i>
-          <span>ツーリング・ポータル</span>
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-amber-100 to-amber-300 tracking-tight leading-tight">
           仲間とつくる、次のツーリング。
         </h2>
-        <p class="text-sm text-slate-300 leading-relaxed">
+        <p class="text-base sm:text-lg font-bold text-amber-200/90 tracking-wide">
           計画はここで共有、思い出もここに残す。
         </p>
       </div>
@@ -406,9 +402,10 @@
 
         <!-- カードメイン部 -->
         <div class="p-5 space-y-4 flex-1 flex flex-col justify-between">
-          <div class="space-y-2">
-            <div class="text-xs text-slate-400 font-medium">
-              <i class="fa-regular fa-calendar mr-1 text-amber-400"></i>${item.date}
+          <div class="space-y-2.5">
+            <div class="inline-flex items-center gap-2 bg-slate-900/90 px-3.5 py-1.5 rounded-xl border border-amber-500/30 shadow-sm">
+              <i class="fa-regular fa-calendar-check text-amber-400 text-sm"></i>
+              <span class="text-sm sm:text-base font-black text-amber-300 tracking-wide">${item.date}</span>
             </div>
             <h3 class="text-lg font-black text-white group-hover:text-amber-400 transition leading-snug">
               ${item.title}
