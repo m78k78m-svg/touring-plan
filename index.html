@@ -419,25 +419,22 @@
       }
 
       card.innerHTML = `
-        <!-- カードヘッダー部 -->
-        <div class="h-28 bg-gradient-to-tr from-amber-600/30 via-slate-800 to-sky-700/30 p-4 flex flex-col justify-between border-b border-slate-700/60 relative">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 backdrop-blur">
-                <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                ${item.badge || (item.isUpcoming ? '計画中' : '走行完了')}
-              </span>
-              ${alertBadge}
-            </div>
-            
-            <!-- 右上操作エリア（カウントダウン ＋ 安全メニュー） -->
-            <div class="flex items-center gap-2">
+        <!-- カードヘッダー部（スマホでバッジが潰れない2行設計） -->
+        <div class="bg-gradient-to-tr from-amber-600/30 via-slate-800 to-sky-700/30 p-4 border-b border-slate-700/60 relative space-y-2.5">
+          <!-- 1行目：ステータスバッジ ＋ カウントダウン ＋ メニュー -->
+          <div class="flex items-center justify-between gap-2">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 backdrop-blur whitespace-nowrap">
+              <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+              <span>${item.badge || (item.isUpcoming ? '計画中' : '走行完了')}</span>
+            </span>
+
+            <div class="flex items-center gap-1.5 flex-shrink-0">
               ${countdownHtml}
               <div class="relative">
-                <button onclick="event.stopPropagation(); toggleCardMenu('${item.id}')" class="w-7 h-7 rounded-lg bg-black/40 hover:bg-black/60 text-slate-300 hover:text-white flex items-center justify-center text-xs transition border border-white/10" title="メニュー">
+                <button onclick="event.stopPropagation(); toggleCardMenu('${item.id}')" class="w-8 h-8 rounded-xl bg-black/40 hover:bg-black/60 text-slate-300 hover:text-white flex items-center justify-center text-xs transition border border-white/10" title="メニュー">
                   <i class="fa-solid fa-ellipsis-vertical"></i>
                 </button>
-                <div id="card-menu-${item.id}" class="hidden absolute right-0 top-8 z-30 w-36 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl py-1 text-xs">
+                <div id="card-menu-${item.id}" class="hidden absolute right-0 top-9 z-30 w-36 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl py-1 text-xs">
                   <button onclick="openDeleteModal('${item.id}', '${item.title}')" class="w-full text-left px-3 py-2 text-rose-400 hover:bg-rose-500/10 flex items-center gap-2 font-medium">
                     <i class="fa-regular fa-trash-can"></i>
                     <span>計画を削除</span>
@@ -446,59 +443,80 @@
               </div>
             </div>
           </div>
-          
-          <div class="text-xs text-amber-300 font-semibold flex items-center gap-1">
-            <i class="fa-solid fa-location-dot"></i>
-            <span>${item.area}</span>
+
+          <!-- 2行目：エリア情報 ＋ 16時着目標アラート -->
+          <div class="flex flex-wrap items-center justify-between gap-1.5 pt-0.5">
+            <div class="text-xs text-amber-300 font-bold flex items-center gap-1.5">
+              <i class="fa-solid fa-location-dot text-amber-400"></i>
+              <span>${item.area}</span>
+            </div>
+            ${alertBadge}
           </div>
         </div>
 
         <!-- カードメイン部 -->
-        <div class="p-5 space-y-4 flex-1 flex flex-col justify-between">
-          <div class="space-y-2.5">
-            <div class="inline-flex items-center gap-2 bg-slate-900/90 px-3.5 py-1.5 rounded-xl border border-amber-500/30 shadow-sm">
-              <i class="fa-regular fa-calendar-check text-amber-400 text-sm"></i>
-              <span class="text-sm sm:text-base font-black text-amber-300 tracking-wide">${item.date}</span>
+        <div class="p-4 sm:p-5 space-y-4 flex-1 flex flex-col justify-between">
+          <div class="space-y-3">
+            <!-- 開催日程ボックス（スマホでも文字が折り返さないすっきりレイアウト） -->
+            <div class="bg-slate-900/90 p-3 rounded-2xl border border-amber-500/30 shadow-sm flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm border border-amber-500/30 flex-shrink-0">
+                  <i class="fa-regular fa-calendar-check"></i>
+                </div>
+                <div>
+                  <div class="text-xs sm:text-sm font-black text-amber-300 tracking-wide">${item.date}</div>
+                  <div class="text-[10px] text-slate-400 mt-0.5">板付 12:00発 ➔ 翌日 16:00 帰着目標（余裕ある進行）</div>
+                </div>
+              </div>
             </div>
-            <h3 class="text-lg font-black text-white group-hover:text-amber-400 transition leading-snug">
-              ${item.title}
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 line-clamp-2 leading-relaxed">
-              ${item.desc || '見どころ満載のツーリング計画です！'}
-            </p>
+
+            <!-- タイトルと概要 -->
+            <div>
+              <h3 class="text-base sm:text-lg font-black text-white group-hover:text-amber-400 transition leading-snug">
+                ${item.title}
+              </h3>
+              <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed mt-1.5">
+                ${item.desc || '見どころ満載のツーリング計画です！'}
+              </p>
+            </div>
           </div>
 
-          <div class="space-y-3">
+          <div class="space-y-3 pt-1">
             <!-- 参加メンバー（アバター） -->
             ${membersHtml}
 
-            <!-- 改善後の目的地タイル（距離・宿泊先・主要ルート） -->
-            <div class="grid grid-cols-3 gap-2 border-t border-slate-700/60 pt-3 text-center text-xs">
-              <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
-                <span class="text-slate-400 block text-[10px] mb-0.5">総走行距離</span>
-                <span class="font-black text-white text-xs">${item.distance || '未定'}</span>
+            <!-- 改善後の目的地タイル（文字切れしない2列＋ルート幅いっぱい設計） -->
+            <div class="space-y-2 border-t border-slate-700/60 pt-3 text-xs">
+              <div class="grid grid-cols-2 gap-2">
+                <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                  <span class="text-slate-400 text-[10px]">総走行距離</span>
+                  <span class="font-black text-white text-xs">${item.distance || '未定'}</span>
+                </div>
+                <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                  <span class="text-slate-400 text-[10px]">宿泊ホテル</span>
+                  <span class="font-black text-rose-300 text-xs">${item.hotel || '日帰り'}</span>
+                </div>
               </div>
-              <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
-                <span class="text-slate-400 block text-[10px] mb-0.5">宿泊先</span>
-                <span class="font-black text-rose-300 text-xs truncate block" title="${item.hotel || item.spot || '日帰り'}">${item.hotel || '日帰り'}</span>
-              </div>
-              <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
-                <span class="text-slate-400 block text-[10px] mb-0.5">主要ルート</span>
-                <span class="font-black text-amber-400 text-[11px] truncate block" title="${item.spot || '未定'}">${item.spot || '未定'}</span>
+              <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                <span class="text-slate-400 text-[10px] flex-shrink-0 mr-2">主要ルート</span>
+                <span class="font-bold text-amber-300 text-[11px] truncate">${item.spot || '未定'}</span>
               </div>
             </div>
 
-            <!-- アクションボタン（誤タップ防止：完走ボタンと詳細ボタンを安全に配置） -->
-            <div class="flex items-center justify-between pt-2">
-              <button onclick="togglePlanStatus('${item.id}')" class="text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 ${item.isUpcoming ? 'bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 border border-emerald-500/40 shadow-sm' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}">
-                <i class="fa-solid ${item.isUpcoming ? 'fa-flag-checkered text-emerald-400' : 'fa-rotate-left'}"></i>
-                <span>${item.isUpcoming ? '完走（レポートへ）' : '計画中に戻す'}</span>
-              </button>
-
-              <a href="${item.link || '#'}" class="text-xs font-black text-slate-950 bg-amber-500 hover:bg-amber-400 px-4 py-2 rounded-xl shadow-md shadow-amber-500/20 transition inline-flex items-center gap-1.5">
+            <!-- アクションボタン（スマホで最も押しやすい縦積み大型ボタン配置） -->
+            <div class="space-y-2 pt-1">
+              <a href="${item.link || '#'}" class="w-full py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-amber-500/25 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-book-open text-xs"></i>
                 <span>詳細・しおりを見る</span>
-                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                <i class="fa-solid fa-arrow-right text-[11px]"></i>
               </a>
+
+              <div class="flex items-center justify-center">
+                <button onclick="togglePlanStatus('${item.id}')" class="text-xs font-bold px-3 py-1.5 rounded-xl transition flex items-center gap-1.5 text-slate-400 hover:text-emerald-300 hover:bg-slate-700/50">
+                  <i class="fa-solid ${item.isUpcoming ? 'fa-flag-checkered text-emerald-400' : 'fa-rotate-left'}"></i>
+                  <span>${item.isUpcoming ? 'ツーリング完走（レポートへ移動）' : '計画中に戻す'}</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
