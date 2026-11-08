@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>ツーリング計画＆ログ共有ポータル | MotoPlanner</title>
 
   <!-- Tailwind CSS -->
@@ -262,11 +265,35 @@
     ];
 
     function getTourings() {
+      // 過去の古いLocalStorageキーを完全破棄
+      try {
+        localStorage.removeItem('motoplanner_tourings_v1');
+        localStorage.removeItem('motoplanner_tourings_v2');
+      } catch (e) {}
+
+      let list = DEFAULT_TOURING_LIST;
       try {
         const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) return JSON.parse(stored);
+        if (stored) {
+          list = JSON.parse(stored);
+        }
       } catch (e) {}
-      return DEFAULT_TOURING_LIST;
+
+      // もし古いキャッシュデータ（箱根・伊豆）が残っていたら強制的に除外・クリーニング
+      list = list.filter(item => {
+        const title = item.title || '';
+        return item.id !== 'plan_hakone_2026' && 
+               item.id !== 'plan_izu_past' && 
+               !title.includes('箱根') && 
+               !title.includes('伊豆');
+      });
+
+      // 万が一リストが空になってしまったらデフォルトの九州ツーリングを再セット
+      if (list.length === 0) {
+        list = DEFAULT_TOURING_LIST;
+      }
+
+      return list;
     }
 
     function saveTourings(list) {
