@@ -209,76 +209,54 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 4. 【ルートマップ（1日目／2日目 Googleマップ埋め込み）】ボックス -->
+    <!-- 4. 【ルートマップ（1日目／2日目 切替）】ボックス -->
     <!-- ========================================== -->
     <section class="bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-2xl space-y-5">
       <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
         <div class="flex items-center gap-3">
           <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-black text-sm border border-amber-500/30">4</span>
           <div>
-            <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">ルートマップ（Google マップ）</h2>
-            <p class="text-xs text-slate-400 mt-0.5">タブを切り替えて1日目と2日目のルートを直接確認・ナビ起動できます</p>
+            <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">ルートマップ</h2>
+            <p class="text-xs text-slate-400 mt-0.5">タブを切り替えて各日の走行ラインと経由スポットを画面内で直接確認できます</p>
           </div>
         </div>
 
         <!-- 1日目／2日目 切替タブ -->
         <div class="flex items-center bg-slate-950 p-1.5 rounded-2xl border border-slate-800">
-          <button id="map-tab-day1" onclick="switchMapDay(1)" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md">
+          <button id="map-tab-day1" onclick="switchRouteMap(1)" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md">
             1日目：博多〜嬉野（102km）
           </button>
-          <button id="map-tab-day2" onclick="switchMapDay(2)" class="px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white">
+          <button id="map-tab-day2" onclick="switchRouteMap(2)" class="px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white">
             2日目：嬉野〜波戸岬〜博多（156km）
           </button>
         </div>
       </div>
 
-      <!-- 1日目マップエリア -->
-      <div id="map-area-day1" class="space-y-3">
-        <div class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-inner">
-          <iframe 
-            src="https://maps.google.com/maps?q=33.5658849,130.4544166+to:33.426861,130.278717+to:33.406794,130.212069+to:33.311119,130.071878+to:33.096104,129.982936&hl=ja&z=10&output=embed"
-            width="100%" 
-            height="440" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade"
-            class="w-full">
-          </iframe>
-        </div>
-        <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
-          <div class="text-xs text-slate-400">
-            <span class="text-amber-400 font-bold">1日目ルート：</span> 博多区板付 ➔ 三瀬そば ➔ 鷹の羽公園 ➔ 道の駅 厳木 ➔ 嬉野温泉 大正屋（全線下道）
-          </div>
-          <a href="https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC,+%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E6%9D%BF%E4%BB%98%EF%BC%92%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%93%E2%88%92%EF%BC%91%EF%BC%90,+%E4%BD%90%E8%97%A4%E9%A3%9F%E8%82%89%E5%B7%A5%E5%A0%B4/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E4%BD%90%E8%B3%80%E5%B8%82%E4%B8%89%E7%80%AC%E6%9D%91%E4%B8%89%E7%80%AC%EF%BC%92%EF%BC%98%EF%BC%95%EF%BC%98%E2%88%92%EF%BC%92,+%E4%B8%89%E7%80%AC%E3%81%9D%E3%81%B0/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E4%BD%90%E8%B3%80%E5%B8%82%E5%AF%8C%E5%A3%AB%E7%94%BA%E5%A4%A7%E5%AD%97%E6%A0%97%E4%B8%A6,+%E3%81%BF%E3%81%AF%E3%82%89%E3%81%97%E3%81%AE%E4%B8%98%E9%B7%B9%E3%81%AE%E7%BE%BD%E5%85%AC%E5%9C%92/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E5%94%90%E6%B4%A5%E5%B8%82%E5%8E%B3%E6%9C%A8%E7%94%BA%E7%89%A7%E7%80%AC%EF%BC%96%EF%BC%99%EF%BC%92%E2%88%92%EF%BC%91,+%E9%81%93%E3%81%AE%E9%A7%85+%E5%8E%B3%E6%9C%A8/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E5%AC%89%E9%87%8E%E5%B8%82%E5%AC%89%E9%87%8E%E7%94%BA%E5%A4%A7%E5%AD%97%E4%B8%8B%E5%AE%BF%E4%B9%99%EF%BC%92%EF%BC%92%EF%BC%97%EF%BC%96%E2%88%92%EF%BC%91,+%E5%AC%89%E9%87%8E%E8%A6%B3%E5%85%89%E3%83%9B%E3%83%86%E3%83%AB%E5%A4%A7%E6%AD%A3%E5%B1%8B/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2 rounded-xl transition text-xs shadow-md shadow-amber-500/20">
-            <i class="fa-solid fa-diamond-turn-right"></i>
-            <span>1日目：嬉野行きルートをGoogle マップで開く</span>
-          </a>
-        </div>
-      </div>
+      <!-- インタラクティブ地図描画エリア（Leafletで確実に走行ライン描画） -->
+      <div id="route-map" class="shadow-inner border border-slate-800 bg-slate-950"></div>
 
-      <!-- 2日目マップエリア（初期非表示） -->
-      <div id="map-area-day2" class="space-y-3 hidden">
-        <div class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-inner">
-          <iframe 
-            src="https://maps.google.com/maps?q=33.096104,129.982936+to:33.313665,129.928925+to:33.555505,129.846384+to:33.495464,130.053817+to:33.565885,130.454417&hl=ja&z=10&output=embed"
-            width="100%" 
-            height="440" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade"
-            class="w-full">
-          </iframe>
-        </div>
-        <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
-          <div class="text-xs text-slate-400">
-            <span class="text-sky-400 font-bold">2日目ルート：</span> 嬉野温泉 ➔ 道の駅 伊万里 ➔ 波戸岬 ➔ 二丈PA ➔ 西九州道〜福岡都市高速 ➔ 博多区板付
+      <!-- 地図下部のアクション＆情報 -->
+      <div class="space-y-3 pt-1">
+        <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
+          <div class="flex flex-wrap items-center gap-4" id="map-legend">
+            <span class="flex items-center gap-1.5"><span class="w-3.5 h-1.5 bg-amber-500 rounded-full inline-block"></span> 1日目ルート（全線下道）</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-pin text-rose-500"></i> 主要経由スポット</span>
+            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> ⛽ ガソリンスタンド(GS)</span>
           </div>
-          <a href="https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E5%AC%89%E9%87%8E%E5%B8%82%E5%AC%89%E9%87%8E%E7%94%BA%E5%A4%A7%E5%AD%97%E4%B8%8B%E5%AE%BF%E4%B9%99%EF%BC%92%EF%BC%92%EF%BC%97%EF%BC%96%E2%88%92%EF%BC%91,+%E5%AC%89%E9%87%8E%E8%A6%B3%E5%85%89%E3%83%9B%E3%83%86%E3%83%AB%E5%A4%A7%E6%AD%A3%E5%B1%8B/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E4%BC%8A%E4%B8%87%E9%87%8C%E5%B8%82%E5%8D%97%E6%B3%A2%E5%A4%9A%E7%94%BA%E4%BA%95%E6%89%8B%E9%87%8E%EF%BC%92%EF%BC%97%EF%BC%95%EF%BC%94%E2%88%92%EF%BC%99,+%E9%81%93%E3%81%AE%E9%A7%85+%E4%BC%8A%E4%B8%87%E9%87%8C%EF%BD%A2%E4%BC%8A%E4%B8%87%E9%87%8C%E3%81%B5%E3%82%8B%E3%81%95%E3%81%A8%E6%9D%91%EF%BD%A3/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C,+%E4%BD%90%E8%B3%80%E7%9C%8C%E9%81%93342%E5%8F%B7/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E5%94%90%E6%B4%A5%E5%B8%82%E9%8E%AE%E8%A5%BF%E7%94%BA%E6%B3%A2%E6%88%B8%EF%BC%99%EF%BC%94%EF%BC%97,+%E6%B3%A2%E6%88%B8%E5%B2%AC/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E5%94%90%E6%B4%A5%E5%B8%82%E6%B9%8A%E7%94%BA/%E6%97%A5%E6%9C%AC,+%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%B3%B8%E5%B3%B6%E5%B8%82%E4%BA%8C%E4%B8%88%E9%B9%BF%E5%AE%B6,+%E4%BA%8C%E4%B8%88%E3%83%91%E3%83%BC%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%A8%E3%83%AA%E3%82%A2/%E6%97%A5%E6%9C%AC,+%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E6%9D%BF%E4%BB%98%EF%BC%92%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%93%E2%88%92%EF%BC%91%EF%BC%90,+%E4%BD%90%E8%97%A4%E9%A3%9F%E8%82%89%E5%B7%A5%E5%A0%B4/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2 rounded-xl transition text-xs shadow-md shadow-sky-500/20">
-            <i class="fa-solid fa-diamond-turn-right"></i>
-            <span>2日目：波戸岬・海岸線ルートをGoogle マップで開く</span>
-          </a>
+          <span class="text-slate-500">© OpenStreetMap contributors</span>
+        </div>
+
+        <!-- Googleマップアプリ連携ボタン（日別） -->
+        <div class="pt-2 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3">
+          <div class="text-xs text-slate-300" id="route-desc-text">
+            <strong class="text-amber-400">1日目：</strong> 博多区板付 ➔ 三瀬そば ➔ 鷹の羽公園 ➔ 道の駅 厳木 ➔ 嬉野温泉 大正屋
+          </div>
+          <div id="google-map-btn-container">
+            <a id="btn-open-google-maps" href="https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC,+%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E6%9D%BF%E4%BB%98%EF%BC%92%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%93%E2%88%92%EF%BC%91%EF%BC%90,+%E4%BD%90%E8%97%A4%E9%A3%9F%E8%82%89%E5%B7%A5%E5%A0%B4/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E4%BD%90%E8%B3%80%E5%B8%82%E4%B8%89%E7%80%AC%E6%9D%91%E4%B8%89%E7%80%AC%EF%BC%92%EF%BC%98%EF%BC%95%EF%BC%98%E2%88%92%EF%BC%92,+%E4%B8%89%E7%80%AC%E3%81%9D%E3%81%B0/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E4%BD%90%E8%B3%80%E5%B8%82%E5%AF%8C%E5%A3%AB%E7%94%BA%E5%A4%A7%E5%AD%97%E6%A0%97%E4%B8%A6,+%E3%81%BF%E3%81%AF%E3%82%89%E3%81%97%E3%81%AE%E4%B8%98%E9%B7%B9%E3%81%AE%E7%BE%BD%E5%85%AC%E5%9C%92/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E5%94%90%E6%B4%A5%E5%B8%82%E5%8E%B3%E6%9C%A8%E7%94%BA%E7%89%A7%E7%80%AC%EF%BC%96%EF%BC%99%EF%BC%92%E2%88%92%EF%BC%91,+%E9%81%93%E3%81%AE%E9%A7%85+%E5%8E%B3%E6%9C%A8/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E5%AC%89%E9%87%8E%E5%B8%82%E5%AC%89%E9%87%8E%E7%94%BA%E5%A4%A7%E5%AD%97%E4%B8%8B%E5%AE%BF%E4%B9%99%EF%BC%92%EF%BC%92%EF%BC%97%EF%BC%96%E2%88%92%EF%BC%91,+%E5%AC%89%E9%87%8E%E8%A6%B3%E5%85%89%E3%83%9B%E3%83%86%E3%83%AB%E5%A4%A7%E6%AD%A3%E5%B1%8B/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl transition text-xs shadow-md shadow-amber-500/20">
+              <i class="fa-solid fa-diamond-turn-right text-sm"></i>
+              <span>1日目：Google マップでルート案内を開始</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -726,23 +704,195 @@
 
   <!-- スクリプト群 -->
   <script>
-    // 1. マップ切替タブ（1日目／2日目）
-    function switchMapDay(day) {
+    // ルート座標データ
+    // 1日目：博多区板付〜三瀬峠〜みはらしの丘鷹の羽公園〜道の駅厳木〜嬉野温泉大正屋
+    const ROUTE_DAY1 = [
+      [33.565885, 130.454417], // 博多区板付
+      [33.551000, 130.402000],
+      [33.528000, 130.345000], // 早良街道
+      [33.485000, 130.312000],
+      [33.451000, 130.291000], // 三瀬峠
+      [33.426861, 130.278717], // 三瀬そば
+      [33.415000, 130.245000],
+      [33.406794, 130.212069], // みはらしの丘 鷹の羽公園（嘉瀬川ダム）
+      [33.375000, 130.165000], // 県道37号（厳木富士線）
+      [33.342000, 130.115000],
+      [33.311119, 130.071878], // 道の駅 厳木
+      [33.275000, 130.045000],
+      [33.220000, 130.025000], // 武雄方面
+      [33.155000, 129.998000],
+      [33.096104, 129.982936]  // 嬉野観光ホテル 大正屋
+    ];
+
+    // 2日目：大正屋〜道の駅伊万里〜波戸岬〜二丈PA〜月隈JCT〜博多区板付
+    const ROUTE_DAY2 = [
+      [33.096104, 129.982936], // 大正屋
+      [33.165000, 129.965000],
+      [33.245000, 129.945000],
+      [33.313665, 129.928925], // 道の駅 伊万里
+      [33.375000, 129.905000],
+      [33.407975, 129.877803], // 県道342号（海沿い）
+      [33.485000, 129.855000],
+      [33.555505, 129.846384], // 波戸岬
+      [33.542000, 129.885000], // 呼子
+      [33.519072, 129.942723], // 湊町（国道204号外回り）
+      [33.495000, 130.005000], // 唐津
+      [33.495464, 130.053817], // 二丈PA
+      [33.525000, 130.165000], // 西九州道（有料・バイパス区間）
+      [33.565000, 130.285000], // 今宿
+      [33.585000, 130.395000], // 福岡都市高速環状線
+      [33.561000, 130.448000], // 月隈JCT
+      [33.565885, 130.454417]  // 博多区板付
+    ];
+
+    // 経由地スポットピン
+    const STOPS_DAY1 = [
+      { name: "博多区板付 (12:00発)", lat: 33.565885, lon: 130.454417, note: "出発地" },
+      { name: "三瀬そば (13:10着)", lat: 33.426861, lon: 130.278717, note: "昼食休憩（1時間滞在）" },
+      { name: "みはらしの丘 鷹の羽公園 (14:15着)", lat: 33.406794, lon: 130.212069, note: "嘉瀬川ダム絶景展望（15分休憩）" },
+      { name: "道の駅 厳木 (15:00着)", lat: 33.311119, lon: 130.071878, note: "巨大佐用姫像（30分休憩）" },
+      { name: "嬉野観光ホテル 大正屋 (16:20着)", lat: 33.096104, lon: 129.982936, note: "宿泊地（美肌の湯）" }
+    ];
+
+    const STOPS_DAY2 = [
+      { name: "大正屋 (10:00発)", lat: 33.096104, lon: 129.982936, note: "出発地" },
+      { name: "道の駅 伊万里 (10:44着)", lat: 33.313665, lon: 129.928925, note: "15分休憩" },
+      { name: "波戸岬 (12:01着)", lat: 33.555505, lon: 129.846384, note: "昼食・サザエ壺焼き・観光（1.5時間滞在）" },
+      { name: "二丈PA (14:26着)", lat: 33.495464, lon: 130.053817, note: "玄界灘シーサイド絶景（20分休憩）" },
+      { name: "月隈JCT (15:42)", lat: 33.561000, lon: 130.448000, note: "高速出口" },
+      { name: "博多区板付 (16:00着)", lat: 33.565885, lon: 130.454417, note: "ゴール目標達成！" }
+    ];
+
+    // ガソリンスタンド情報
+    const GAS_STATIONS = [
+      { name: "ENEOS 博多板付SS", lat: 33.5680, lon: 130.4560, note: "出発時・帰着時給油" },
+      { name: "出光 西新SS（早良街道）", lat: 33.5710, lon: 130.3550, note: "三瀬峠前の最終給油" },
+      { name: "ENEOS 武雄温泉SS", lat: 33.1900, lon: 130.0150, note: "嬉野手前" },
+      { name: "昭和シェル 伊万里中央SS", lat: 33.2750, lon: 129.8700, note: "2日目 海沿い前" },
+      { name: "JA-SS 呼子給油所", lat: 33.5380, lon: 129.8950, note: "波戸岬周辺" },
+      { name: "ENEOS 厳木SS", lat: 33.3420, lon: 130.0850, note: "道の駅 厳木近く" },
+      { name: "出光 二丈深江SS", lat: 33.5020, lon: 130.0950, note: "西九州道手前" }
+    ];
+
+    // 地図初期化
+    let routeMap = null;
+    let currentPolyline = null;
+    let currentMarkers = [];
+
+    function initRouteMap() {
+      routeMap = L.map('route-map').setView([33.35, 130.20], 10);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(routeMap);
+
+      // GSアイコン描画
+      const gsIcon = L.divIcon({
+        className: 'custom-gs-marker',
+        html: '<div style="background-color:#f59e0b; color:#0f172a; width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:bold; border:2px solid #ffffff; box-shadow:0 2px 4px rgba(0,0,0,0.4);">⛽</div>',
+        iconSize: [24, 24],
+        iconAnchor: [12, 12]
+      });
+
+      GAS_STATIONS.forEach(gs => {
+        L.marker([gs.lat, gs.lon], { icon: gsIcon })
+          .bindPopup(`<strong>⛽ ${gs.name}</strong><br><span style="font-size:11px; color:#64748b;">${gs.note}</span>`)
+          .addTo(routeMap);
+      });
+
+      // 1日目を初期表示
+      switchRouteMap(1);
+    }
+
+    function switchRouteMap(day) {
       const tab1 = document.getElementById('map-tab-day1');
       const tab2 = document.getElementById('map-tab-day2');
-      const area1 = document.getElementById('map-area-day1');
-      const area2 = document.getElementById('map-area-day2');
+      const legend = document.getElementById('map-legend');
+      const descText = document.getElementById('route-desc-text');
+      const btnContainer = document.getElementById('google-map-btn-container');
+
+      // ポリラインとマーカーのクリア
+      if (currentPolyline) routeMap.removeLayer(currentPolyline);
+      currentMarkers.forEach(m => routeMap.removeLayer(m));
+      currentMarkers = [];
+
+      const pinIcon = L.icon({
+        iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+        iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+        shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34]
+      });
 
       if (day === 1) {
         tab1.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md";
         tab2.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
-        area1.classList.remove('hidden');
-        area2.classList.add('hidden');
+
+        // 1日目ポリライン（アンバーオレンジ）
+        currentPolyline = L.polyline(ROUTE_DAY1, {
+          color: '#f59e0b',
+          weight: 6,
+          opacity: 0.9,
+          lineCap: 'round',
+          lineJoin: 'round'
+        }).addTo(routeMap);
+
+        STOPS_DAY1.forEach(stop => {
+          const marker = L.marker([stop.lat, stop.lon], { icon: pinIcon })
+            .bindPopup(`<strong>${stop.name}</strong><br><span style="font-size:11px; color:#64748b;">${stop.note}</span>`)
+            .addTo(routeMap);
+          currentMarkers.push(marker);
+        });
+
+        routeMap.fitBounds(currentPolyline.getBounds(), { padding: [30, 30] });
+
+        legend.innerHTML = `
+          <span class="flex items-center gap-1.5"><span class="w-3.5 h-1.5 bg-amber-500 rounded-full inline-block"></span> 1日目ルート（全線下道・約102km）</span>
+          <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-pin text-rose-500"></i> 主要経由スポット</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> ⛽ ガソリンスタンド(GS)</span>
+        `;
+        descText.innerHTML = `<strong class="text-amber-400">1日目：</strong> 博多区板付 ➔ 三瀬そば ➔ 鷹の羽公園 ➔ 道の駅 厳木 ➔ 嬉野温泉 大正屋`;
+        btnContainer.innerHTML = `
+          <a href="https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC,+%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E6%9D%BF%E4%BB%98%EF%BC%92%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%93%E2%88%92%EF%BC%91%EF%BC%90,+%E4%BD%90%E8%97%A4%E9%A3%9F%E8%82%89%E5%B7%A5%E5%A0%B4/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E4%BD%90%E8%B3%80%E5%B8%82%E4%B8%89%E7%80%AC%E6%9D%91%E4%B8%89%E7%80%AC%EF%BC%92%EF%BC%98%EF%BC%95%EF%BC%98%E2%88%92%EF%BC%92,+%E4%B8%89%E7%80%AC%E3%81%9D%E3%81%B0/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E4%BD%90%E8%B3%80%E5%B8%82%E5%AF%8C%E5%A3%AB%E7%94%BA%E5%A4%A7%E5%AD%97%E6%A0%97%E4%B8%A6,+%E3%81%BF%E3%81%AF%E3%82%89%E3%81%97%E3%81%AE%E4%B8%98%E9%B7%B9%E3%81%AE%E7%BE%BD%E5%85%AC%E5%9C%92/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E5%94%90%E6%B4%A5%E5%B8%82%E5%8E%B3%E6%9C%A8%E7%94%BA%E7%89%A7%E7%80%AC%EF%BC%96%EF%BC%99%EF%BC%92%E2%88%92%EF%BC%91,+%E9%81%93%E3%81%AE%E9%A7%85+%E5%8E%B3%E6%9C%A8/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E5%AC%89%E9%87%8E%E5%B8%82%E5%AC%89%E9%87%8E%E7%94%BA%E5%A4%A7%E5%AD%97%E4%B8%8B%E5%AE%BF%E4%B9%99%EF%BC%92%EF%BC%92%EF%BC%97%EF%BC%96%E2%88%92%EF%BC%91,+%E5%AC%89%E9%87%8E%E8%A6%B3%E5%85%89%E3%83%9B%E3%83%86%E3%83%AB%E5%A4%A7%E6%AD%A3%E5%B1%8B/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl transition text-xs shadow-md shadow-amber-500/20">
+            <i class="fa-solid fa-diamond-turn-right text-sm"></i>
+            <span>1日目：Google マップでルート案内を開始</span>
+          </a>
+        `;
       } else {
         tab2.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-sky-500 text-slate-950 shadow-md";
         tab1.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
-        area2.classList.remove('hidden');
-        area1.classList.add('hidden');
+
+        // 2日目ポリライン（スカイブルー）
+        currentPolyline = L.polyline(ROUTE_DAY2, {
+          color: '#0284c7',
+          weight: 6,
+          opacity: 0.9,
+          lineCap: 'round',
+          lineJoin: 'round'
+        }).addTo(routeMap);
+
+        STOPS_DAY2.forEach(stop => {
+          const marker = L.marker([stop.lat, stop.lon], { icon: pinIcon })
+            .bindPopup(`<strong>${stop.name}</strong><br><span style="font-size:11px; color:#64748b;">${stop.note}</span>`)
+            .addTo(routeMap);
+          currentMarkers.push(marker);
+        });
+
+        routeMap.fitBounds(currentPolyline.getBounds(), { padding: [30, 30] });
+
+        legend.innerHTML = `
+          <span class="flex items-center gap-1.5"><span class="w-3.5 h-1.5 bg-sky-500 rounded-full inline-block"></span> 2日目ルート（シーサイド・約156km）</span>
+          <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-pin text-rose-500"></i> 主要経由スポット</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> ⛽ ガソリンスタンド(GS)</span>
+        `;
+        descText.innerHTML = `<strong class="text-sky-400">2日目：</strong> 嬉野温泉 ➔ 道の駅 伊万里 ➔ 波戸岬 ➔ 二丈PA ➔ 西九州道〜都市高 ➔ 博多区板付`;
+        btnContainer.innerHTML = `
+          <a href="https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E5%AC%89%E9%87%8E%E5%B8%82%E5%AC%89%E9%87%8E%E7%94%BA%E5%A4%A7%E5%AD%97%E4%B8%8B%E5%AE%BF%E4%B9%99%EF%BC%92%EF%BC%92%EF%BC%97%EF%BC%96%E2%88%92%EF%BC%91,+%E5%AC%89%E9%87%8E%E8%A6%B3%E5%85%89%E3%83%9B%E3%83%86%E3%83%AB%E5%A4%A7%E6%AD%A3%E5%B1%8B/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E4%BC%8A%E4%B8%87%E9%87%8C%E5%B8%82%E5%8D%9A%E5%A4%9A%E7%94%BA%E4%BA%95%E6%89%8B%E9%87%8E%EF%BC%92%EF%BC%97%EF%BC%95%EF%BC%94%E2%88%92%EF%BC%99,+%E9%81%93%E3%81%AE%E9%A7%85+%E4%BC%8A%E4%B8%87%E9%87%8C%EF%BD%A2%E4%BC%8A%E4%B8%87%E9%87%8C%E3%81%B5%E3%82%8B%E3%81%95%E3%81%A8%E6%9D%91%EF%BD%A3/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C,+%E4%BD%90%E8%B3%80%E7%9C%8C%E9%81%93342%E5%8F%B7/%E6%97%A5%E6%9C%AC,+%E4%BD%90%E8%B3%80%E7%9C%8C%E5%94%90%E6%B4%A5%E5%B8%82%E9%8E%AE%E8%A5%BF%E7%94%BA%E6%B3%A2%E6%88%B8%EF%BC%99%EF%BC%94%EF%BC%97,+%E6%B3%A2%E6%88%B8%E5%B2%AC/%E6%97%A5%E6%9C%AC,+%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%B3%B8%E5%B3%B6%E5%B8%82%E4%BA%8C%E4%B8%88%E9%B9%BF%E5%AE%B6,+%E4%BA%8C%E4%B8%88%E3%83%91%E3%83%BC%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%A8%E3%83%AA%E3%82%A2/%E6%97%A5%E6%9C%AC,+%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E6%9D%BF%E4%BB%98%EF%BC%92%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%93%E2%88%92%EF%BC%91%EF%BC%90,+%E4%BD%90%E8%97%A4%E9%A3%9F%E8%82%89%E5%B7%A5%E5%A0%B4/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl transition text-xs shadow-md shadow-sky-500/20">
+            <i class="fa-solid fa-diamond-turn-right text-sm"></i>
+            <span>2日目：Google マップでルート案内を開始</span>
+          </a>
+        `;
       }
     }
 
@@ -934,6 +1084,7 @@
     });
 
     // 初期実行
+    initRouteMap();
     fetchWeatherData();
     renderMembers();
   </script>
