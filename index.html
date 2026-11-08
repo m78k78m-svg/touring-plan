@@ -234,9 +234,9 @@
 
   <!-- スクリプト：計画の追加・削除・永続化＆UI強化 -->
   <script>
-    const STORAGE_KEY = 'motoplanner_tourings_v2';
+    const STORAGE_KEY = 'motoplanner_tourings_v3';
 
-    // デフォルトの初期ツーリングデータ
+    // デフォルトの初期ツーリングデータ（佐賀・嬉野・波戸岬ツーリングのみ）
     const DEFAULT_TOURING_LIST = [
       {
         id: 'plan_kyushu_2026',
@@ -258,40 +258,6 @@
           { name: 'Daiki', bike: 'Ninja ZX-4RR', img: 'images/bike-zx4rr.jpg' },
           { name: 'Kunihiko', bike: 'Z900RS', img: 'images/bike-z900rs.jpg' }
         ]
-      },
-      {
-        id: 'plan_hakone_2026',
-        isUpcoming: true,
-        title: '箱根・芦ノ湖絶景ワインディング ツーリング',
-        date: '2026.11.23 (祝)',
-        isoDate: '2026-11-23',
-        area: '神奈川 • 箱根・芦ノ湖エリア',
-        badge: '日帰り計画中',
-        alert: '',
-        desc: '西湘バイパスからアネスト岩田ターンパイクを一気に駆け上がり、大観山展望台から富士山と芦ノ湖のパノラマを望む王道ツーリング！',
-        distance: '約45 km',
-        hotel: '日帰り',
-        spot: 'ターンパイク ➔ 大観山',
-        meeting: '西湘PA (07:30)',
-        link: 'touring-sample.html',
-        members: []
-      },
-      {
-        id: 'plan_izu_past',
-        isUpcoming: false,
-        title: '伊豆西海岸 サンセット快走ツーリング',
-        date: '2026.10.12 開催',
-        isoDate: '2026-10-12',
-        area: '静岡 • 伊豆半島一周',
-        badge: '走行完了',
-        alert: '',
-        desc: '天候に恵まれ、西伊豆スカイラインからの富士山と夕日が最高でした！無事故・無違反で完走。',
-        distance: '約240 km',
-        hotel: '西伊豆温泉',
-        spot: '修善寺 ➔ 堂ヶ島',
-        meeting: 'ターンパイク',
-        link: '#',
-        members: []
       }
     ];
 
