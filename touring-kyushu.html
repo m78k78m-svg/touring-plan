@@ -9,8 +9,26 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Leaflet (地図ライブラリ) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
   <!-- FontAwesome アイコン -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    #route-map {
+      height: 460px;
+      width: 100%;
+      border-radius: 1rem;
+      z-index: 10;
+    }
+    @media (min-width: 768px) {
+      #route-map {
+        height: 540px;
+      }
+    }
+  </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased pb-24">
 
