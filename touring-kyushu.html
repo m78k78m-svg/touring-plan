@@ -932,13 +932,13 @@
     }
 
     // 4. 参加者情報＆給油シミュレーション
-    const MEMBERS_STORAGE_KEY = 'kyushu_touring_members_v1';
+    const MEMBERS_STORAGE_KEY = 'kyushu_touring_members_v2';
     const TOTAL_DISTANCE = 258; // 新計画の合計距離 (102km + 156km)
 
     const DEFAULT_MEMBERS = [
-      { id: 'm1', name: 'ライダーA (リーダー)', bike: 'Rebel 250 (レンタル)', tank: 11.0, efficiency: 33.0 },
-      { id: 'm2', name: 'ライダーB', bike: 'Ninja 400 (レンタル)', tank: 14.0, efficiency: 24.0 },
-      { id: 'm3', name: 'ライダーC', bike: 'SR400 (自車)', tank: 12.0, efficiency: 22.0 }
+      { id: 'm1', name: 'Masaki', bike: 'トライアンフ スピードツイン900', tank: 12.0, efficiency: 24.0 },
+      { id: 'm2', name: 'Daiki', bike: 'カワサキ ZX-4RR', tank: 15.0, efficiency: 19.0 },
+      { id: 'm3', name: 'Kunihiko', bike: 'カワサキ Z900RS', tank: 17.0, efficiency: 19.5 }
     ];
 
     function getMembers() {
