@@ -932,13 +932,13 @@
     }
 
     // 4. 参加者情報＆給油シミュレーション
-    const MEMBERS_STORAGE_KEY = 'kyushu_touring_members_v2';
+    const MEMBERS_STORAGE_KEY = 'kyushu_touring_members_v3';
     const TOTAL_DISTANCE = 258; // 新計画の合計距離 (102km + 156km)
 
     const DEFAULT_MEMBERS = [
-      { id: 'm1', name: 'Masaki', bike: 'トライアンフ スピードツイン900', tank: 12.0, efficiency: 24.0 },
-      { id: 'm2', name: 'Daiki', bike: 'カワサキ ZX-4RR', tank: 15.0, efficiency: 19.0 },
-      { id: 'm3', name: 'Kunihiko', bike: 'カワサキ Z900RS', tank: 17.0, efficiency: 19.5 }
+      { id: 'm1', name: 'Masaki', bike: 'トライアンフ Speed Twin 900', tank: 12.0, efficiency: 25.0 },
+      { id: 'm2', name: 'Daiki', bike: 'カワサキ Ninja ZX-4RR', tank: 15.0, efficiency: 20.4 },
+      { id: 'm3', name: 'Kunihiko', bike: 'カワサキ Z900RS', tank: 17.0, efficiency: 20.5 }
     ];
 
     function getMembers() {
@@ -983,10 +983,10 @@
             </div>
 
             <div class="grid grid-cols-2 gap-2 text-[11px] bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 mb-3">
-              <div><span class="text-slate-400">タンク:</span> <strong class="text-white">${m.tank} L</strong></div>
-              <div><span class="text-slate-400">実燃費:</span> <strong class="text-white">${m.efficiency} km/L</strong></div>
+              <div><span class="text-slate-400">タンク容量:</span> <strong class="text-white">${m.tank} L</strong></div>
+              <div><span class="text-slate-400">公式燃費:</span> <strong class="text-white">${m.efficiency} km/L</strong></div>
               <div class="col-span-2 pt-1 border-t border-slate-800 flex items-center justify-between">
-                <span class="text-slate-400">理論航続距離:</span>
+                <span class="text-slate-400">理論航続可能距離:</span>
                 <strong class="text-white text-xs">${range} km</strong>
               </div>
             </div>
