@@ -76,6 +76,59 @@
       </div>
     </section>
 
+    <!-- 3. スマホのホーム画面に追加する手順案内ボックス -->
+    <section class="bg-slate-800/80 rounded-3xl p-6 sm:p-8 border border-slate-700/80 shadow-2xl space-y-5">
+      <div class="flex items-center gap-3 border-b border-slate-700/80 pb-3">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-black text-lg border border-amber-500/30">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+        </div>
+        <div>
+          <h3 class="text-base sm:text-lg font-black text-white">スマホのホーム画面に追加しよう</h3>
+          <p class="text-xs text-slate-400 mt-0.5">ツーリング当日、アプリ感覚でホーム画面からワンタップで即アクセスできます</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- iPhone (Safari) の手順 -->
+        <div class="bg-slate-900/70 p-4 sm:p-5 rounded-2xl border border-slate-800 space-y-3">
+          <div class="flex items-center gap-2 text-sm font-bold text-white border-b border-slate-800/80 pb-2">
+            <i class="fa-brands fa-apple text-slate-300 text-base"></i>
+            <span>iPhone（Safari）の場合</span>
+          </div>
+          <ol class="space-y-2 text-xs text-slate-300 leading-relaxed list-decimal list-inside">
+            <li class="pl-1">
+              Safari下部の <strong class="text-sky-400"><i class="fa-solid fa-arrow-up-from-bracket mx-1"></i>共有ボタン</strong> をタップ
+            </li>
+            <li class="pl-1">
+              メニューを下にスクロールして <strong class="text-amber-400"><i class="fa-regular fa-square-plus mx-1"></i>「ホーム画面に追加」</strong> を選択
+            </li>
+            <li class="pl-1">
+              画面右上の <strong class="text-white font-bold">「追加」</strong> をタップすると、ホーム画面に専用アイコンが配置されます！
+            </li>
+          </ol>
+        </div>
+
+        <!-- Android (Chrome) の手順 -->
+        <div class="bg-slate-900/70 p-4 sm:p-5 rounded-2xl border border-slate-800 space-y-3">
+          <div class="flex items-center gap-2 text-sm font-bold text-white border-b border-slate-800/80 pb-2">
+            <i class="fa-brands fa-android text-emerald-400 text-base"></i>
+            <span>Android（Chrome）の場合</span>
+          </div>
+          <ol class="space-y-2 text-xs text-slate-300 leading-relaxed list-decimal list-inside">
+            <li class="pl-1">
+              Chrome右上の <strong class="text-emerald-400"><i class="fa-solid fa-ellipsis-vertical mx-1"></i>メニュー</strong> をタップ
+            </li>
+            <li class="pl-1">
+              一覧から <strong class="text-amber-400"><i class="fa-solid fa-plus mx-1"></i>「ホーム画面に追加」</strong>（または「アプリをインストール」）を選択
+            </li>
+            <li class="pl-1">
+              確認ダイアログで <strong class="text-white font-bold">「追加」</strong> をタップすると、ホーム画面から直接開けるようになります！
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- 新規ツーリング計画作成モーダル -->
