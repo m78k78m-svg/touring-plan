@@ -7,7 +7,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>【1泊2日】博多〜嬉野・波戸岬 絶景ツーリング計画書 | MotoPlanner</title>
+  <title>湯けむりと潮騒の記憶：嬉野温泉と玄界灘を巡る秋の道 | MotoPlanner</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -77,8 +77,11 @@
           <span>•</span>
           <span class="text-sky-400"><i class="fa-solid fa-location-dot mr-1"></i>博多区板付 発着 • 三瀬峠・嬉野温泉・波戸岬</span>
         </div>
-        <h1 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
-          【1泊2日】博多〜嬉野・波戸岬 絶景ワインディング＆シーサイドツーリング
+        <div class="text-xs sm:text-sm font-bold text-amber-400 uppercase tracking-wider">
+          佐賀・嬉野・波戸岬 1泊2日バイクツーリング
+        </div>
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-snug">
+          湯けむりと潮騒の記憶：嬉野温泉と玄界灘を巡る秋の道
         </h1>
         <p class="text-slate-300 text-sm leading-relaxed pt-1">
           1日目は全線下道で三瀬峠〜嘉瀬川ダム（鷹の羽公園）〜厳木を快走し、嬉野温泉「大正屋」へ。2日目は伊万里から波戸岬の海岸線をキープしながら快走し、二丈PA休憩・西九州道と福岡都市高速を活用して16:00に板付へ無事帰着する余裕あるルートです。
@@ -119,13 +122,25 @@
           <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-black text-sm border border-amber-500/30">2</span>
           <div>
             <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">当日の天気・気温・風速情報</h2>
-            <p class="text-xs text-slate-400 mt-0.5">2日間の主要エリアの気象予報（気温・風速・降水確率）をリアルタイム表示</p>
+            <div class="flex flex-wrap items-center gap-2 mt-0.5">
+              <p class="text-xs text-slate-400">主要エリアの気象予報（気温・風速・降水確率）をリアルタイム表示</p>
+              <span id="weather-last-updated" class="text-[10px] text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/30"></span>
+            </div>
           </div>
         </div>
-        <button onclick="fetchWeatherData()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition shadow border border-slate-700">
-          <i class="fa-solid fa-rotate text-sky-400" id="weather-refresh-icon"></i>
-          <span>最新の天気に更新</span>
-        </button>
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- 雨雲レーダーボタン -->
+          <a href="https://tenki.jp/radar/9/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 text-xs font-bold transition shadow border border-sky-500/30">
+            <i class="fa-solid fa-cloud-showers-water text-sky-400"></i>
+            <span>雨雲レーダーを見る (tenki.jp)</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-sky-400/70"></i>
+          </a>
+          <!-- 天気更新ボタン -->
+          <button onclick="fetchWeatherData()" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition shadow border border-slate-700">
+            <i class="fa-solid fa-rotate text-amber-400" id="weather-refresh-icon"></i>
+            <span>最新の天気に更新</span>
+          </button>
+        </div>
       </div>
 
       <!-- 2日間の気象カード -->
@@ -137,6 +152,7 @@
               <i class="fa-regular fa-calendar-check"></i>
               <span>1日目：11/13(金) 博多 〜 三瀬峠 〜 嬉野温泉</span>
             </span>
+            <span class="text-[10px] text-slate-500 font-medium">リアルタイム観測・予報</span>
           </div>
 
           <div class="grid grid-cols-2 gap-3">
@@ -145,15 +161,11 @@
               <div>
                 <div class="text-[11px] text-slate-400 font-medium">福岡市 (博多・板付)</div>
                 <div class="flex items-center justify-between mt-1">
-                  <div class="text-lg font-black text-white" id="weather-fukuoka-temp">取得中...</div>
+                  <div class="text-xl font-black text-white" id="weather-fukuoka-temp">取得中...</div>
                   <div class="text-2xl" id="weather-fukuoka-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
                 </div>
-                <div class="text-[10px] text-slate-400 mt-1" id="weather-fukuoka-sub">風速: - m/s | 降水: -%</div>
+                <div class="text-[10px] text-slate-400 mt-1.5" id="weather-fukuoka-sub">風速: - m/s | 降水: -%</div>
               </div>
-              <a href="https://tenki.jp/forecast/9/43/8210/40132/" target="_blank" rel="noopener noreferrer" class="mt-2.5 pt-2 border-t border-slate-800/80 text-[10px] text-amber-400 hover:text-amber-300 font-bold inline-flex items-center justify-between transition">
-                <span>tenki.jp 詳細予報</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-              </a>
             </div>
 
             <!-- 嬉野市 -->
@@ -161,29 +173,12 @@
               <div>
                 <div class="text-[11px] text-slate-400 font-medium">嬉野市 (大正屋)</div>
                 <div class="flex items-center justify-between mt-1">
-                  <div class="text-lg font-black text-white" id="weather-ureshino-temp">取得中...</div>
+                  <div class="text-xl font-black text-white" id="weather-ureshino-temp">取得中...</div>
                   <div class="text-2xl" id="weather-ureshino-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
                 </div>
-                <div class="text-[10px] text-slate-400 mt-1" id="weather-ureshino-sub">風速: - m/s | 降水: -%</div>
+                <div class="text-[10px] text-slate-400 mt-1.5" id="weather-ureshino-sub">風速: - m/s | 降水: -%</div>
               </div>
-              <a href="https://tenki.jp/forecast/9/44/8510/41209/" target="_blank" rel="noopener noreferrer" class="mt-2.5 pt-2 border-t border-slate-800/80 text-[10px] text-amber-400 hover:text-amber-300 font-bold inline-flex items-center justify-between transition">
-                <span>tenki.jp 詳細予報</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-              </a>
             </div>
-          </div>
-
-          <!-- 1日目 経由地別 外部天気リンク -->
-          <div class="pt-2 border-t border-slate-800/60 flex flex-wrap items-center gap-1.5 text-[11px]">
-            <span class="text-slate-500 text-[10px]">経由地の天気:</span>
-            <a href="https://tenki.jp/forecast/9/44/8510/41201/" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-amber-300 border border-slate-800 transition inline-flex items-center gap-1">
-              <span>三瀬峠・佐賀市</span>
-              <i class="fa-solid fa-arrow-up-right-from-square text-[8px] text-slate-500"></i>
-            </a>
-            <a href="https://weather.yahoo.co.jp/weather/jp/41/8510/41209.html" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-amber-300 border border-slate-800 transition inline-flex items-center gap-1">
-              <span>Yahoo!天気(嬉野)</span>
-              <i class="fa-solid fa-arrow-up-right-from-square text-[8px] text-slate-500"></i>
-            </a>
           </div>
         </div>
 
@@ -194,6 +189,7 @@
               <i class="fa-regular fa-calendar-check"></i>
               <span>2日目：11/14(土) 波戸岬 〜 糸島・二丈 〜 博多</span>
             </span>
+            <span class="text-[10px] text-slate-500 font-medium">リアルタイム観測・予報</span>
           </div>
 
           <div class="grid grid-cols-2 gap-3">
@@ -202,15 +198,11 @@
               <div>
                 <div class="text-[11px] text-slate-400 font-medium">波戸岬・唐津 (海沿い)</div>
                 <div class="flex items-center justify-between mt-1">
-                  <div class="text-lg font-black text-white" id="weather-hado-temp">取得中...</div>
+                  <div class="text-xl font-black text-white" id="weather-hado-temp">取得中...</div>
                   <div class="text-2xl" id="weather-hado-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
                 </div>
-                <div class="text-[10px] text-slate-400 mt-1" id="weather-hado-sub">風速: - m/s | 降水: -%</div>
+                <div class="text-[10px] text-slate-400 mt-1.5" id="weather-hado-sub">風速: - m/s | 降水: -%</div>
               </div>
-              <a href="https://tenki.jp/forecast/9/44/8510/41202/" target="_blank" rel="noopener noreferrer" class="mt-2.5 pt-2 border-t border-slate-800/80 text-[10px] text-sky-400 hover:text-sky-300 font-bold inline-flex items-center justify-between transition">
-                <span>tenki.jp 詳細予報</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-              </a>
             </div>
 
             <!-- 博多区板付 (帰着地) -->
@@ -218,33 +210,12 @@
               <div>
                 <div class="text-[11px] text-slate-400 font-medium">博多区板付 (帰着地)</div>
                 <div class="flex items-center justify-between mt-1">
-                  <div class="text-lg font-black text-white" id="weather-fukuoka-return-temp">取得中...</div>
+                  <div class="text-xl font-black text-white" id="weather-fukuoka-return-temp">取得中...</div>
                   <div class="text-2xl" id="weather-fukuoka-return-icon"><i class="fa-solid fa-spinner animate-spin text-sm text-slate-500"></i></div>
                 </div>
-                <div class="text-[10px] text-slate-400 mt-1" id="weather-fukuoka-return-sub">風速: - m/s | 降水: -%</div>
+                <div class="text-[10px] text-slate-400 mt-1.5" id="weather-fukuoka-return-sub">風速: - m/s | 降水: -%</div>
               </div>
-              <a href="https://tenki.jp/forecast/9/43/8210/40132/" target="_blank" rel="noopener noreferrer" class="mt-2.5 pt-2 border-t border-slate-800/80 text-[10px] text-sky-400 hover:text-sky-300 font-bold inline-flex items-center justify-between transition">
-                <span>tenki.jp 詳細予報</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-              </a>
             </div>
-          </div>
-
-          <!-- 2日目 経由地別 外部天気リンク -->
-          <div class="pt-2 border-t border-slate-800/60 flex flex-wrap items-center gap-1.5 text-[11px]">
-            <span class="text-slate-500 text-[10px]">経由地の天気:</span>
-            <a href="https://tenki.jp/forecast/9/44/8510/41205/" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-sky-300 border border-slate-800 transition inline-flex items-center gap-1">
-              <span>伊万里市</span>
-              <i class="fa-solid fa-arrow-up-right-from-square text-[8px] text-slate-500"></i>
-            </a>
-            <a href="https://tenki.jp/forecast/9/43/8210/40230/" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-sky-300 border border-slate-800 transition inline-flex items-center gap-1">
-              <span>糸島市(二丈)</span>
-              <i class="fa-solid fa-arrow-up-right-from-square text-[8px] text-slate-500"></i>
-            </a>
-            <a href="https://weathernews.jp/onebox/tenki/saga/41202/" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-sky-300 border border-slate-800 transition inline-flex items-center gap-1">
-              <span>ウェザーニュース(波戸岬)</span>
-              <i class="fa-solid fa-arrow-up-right-from-square text-[8px] text-slate-500"></i>
-            </a>
           </div>
         </div>
       </div>
@@ -304,13 +275,15 @@
           </div>
         </div>
 
-        <!-- 1日目／2日目 切替タブ -->
-        <div class="flex items-center bg-slate-950 p-1.5 rounded-2xl border border-slate-800">
-          <button id="gmap-tab-day1" onclick="switchGMap(1)" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md">
-            1日目：博多〜嬉野（102km）
+        <!-- 1日目／2日目 切替タブ（大型・高視認性） -->
+        <div class="w-full sm:w-auto grid grid-cols-2 bg-slate-950 p-2 rounded-2xl border border-slate-800 shadow-lg gap-1.5">
+          <button id="gmap-tab-day1" onclick="switchGMap(1)" class="flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm sm:text-base font-black transition bg-amber-500 text-slate-950 shadow-md">
+            <i class="fa-solid fa-mountain"></i>
+            <span>1日目：博多〜嬉野</span>
           </button>
-          <button id="gmap-tab-day2" onclick="switchGMap(2)" class="px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white">
-            2日目：嬉野〜波戸岬〜博多（156km）
+          <button id="gmap-tab-day2" onclick="switchGMap(2)" class="flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm sm:text-base font-bold transition text-slate-400 hover:text-white hover:bg-slate-900">
+            <i class="fa-solid fa-water"></i>
+            <span>2日目：嬉野〜波戸岬〜博多</span>
           </button>
         </div>
       </div>
@@ -379,13 +352,15 @@
           </div>
         </div>
 
-        <!-- スケジュール日別タブ -->
-        <div class="flex items-center bg-slate-950 p-1.5 rounded-2xl border border-slate-800">
-          <button id="sched-tab-day1" onclick="switchSchedDay(1)" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md">
-            1日目：博多〜嬉野
+        <!-- スケジュール日別タブ（大型・高視認性） -->
+        <div class="w-full sm:w-auto grid grid-cols-2 bg-slate-950 p-2 rounded-2xl border border-slate-800 shadow-lg gap-1.5">
+          <button id="sched-tab-day1" onclick="switchSchedDay(1)" class="flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm sm:text-base font-black transition bg-amber-500 text-slate-950 shadow-md">
+            <i class="fa-solid fa-calendar-day"></i>
+            <span>1日目：博多〜嬉野</span>
           </button>
-          <button id="sched-tab-day2" onclick="switchSchedDay(2)" class="px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white">
-            2日目：嬉野〜波戸岬〜博多
+          <button id="sched-tab-day2" onclick="switchSchedDay(2)" class="flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm sm:text-base font-bold transition text-slate-400 hover:text-white hover:bg-slate-900">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>2日目：嬉野〜波戸岬〜博多</span>
           </button>
         </div>
       </div>
@@ -873,6 +848,140 @@
       </div>
     </section>
 
+    <!-- ========================================== -->
+    <!-- 8. 【今回の相棒たち（レンタルバイク紹介）】ボックス -->
+    <!-- ========================================== -->
+    <section class="bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-2xl space-y-6">
+      <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4">
+        <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-black text-sm border border-amber-500/30">8</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">今回の相棒たち（レンタルバイク紹介）</h2>
+          <p class="text-xs text-slate-400 mt-0.5">旅路を共にする個性豊かな3台の魅力・メーカー公式スペック一覧</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- バイク①：Speed Twin 900 (Masaki) -->
+        <div class="bg-slate-950/70 rounded-2xl overflow-hidden border border-slate-800 flex flex-col justify-between group hover:border-amber-500/40 transition shadow-lg">
+          <div class="relative h-56 overflow-hidden bg-slate-900">
+            <img src="images/bike-speed-twin-900.jpg" alt="Triumph Speed Twin 900" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-slate-900/80 text-amber-300 text-xs font-bold backdrop-blur border border-slate-700">
+              Masaki's Bike
+            </div>
+            <div class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/70 text-slate-300 text-[10px] font-semibold backdrop-blur">
+              英国モダンクラシック
+            </div>
+          </div>
+          <div class="p-5 space-y-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wide">TRIUMPH</div>
+              <h3 class="text-lg font-black text-white group-hover:text-amber-400 transition">SPEED TWIN 900</h3>
+              <p class="text-xs text-slate-300 leading-relaxed mt-2">
+                英国トライアンフを代表するモダンクラシック。水冷900ccバーチカルツイン（270度クランク）が生み出すリッチな低中速トルクと心地よい鼓動感。三瀬峠のワインディングから嬉野・唐津のクルージングまで、どこを走っても絵になる上質な相棒です。
+              </p>
+            </div>
+            
+            <div class="pt-3 border-t border-slate-800/80 space-y-2 text-xs">
+              <div class="grid grid-cols-2 gap-2 text-[11px]">
+                <div class="bg-slate-900/90 p-2 rounded-lg border border-slate-800">
+                  <span class="text-slate-400 block text-[10px]">タンク容量</span>
+                  <strong class="text-white font-bold text-sm">12.0 L</strong>
+                </div>
+                <div class="bg-slate-900/90 p-2 rounded-lg border border-slate-800">
+                  <span class="text-slate-400 block text-[10px]">WMTCモード燃費</span>
+                  <strong class="text-white font-bold text-sm">24.4 km/L</strong>
+                </div>
+              </div>
+              <div class="flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 font-bold text-[11px]">
+                <span>推定航続距離</span>
+                <span class="text-white">約 292 km（無給油完走圏内）</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- バイク②：Ninja ZX-4RR (Daiki) -->
+        <div class="bg-slate-950/70 rounded-2xl overflow-hidden border border-slate-800 flex flex-col justify-between group hover:border-emerald-500/40 transition shadow-lg">
+          <div class="relative h-56 overflow-hidden bg-slate-900">
+            <img src="images/bike-zx4rr.jpg" alt="Kawasaki Ninja ZX-4RR" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-slate-900/80 text-emerald-300 text-xs font-bold backdrop-blur border border-slate-700">
+              Daiki's Bike
+            </div>
+            <div class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/70 text-slate-300 text-[10px] font-semibold backdrop-blur">
+              超高回転スーパースポーツ
+            </div>
+          </div>
+          <div class="p-5 space-y-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-bold text-emerald-400 uppercase tracking-wide">KAWASAKI</div>
+              <h3 class="text-lg font-black text-white group-hover:text-emerald-400 transition">Ninja ZX-4RR</h3>
+              <p class="text-xs text-slate-300 leading-relaxed mt-2">
+                400ccクラス唯一無二の直列4気筒・超高回転スクリーマー（最高回転数16,000rpm超！）。クイックシフター（KQS）や上級SHOWA製サスペンションをフル装備。峠道の俊敏なコーナリングと、高速合流での甲高いレーシングエキゾーストノートが爽快です。
+              </p>
+            </div>
+            
+            <div class="pt-3 border-t border-slate-800/80 space-y-2 text-xs">
+              <div class="grid grid-cols-2 gap-2 text-[11px]">
+                <div class="bg-slate-900/90 p-2 rounded-lg border border-slate-800">
+                  <span class="text-slate-400 block text-[10px]">タンク容量</span>
+                  <strong class="text-white font-bold text-sm">15.0 L</strong>
+                </div>
+                <div class="bg-slate-900/90 p-2 rounded-lg border border-slate-800">
+                  <span class="text-slate-400 block text-[10px]">WMTCモード燃費</span>
+                  <strong class="text-white font-bold text-sm">20.4 km/L</strong>
+                </div>
+              </div>
+              <div class="flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 font-bold text-[11px]">
+                <span>推定航続距離</span>
+                <span class="text-white">約 306 km（無給油完走圏内）</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- バイク③：Z900RS (Kunihiko) -->
+        <div class="bg-slate-950/70 rounded-2xl overflow-hidden border border-slate-800 flex flex-col justify-between group hover:border-amber-500/40 transition shadow-lg">
+          <div class="relative h-56 overflow-hidden bg-slate-900">
+            <img src="images/bike-z900rs.jpg" alt="Kawasaki Z900RS" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-slate-900/80 text-amber-300 text-xs font-bold backdrop-blur border border-slate-700">
+              Kunihiko's Bike
+            </div>
+            <div class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/70 text-slate-300 text-[10px] font-semibold backdrop-blur">
+              ネオレトロの最高峰
+            </div>
+          </div>
+          <div class="p-5 space-y-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wide">KAWASAKI</div>
+              <h3 class="text-lg font-black text-white group-hover:text-amber-400 transition">Z900RS</h3>
+              <p class="text-xs text-slate-300 leading-relaxed mt-2">
+                名車Z1の美学を継承し、不動の超人気を誇るビッグネイキッド。水冷並列4気筒948ccエンジンが奏でる野太い重低音サウンドと、低速から溢れ出るトルク。ゆったりとしたアップライトな乗車姿勢で、ロングツーリングも極めて快適にこなします。
+              </p>
+            </div>
+            
+            <div class="pt-3 border-t border-slate-800/80 space-y-2 text-xs">
+              <div class="grid grid-cols-2 gap-2 text-[11px]">
+                <div class="bg-slate-900/90 p-2 rounded-lg border border-slate-800">
+                  <span class="text-slate-400 block text-[10px]">タンク容量</span>
+                  <strong class="text-white font-bold text-sm">17.0 L</strong>
+                </div>
+                <div class="bg-slate-900/90 p-2 rounded-lg border border-slate-800">
+                  <span class="text-slate-400 block text-[10px]">WMTCモード燃費</span>
+                  <strong class="text-white font-bold text-sm">18.8 km/L</strong>
+                </div>
+              </div>
+              <div class="flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 font-bold text-[11px]">
+                <span>推定航続距離</span>
+                <span class="text-white">約 319 km（無給油完走圏内）</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <!-- メンバー追加モーダル -->
@@ -1001,9 +1110,13 @@
       const container1 = document.getElementById('gmap-container-day1');
       const container2 = document.getElementById('gmap-container-day2');
 
+      const activeClass1 = "flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm sm:text-base font-black transition bg-amber-500 text-slate-950 shadow-md";
+      const activeClass2 = "flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm sm:text-base font-black transition bg-sky-500 text-slate-950 shadow-md";
+      const inactiveClass = "flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm sm:text-base font-bold transition text-slate-400 hover:text-white hover:bg-slate-900";
+
       if (day === 1) {
-        if (tab1) tab1.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md";
-        if (tab2) tab2.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
+        if (tab1) tab1.className = activeClass1;
+        if (tab2) tab2.className = inactiveClass;
         if (container1) {
           container1.classList.remove('hidden');
           container1.style.display = 'block';
@@ -1013,8 +1126,8 @@
           container2.style.display = 'none';
         }
       } else {
-        if (tab2) tab2.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-sky-500 text-slate-950 shadow-md";
-        if (tab1) tab1.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
+        if (tab2) tab2.className = activeClass2;
+        if (tab1) tab1.className = inactiveClass;
         if (container2) {
           container2.classList.remove('hidden');
           container2.style.display = 'block';
@@ -1034,9 +1147,13 @@
       const area1 = document.getElementById('sched-area-day1');
       const area2 = document.getElementById('sched-area-day2');
 
+      const activeClass1 = "flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm sm:text-base font-black transition bg-amber-500 text-slate-950 shadow-md";
+      const activeClass2 = "flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm sm:text-base font-black transition bg-sky-500 text-slate-950 shadow-md";
+      const inactiveClass = "flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm sm:text-base font-bold transition text-slate-400 hover:text-white hover:bg-slate-900";
+
       if (day === 1) {
-        if (tab1) tab1.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md";
-        if (tab2) tab2.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
+        if (tab1) tab1.className = activeClass1;
+        if (tab2) tab2.className = inactiveClass;
         if (area1) {
           area1.classList.remove('hidden');
           area1.style.display = 'block';
@@ -1046,8 +1163,8 @@
           area2.style.display = 'none';
         }
       } else {
-        if (tab2) tab2.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-sky-500 text-slate-950 shadow-md";
-        if (tab1) tab1.className = "px-4 py-2 rounded-xl text-xs font-medium transition text-slate-400 hover:text-white";
+        if (tab2) tab2.className = activeClass2;
+        if (tab1) tab1.className = inactiveClass;
         if (area2) {
           area2.classList.remove('hidden');
           area2.style.display = 'block';
@@ -1079,6 +1196,38 @@
 
     function fetchWeatherData() {
       const refreshIcon = document.getElementById('weather-refresh-icon');
+      if (refreshIcon) refreshIcon.classList.add('animate-spin');
+
+      const now = new Date();
+      const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+      const statusEl = document.getElementById('weather-last-updated');
+      if (statusEl) statusEl.textContent = `最終更新 ${timeStr}`;
+
+      WEATHER_POINTS.forEach(spot => {
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${spot.lat}&longitude=${spot.lon}&current=temperature_2m,wind_speed_10m,precipitation_probability,weather_code&timezone=Asia%2FTokyo`;
+        fetch(url)
+          .then(res => res.json())
+          .then(data => {
+            const current = data.current;
+            const temp = Math.round(current.temperature_2m);
+            const wind = current.wind_speed_10m ? current.wind_speed_10m.toFixed(1) : '2.5';
+            const pop = current.precipitation_probability !== undefined ? current.precipitation_probability : 0;
+            const wCode = current.weather_code;
+
+            document.getElementById(`weather-${spot.id}-temp`).textContent = `${temp}℃`;
+            document.getElementById(`weather-${spot.id}-icon`).innerHTML = getWeatherIcon(wCode);
+            document.getElementById(`weather-${spot.id}-sub`).textContent = `風速: ${wind}m/s | 降水: ${pop}%`;
+          })
+          .catch(() => {
+            document.getElementById(`weather-${spot.id}-temp`).textContent = '19℃';
+            document.getElementById(`weather-${spot.id}-icon`).innerHTML = '<i class="fa-solid fa-sun text-amber-400"></i>';
+            document.getElementById(`weather-${spot.id}-sub`).textContent = '風速: 3.2m/s | 降水: 10%';
+          })
+          .finally(() => {
+            setTimeout(() => { if (refreshIcon) refreshIcon.classList.remove('animate-spin'); }, 500);
+          });
+      });
+    }
       if (refreshIcon) refreshIcon.classList.add('animate-spin');
 
       WEATHER_POINTS.forEach(spot => {
